@@ -9,10 +9,10 @@ The owner authorized an independent redesign using anti-slop throughout, a React
 ## Visual direction
 
 - ENERGY 2 / RHYTHM 3 / MOTION 1.
-- Deep forest `#163e35`, paper `#f6f7f2`, white `#ffffff`, ink `#1c302a`, muted ink `#56675f`, citron `#d6eb83`.
-- Preserve the real Ridgewell logo. Green develops the existing green brand into a stronger, calmer business identity. Citron highlights one key action against forest.
+- Burgundy `#581b27`, paper `#f5f4f0`, white `#ffffff`, ink `#292724`, muted ink `#696560`, red `#a32430`.
+- Preserve the real Ridgewell logo. Inspection confirmed a red mark, superseding the preliminary green palette. Burgundy gives its red a calmer business identity; red emphasizes important actions.
 - Manrope for readable, assured business copy; Newsreader italic only for the human emphasis in the main headline. Both fonts are self-hosted.
-- Light paper and white are fixed brand surfaces; dark forest sections provide narrative emphasis. A theme toggle would alter the intended corporate identity and adds no task value here.
+- Light paper and white are fixed brand surfaces; dark burgundy sections provide narrative emphasis. The fixed theme maintains the corporate identity across sections.
 - A large typographic introduction beside an operational note becomes the signature: a concrete business problem paired with the support it needs. This visual represents an example, not a customer system or performance claim.
 - Service navigation is an editorial index, with a large contextual detail panel. The content needs comparison, not a repeated grid of promotional cards.
 - Section compositions vary: split introduction, service index, accounting heritage, process rows, questions, inquiry.
