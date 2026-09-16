@@ -29,8 +29,11 @@ export default function InquiryForm({
   const draftHeading = useRef<HTMLHeadingElement>(null);
   const draftText = useRef<HTMLTextAreaElement>(null);
   const copying = useRef(false);
+  const copyVersion = useRef(0);
 
   useEffect(() => {
+    copyVersion.current += 1;
+    copying.current = false;
     setDraft(null);
     setCopyState("idle");
   }, [interest]);
@@ -50,6 +53,8 @@ export default function InquiryForm({
       form.current?.querySelector<HTMLElement>(`[name="${field}"]`)?.focus();
       return;
     }
+    copyVersion.current += 1;
+    copying.current = false;
     setDraft(createEmailDraft(inquiry));
     setCopyState("idle");
     requestAnimationFrame(() => draftHeading.current?.focus());
@@ -58,22 +63,28 @@ export default function InquiryForm({
   async function copyDraft() {
     if (!draft || copying.current) return;
     copying.current = true;
+    const version = copyVersion.current;
     setCopyState("copying");
     try {
       await navigator.clipboard.writeText(draft.text);
+      if (version !== copyVersion.current) return;
       setCopyState("copied");
     } catch {
+      if (version !== copyVersion.current) return;
       setCopyState("failed");
       requestAnimationFrame(() => {
+        if (version !== copyVersion.current) return;
         draftText.current?.focus();
         draftText.current?.select();
       });
     } finally {
-      copying.current = false;
+      if (version === copyVersion.current) copying.current = false;
     }
   }
 
   function edit() {
+    copyVersion.current += 1;
+    copying.current = false;
     setDraft(null);
     setCopyState("idle");
     requestAnimationFrame(() =>

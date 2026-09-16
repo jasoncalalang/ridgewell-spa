@@ -305,3 +305,45 @@ test("clipboard work has a busy state and missing images leave accessible identi
   ).toHaveJSProperty("naturalWidth", 0);
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 });
+
+test("landscape mobile navigation fits the screen and scrolls to its final action", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 568, height: 320 });
+  await page.getByRole("button", { name: "Menu" }).click();
+  const menu = page.getByRole("navigation", { name: "Mobile navigation" });
+  const box = await menu.boundingBox();
+  expect(box!.y + box!.height).toBeLessThanOrEqual(321);
+  await menu.evaluate((element) => {
+    element.scrollTop = element.scrollHeight;
+  });
+  await menu.getByRole("link", { name: "Let’s talk", exact: true }).click();
+  await expect(page).toHaveURL(/#contact$/);
+});
+
+test("an old clipboard completion cannot mark a revised draft as copied", async ({
+  page,
+}) => {
+  await prepareInquiry(page);
+  await page.evaluate(() => {
+    Object.defineProperty(navigator.clipboard, "writeText", {
+      value: () =>
+        new Promise<void>((resolve) => {
+          (window as Window & { finishCopy?: () => void }).finishCopy = resolve;
+        }),
+    });
+  });
+  await page.getByRole("button", { name: "Copy email draft" }).click();
+  await page.getByRole("button", { name: "Edit your inquiry" }).click();
+  await page
+    .getByLabel("What would you like to work better?")
+    .fill("A revised question about software.");
+  await page.getByRole("button", { name: "Prepare your inquiry" }).click();
+  await page.evaluate(() =>
+    (window as Window & { finishCopy?: () => void }).finishCopy?.(),
+  );
+  await expect(
+    page.getByRole("button", { name: "Copy email draft" }),
+  ).toBeVisible();
+  await expect(page.getByRole("status")).not.toContainText("Copied.");
+});

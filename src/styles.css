@@ -295,6 +295,9 @@
     right: 0;
     background: var(--white);
     border-bottom: 1px solid var(--line);
+    max-block-size: calc(100dvh - 84px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 1rem var(--gutter) 1.5rem;
     box-shadow: 0 15px 22px #2927240a;
   }
