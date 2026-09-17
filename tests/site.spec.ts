@@ -29,7 +29,7 @@ test("every visible in-page link reaches its destination without runtime errors"
   });
   await page.reload();
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "A clearer way",
+    "Business,",
   );
   const links = page.locator('a[href^="#"]:visible');
   for (let i = 0; i < (await links.count()); i++) {

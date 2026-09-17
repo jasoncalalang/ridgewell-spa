@@ -1,8 +1,8 @@
 @layer components {
   .inquiry-card {
     background: var(--white);
-    border: 1px solid var(--line);
-    padding: clamp(1.4rem, 3vw, 2.5rem);
+    border-top: 2px solid var(--ink);
+    padding-top: 1.5rem;
     min-width: 0;
   }
   .form-heading {
@@ -14,7 +14,7 @@
   }
   .form-heading > span {
     color: var(--muted);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
   .form-row {
     display: grid;
@@ -29,7 +29,7 @@
   }
   .field label,
   .draft-label {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 650;
   }
   .field label span {
@@ -42,9 +42,9 @@
   .draft-preview {
     width: 100%;
     min-width: 0;
-    border: 1px solid #94867e;
-    border-radius: 2px;
-    min-height: 46px;
+    border: 1px solid var(--control-border);
+    border-radius: 3px;
+    min-height: 48px;
     background: var(--white);
     color: var(--ink);
     padding: 0.7rem 0.8rem;
@@ -61,17 +61,15 @@
   }
   .field input:hover,
   .field select:hover,
-  .field textarea:hover {
-    border-color: var(--wine);
-  }
+  .field textarea:hover,
   .field input:focus,
   .field textarea:focus,
   .field select:focus {
-    border-color: var(--wine);
+    border-color: var(--ink);
   }
   .field textarea::placeholder {
     color: var(--muted);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     opacity: 1;
   }
   .field [aria-invalid="true"] {
@@ -79,25 +77,25 @@
   }
   .field-error {
     color: var(--red);
-    font-size: 0.73rem;
+    font-size: 0.875rem;
   }
   .field-hint {
     color: var(--muted);
-    font-size: 0.66rem;
+    font-size: 0.8rem;
   }
   .form-submit {
     margin-top: 0.4rem;
   }
   .form-note {
     color: var(--muted);
-    font-size: 0.67rem;
+    font-size: 0.875rem;
     line-height: 1.8;
     margin-top: 1rem;
     max-width: 32rem;
   }
   .draft-ready > p:not(.section-label) {
     color: var(--muted);
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-block: 1rem;
   }
   .draft-ready h3 {
@@ -105,7 +103,7 @@
   }
   .draft-details {
     margin-block: 1.5rem;
-    font-size: 0.73rem;
+    font-size: 0.875rem;
   }
   .draft-details > div {
     display: grid;
@@ -126,8 +124,8 @@
   }
   .draft-preview {
     resize: vertical;
-    background: var(--paper);
-    font-size: 0.8rem;
+    background: var(--white);
+    font-size: 1rem;
     min-height: 220px;
   }
   .draft-actions {
@@ -145,7 +143,7 @@
   }
   .draft-ready .copy-status {
     min-height: 3.5em;
-    font-size: 0.7rem;
+    font-size: 0.875rem;
   }
   .edit-inquiry {
     border: 0;

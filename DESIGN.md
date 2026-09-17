@@ -1,37 +1,47 @@
 # Ridgewell design direction
 
+## Owner direction
+
+The owner rejected the first cream-and-serif design as generic and requested a white website built around vector graphics. This revision follows that explicit direction. White means `#ffffff` across the page, including forms, navigation, service details, and footer. Cream, warm neutrals, tilted paper compositions, italic serif display type, and large burgundy panels are retired.
+
 ## Context
 
-Public business website for Ridgewell Management Services, Inc. The audience is Philippine SME owners and growing teams seeking accounting, operations, or focused software support. The page's job is to help visitors recognize their operational problem and begin a useful conversation.
-
-The owner authorized an independent redesign using anti-slop throughout, a React SPA, a public GitHub repository, frequent commits, and a final push. This direction is an authored interpretation of that brief and the existing brand, not a claim of an established brand manual.
+Ridgewell Management Services, Inc. supports Philippine SMEs with accounting, operations, documentation, coordination, and focused software. The page helps a visitor identify the support they need and start an inquiry. Published company facts and the original logo remain the evidence base. The owner previously authorized a public repository, frequent commits, and pushes; that workflow continues for this revision.
 
 ## Visual direction
 
-- ENERGY 2 / RHYTHM 3 / MOTION 1.
-- Burgundy `#581b27`, paper `#f5f4f0`, white `#ffffff`, ink `#292724`, muted ink `#696560`, red `#a32430`.
-- Preserve the real Ridgewell logo. Inspection confirmed a red mark, superseding the preliminary green palette. Burgundy gives its red a calmer business identity; red emphasizes important actions.
-- Manrope for readable business copy; Newsreader italic for restrained emphasis in headings and the operational note. Both fonts are self-hosted. A burgundy R favicon identifies browser tabs while the original full logo remains the site identity.
-- Light paper and white are fixed brand surfaces; dark burgundy sections provide narrative emphasis. The fixed theme maintains the corporate identity across sections.
-- A large typographic introduction beside an operational note becomes the signature: a concrete business problem paired with the support it needs. This visual represents an example, not a customer system or performance claim.
-- Service navigation is an editorial index, with a large contextual detail panel. The content needs comparison, not a repeated grid of promotional cards.
-- Section compositions vary: split introduction, service index, accounting heritage, process rows, questions, inquiry.
-- Hairlines separate comparable content. Small radii belong to controls; the illustrated work note has a softened paper edge. No glow, decorative grid, or floating cards.
-- Only a directional icon on the primary action and service navigation; plus/minus indicate disclosure, menu/close control navigation. No decorative feature icon library.
-- Whitespace separates subject changes. Dense operational examples stay grouped. Mobile composes each section vertically with its own spacing scale.
-- Motion is limited to control feedback and a short service-panel transition. Reduced motion disables it.
+Reading this as: a white business-services website for Philippine SME owners, using precise vector drawings and direct typography. ENERGY 2 / RHYTHM 3 / MOTION 1.
+
+- Canvas `#ffffff`; charcoal `#171c22`; secondary ink `#565f68`; Ridgewell red `#b51226`; construction gray `#dfe5e9`; rules `#d8dde2`.
+- Red is grounded in the original Ridgewell mark. It identifies the primary action and connects objects in the illustrations. Gray appears only as object depth, borders, and functional disabled states.
+- Barlow Condensed, weight 600, gives the headlines the compact character of a technical drawing title. Manrope remains the readable body face. No serif or italic headings.
+- Original, editable SVG artwork is the main visual material: an open ledger, organized files, handoff routes, a monitor showing a small process diagram, and an inquiry inbox. These are conceptual illustrations of published services, not product screenshots or results.
+- One large connected-work illustration anchors the opening. Smaller related drawings explain the selected service, accounting foundation, and inquiry. All use the same perspective, line weight, and red accents.
+- The original full logo is retained as supplied, including its raster source. New supporting graphics are vectors; the logo is not redrawn or substituted.
+- The hero illustration sits directly on white. A shaped connection route echoes the direction of the ridge mark and physically connects accounting, operations, and software objects.
+- Sections use different useful compositions: split introduction with generous artwork, service index plus contextual drawing, accounting drawing beside the business foundation, process rows, question disclosures, and an inquiry form.
+- Service selection remains one comparison surface rather than a grid of promotional cards. Its illustration changes with the selected area.
+- Page-level backgrounds remain white. Separation comes from typography, spacing, and structural rules. No shaded marketing slabs, gradients, blur, decorative grids, or floating mockups.
+- Primary actions are red, secondary actions use text or an outline. Control corners are slightly softened; SVG edges follow the illustrated object, not UI-card conventions.
+- Main service descriptions, lists, process explanations, FAQ answers, and input values use at least 16px. Small captions supplement rather than carry essential information. All controls retain 44px minimum touch areas.
+- Motion is limited to selection and control feedback. Reduced motion disables transitions. SVGs do not animate merely to decorate the page.
 
 ## Behavioral contract
 
-- Real in-page destinations: services, approach, about, questions, contact.
-- Service selector is keyboard-operable and updates the detail panel; service actions preselect inquiry interest.
+- Existing services, approach, about, questions, and contact anchors remain functional.
+- Service tabs support arrows, Home, End, and standard focus navigation. Each service can preselect the inquiry interest.
 - FAQ uses native disclosures.
-- Inquiry validates locally and creates an email draft addressed to the published company email. It clearly says it opens the visitor's email application and never claims a message was sent.
-- Visitors can copy the draft, with explicit success or fallback instructions on clipboard failure.
-- No invented contact details, testimonials, client logos, outcomes, fees, or response-time promises.
-- Static content ships with the app, avoiding the original site's dependency on several content API calls to render its main copy.
-- Preserve focus, support keyboard navigation, and test 320px through desktop, reduced motion, image failure, and inquiry validation.
+- Inquiry validates locally and creates a draft for the visitor's email app. It never claims that a message has already been sent.
+- Copy supports pending, success, and permission-denied states; stale completions cannot affect revised drafts.
+- Mobile navigation fits short landscape viewports and scrolls internally. Escape closes it and restores focus.
+- Core copy is bundled locally. No fabricated outcomes, fees, client identities, team portraits, or performance statistics.
+- The historical reference is accounting experience since 2004, as published by Ridgewell. It is not described as the company's founding date.
 
 ## Runtime mapping
 
-All palette, typography, spacing, radius, motion, and scrollbar tokens live in `src/styles.css`. Shared controls use `.button`, `.text-link`, `.field`, and `.section-label`. Source content lives in `src/content.ts`; source URLs are recorded in `docs/source-audit.md`.
+- `src/styles.css`: palette, type, layout, spacing, controls, scrollbars, responsive behavior.
+- `src/components/VectorArt.tsx`: original reusable SVG objects and conceptual compositions.
+- `src/components/inquiry.css`: the inquiry form and draft states, using shared tokens.
+- `src/content.ts`: verified service areas and questions.
+- `docs/source-audit.md`: public source provenance.
+- `docs/verification.md`: current behavior, accessibility, and anti-slop checks. Passing those checks is a technical result, not a substitute for the owner's visual judgment.

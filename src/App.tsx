@@ -4,6 +4,11 @@ import Arrow from "./components/Arrow";
 import Services from "./components/Services";
 import { companyEmail, questions } from "./content";
 import InquiryForm from "./components/InquiryForm";
+import {
+  OperationsIllustration,
+  FoundationIllustration,
+  InquiryIllustration,
+} from "./components/VectorArt";
 
 export default function App() {
   const [interest, setInterest] = useState("General operations support");
@@ -17,154 +22,83 @@ export default function App() {
         <section id="home" className="hero">
           <div className="wrap hero-layout">
             <div className="hero-copy">
-              <p className="section-label">
-                <span className="label-line" />
-                Practical support. Philippine businesses.
-              </p>
+              <p className="section-label">Support for Philippine businesses</p>
               <h1>
-                A clearer way
+                Business,
                 <br />
-                to run the
+                in working
                 <br />
-                <em>everyday.</em>
+                order.
               </h1>
               <p className="hero-description">
-                Your business has a lot of moving parts.
-                <br className="desktop-break" /> We help you bring the numbers,
-                people, and processes together.
+                Accounting, everyday operations, and software that fits. Put the
+                right support behind the work your team does.
               </p>
-              <div className="hero-actions">
-                <a className="button" href="#contact">
-                  Let’s talk about your business <Arrow diagonal />
-                </a>
-                <a className="quiet-link" href="#services">
-                  Find the support you need
-                </a>
-              </div>
+              <a className="button" href="#contact">
+                Talk through your needs <Arrow diagonal />
+              </a>
             </div>
-            <div className="hero-art">
-              <div className="art-heading">
-                <span>The business behind your business.</span>
-                <span className="art-cross" aria-hidden="true">
-                  +
-                </span>
-              </div>
-              <div className="work-sheet">
-                <div className="sheet-top">
-                  <span>A little clarity goes a long way.</span>
-                  <span className="sheet-mark" aria-hidden="true">
-                    R.
-                  </span>
-                </div>
-                <div className="sheet-title">
-                  From moving parts.
-                  <br />
-                  <em>To a way forward.</em>
-                </div>
-                <div className="sheet-row">
-                  <span className="sheet-check" aria-hidden="true">
-                    ✓
-                  </span>
-                  <span>The numbers, understood.</span>
-                </div>
-                <div className="sheet-row">
-                  <span className="sheet-check" aria-hidden="true">
-                    ✓
-                  </span>
-                  <span>The next step, clear.</span>
-                </div>
-                <div className="sheet-row">
-                  <span className="sheet-check" aria-hidden="true">
-                    ✓
-                  </span>
-                  <span>The team, on the same page.</span>
-                </div>
-                <div className="sheet-bottom">
-                  <span>Accounting · Operations · Software</span>
-                  <span aria-hidden="true">↗</span>
-                </div>
-              </div>
-              <div className="art-bottom">
-                <span>Built around the work you actually do.</span>
-                <svg
-                  width="62"
-                  height="45"
-                  viewBox="0 0 62 45"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M2 43 23 22l12 12L59 3M39 3h20v20"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </div>
-            </div>
+            <figure className="hero-figure">
+              <OperationsIllustration />
+              <figcaption>
+                <span className="caption-rule" aria-hidden="true" />
+                The numbers. The handoffs. The tools. Connected.
+              </figcaption>
+            </figure>
           </div>
           <div className="hero-foot wrap">
             <p>
-              <span className="small-seal" aria-hidden="true">
-                R
-              </span>
               Grounded in accounting experience <strong>since 2004.</strong>
             </p>
             <a href="#services">
-              A good place to begin <span aria-hidden="true">↓</span>
+              Find your starting point <Arrow />
             </a>
           </div>
         </section>
+
         <Services onInterest={setInterest} />
-        <section id="about" className="about-section">
+
+        <section id="about" className="about-section section-space">
           <div className="wrap about-layout">
-            <div className="about-origin">
-              <p className="section-label">Our foundation</p>
-              <span className="origin-year">
-                2004<span className="origin-dot">.</span>
-              </span>
-              <p>
-                Our accounting experience
-                <br />
-                starts here.
-              </p>
-            </div>
+            <figure className="about-figure">
+              <FoundationIllustration />
+              <figcaption>Clear records are a good place to start.</figcaption>
+            </figure>
             <div className="about-copy">
               <p className="section-label">Why Ridgewell</p>
               <h2>
-                We see the business
+                An accounting
                 <br />
-                behind the numbers.
+                point of view.
               </h2>
               <p>
-                Accounting gives you a close view of how a business really
-                works. That perspective shapes the way we support your
-                operations today.
+                The numbers tell you where to look. Understanding the work
+                behind them helps you decide what to change.
               </p>
               <p>
-                We look at the routines, handoffs, and decisions around the
-                numbers. Then we help you find an improvement that fits your
-                people, your time, and your resources.
+                Our accounting experience dates to 2004. We bring that
+                perspective to your routines, responsibilities, and systems,
+                with support that fits the people and resources you have.
               </p>
-              <a href="#approach" className="text-link light-link">
+              <a href="#approach" className="text-link">
                 How we approach the work <Arrow />
               </a>
             </div>
           </div>
         </section>
+
         <section id="approach" className="approach-section section-space">
           <div className="wrap approach-layout">
             <div className="approach-intro">
-              <p className="section-label">A practical way forward</p>
+              <p className="section-label">From question to next step</p>
               <h2>
-                Start small.
+                One useful
                 <br />
-                Make it useful.
-                <br />
-                <em>Build from there.</em>
+                change at a time.
               </h2>
               <p>
-                You don’t need a finished plan. Bring the process that is taking
-                too long, or the question you keep coming back to.
+                Bring the task that takes too long, the handoff that keeps
+                slipping, or the system your team has outgrown.
               </p>
               <a className="text-link" href="#contact">
                 Tell us what needs attention <Arrow />
@@ -174,45 +108,45 @@ export default function App() {
               <article>
                 <span className="step-number">01</span>
                 <div>
-                  <h3>Understand the everyday.</h3>
+                  <h3>Look at the work.</h3>
                   <p>
-                    Look at how work happens now. Identify the recurring task,
-                    missed handoff, or unclear responsibility that needs
-                    attention.
+                    Understand the routine as it is today. Find the repeated
+                    task, unclear responsibility, or missing information.
                   </p>
                 </div>
               </article>
               <article>
                 <span className="step-number">02</span>
                 <div>
-                  <h3>Find the useful change.</h3>
+                  <h3>Choose a practical fix.</h3>
                   <p>
-                    Work out what will help: a clearer process, practical
-                    documentation, accounting support, or a tool that fits.
+                    Work out what would help: accounting support, a documented
+                    process, a better handoff, or a focused tool.
                   </p>
                 </div>
               </article>
               <article>
                 <span className="step-number">03</span>
                 <div>
-                  <h3>Put it to work.</h3>
+                  <h3>Make it part of the day.</h3>
                   <p>
-                    Turn the next step into something your team can use, with
-                    support to refine it as your business changes.
+                    Put the change into practice, with documentation and
+                    follow-through your team can use as the business grows.
                   </p>
                 </div>
               </article>
             </div>
           </div>
         </section>
-        <section id="questions" className="questions-section">
+
+        <section id="questions" className="questions-section section-space">
           <div className="wrap questions-layout">
             <div>
               <p className="section-label">Before we talk</p>
               <h2>
-                A few good
+                A few things
                 <br />
-                questions.
+                to know.
               </h2>
             </div>
             <div className="questions-list">
@@ -228,22 +162,24 @@ export default function App() {
             </div>
           </div>
         </section>
+
         <section id="contact" className="contact-section section-space">
           <div className="wrap contact-layout">
-            <div>
-              <p className="section-label">A useful next conversation</p>
+            <div className="contact-intro">
+              <p className="section-label">Start a conversation</p>
               <h2>
-                What could work
+                What needs
                 <br />
-                <em>a little better?</em>
+                to work better?
               </h2>
               <p>
-                Tell us about the part of your business that needs attention. A
-                clear question is enough to start.
+                A short description of your business and the work that needs
+                attention is enough to begin.
               </p>
               <a className="text-link" href={`mailto:${companyEmail}`}>
                 Email Ridgewell directly <Arrow diagonal />
               </a>
+              <InquiryIllustration />
             </div>
             <InquiryForm interest={interest} onInterest={setInterest} />
           </div>
@@ -265,8 +201,8 @@ export default function App() {
               />
             </a>
             <p>
-              Good work deserves
-              <br />a clearer way forward.
+              Accounting. Operations.
+              <br />A business in working order.
             </p>
             <a className="text-link" href="#home">
               Back to top <span aria-hidden="true">↑</span>
@@ -276,7 +212,7 @@ export default function App() {
             <span>
               © {new Date().getFullYear()} Ridgewell Management Services, Inc.
             </span>
-            <span>Accounting. Operations. Practical progress.</span>
+            <span>Supporting Philippine businesses.</span>
             <a href="#questions">Common questions</a>
           </div>
         </div>

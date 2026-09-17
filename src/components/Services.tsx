@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { services } from "../content";
 import Arrow from "./Arrow";
+import { ServiceIllustration } from "./VectorArt";
+
 export default function Services({
   onInterest,
 }: {
@@ -15,14 +17,14 @@ export default function Services({
           <div>
             <p className="section-label">Where we can help</p>
             <h2>
-              Good support starts
+              Find the support
               <br />
-              with the real work.
+              behind better work.
             </h2>
           </div>
           <p className="heading-aside">
-            The numbers. The daily routines. The tools your team uses. Find a
-            clearer way to keep them working together.
+            Start with the part of your business that needs attention. We’ll
+            help you work out what comes next.
           </p>
         </div>
         <div className="service-layout">
@@ -74,6 +76,17 @@ export default function Services({
             tabIndex={0}
           >
             <div key={service.id} className="service-panel-content">
+              <figure className="service-drawing">
+                <ServiceIllustration kind={service.id} />
+                <figcaption>
+                  <span>For example</span>
+                  {service.example.before}
+                  <span className="example-outcome">
+                    <Arrow />
+                    {service.example.after}
+                  </span>
+                </figcaption>
+              </figure>
               <div className="service-copy">
                 <h3>{service.heading}</h3>
                 <p>{service.description}</p>
@@ -93,19 +106,6 @@ export default function Services({
                 >
                   Talk about this service <Arrow />
                 </a>
-              </div>
-              <div
-                className="service-example"
-                aria-label="Illustrative service example"
-              >
-                <span className="example-label">An example in practice</span>
-                <span className="example-topic">{service.example.label}</span>
-                <div className="example-before">{service.example.before}</div>
-                <div className="example-connector" aria-hidden="true">
-                  ↓
-                </div>
-                <div className="example-after">{service.example.after}</div>
-                <p>{service.example.note}</p>
               </div>
             </div>
           </div>
