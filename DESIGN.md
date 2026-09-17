@@ -16,7 +16,7 @@ Reading this as: a white business-services website for Philippine SME owners, us
 - Red is grounded in the original Ridgewell mark. It identifies the primary action and connects objects in the illustrations. Gray appears only as object depth, borders, and functional disabled states.
 - Barlow Condensed, weight 600, gives the headlines the compact character of a technical drawing title. Manrope remains the readable body face. No serif or italic headings.
 - Original, editable SVG artwork is the main visual material: an open ledger, organized files, handoff routes, a monitor showing a small process diagram, and an inquiry inbox. These are conceptual illustrations of published services, not product screenshots or results.
-- One large connected-work illustration anchors the opening. Smaller related drawings explain the selected service, accounting foundation, and inquiry. All use the same perspective, line weight, and red accents.
+- One large connected-work illustration anchors the opening. Smaller related drawings explain the selected service, accounting foundation, and inquiry. Physical objects use a shared isometric perspective; routing is a flat process diagram. Dark outlines and red accents connect the visual family.
 - The original full logo is retained as supplied, including its raster source. New supporting graphics are vectors; the logo is not redrawn or substituted.
 - The hero illustration sits directly on white. A shaped connection route echoes the direction of the ridge mark and physically connects accounting, operations, and software objects.
 - Sections use different useful compositions: split introduction with generous artwork, service index plus contextual drawing, accounting drawing beside the business foundation, process rows, question disclosures, and an inquiry form.
@@ -45,3 +45,7 @@ Reading this as: a white business-services website for Philippine SME owners, us
 - `src/content.ts`: verified service areas and questions.
 - `docs/source-audit.md`: public source provenance.
 - `docs/verification.md`: current behavior, accessibility, and anti-slop checks. Passing those checks is a technical result, not a substitute for the owner's visual judgment.
+
+## UI UX Pro Max review
+
+Applied during the white/vector revision, after the owner's explicit question about the skill. Its focused typography, reflow, accessibility, and React form guidance supports this existing direction. Main body copy and input values are at least 16px; form guidance was enlarged; illustrations have meaningful titles. Existing keyboard, focus, reduced-motion, validation, and mobile navigation contracts remain verified. `docs/verification.md` records the executed checks.

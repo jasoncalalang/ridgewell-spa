@@ -2,7 +2,7 @@
 
 A React SPA redesign of [ridgewell.com.ph](https://ridgewell.com.ph) for Ridgewell Management Services, Inc.
 
-The original logo and published service information are retained. The redesign introduces a burgundy visual identity, responsive layouts, a keyboard-accessible service selector, practical FAQs, and an inquiry flow that prepares a reviewable email draft.
+The original logo and published service information are retained. The redesign uses a pure white canvas, charcoal typography, Ridgewell red, and original editable SVG illustrations of accounting, operations, and software. A keyboard-accessible service selector, practical FAQs, and a reviewable email-draft inquiry flow support the page.
 
 ![Ridgewell desktop preview](docs/preview-desktop.jpg)
 
@@ -42,7 +42,7 @@ The form validates locally and prepares an email addressed to the address publis
 ## Project guide
 
 - `src/content.ts`: services, questions, and published contact address.
-- `src/components/`: navigation, service selector, inquiry flow, and directional icon.
+- `src/components/`: navigation, service selector, inquiry flow, and original vector artwork in `VectorArt.tsx`.
 - `src/lib/inquiry.ts`: validation and email draft construction.
 - `src/styles.css`: brand tokens and responsive page styles.
 - `DESIGN.md`: design decisions and interaction contract.
