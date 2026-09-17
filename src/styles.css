@@ -107,6 +107,7 @@
     min-width: 320px;
     font-size: 1rem;
     line-height: 1.75;
+    overflow-wrap: anywhere;
   }
   ::selection {
     background: var(--red);
@@ -182,6 +183,7 @@
     align-items: center;
     justify-content: center;
     gap: 1.6rem;
+    max-width: 100%;
     border: 1px solid var(--red);
     border-radius: var(--radius);
     background: var(--red);
@@ -219,6 +221,7 @@
     align-items: center;
     gap: 1rem;
     min-height: 44px;
+    max-width: 100%;
     font-weight: 650;
     font-size: 0.85rem;
     color: var(--ink);
@@ -851,7 +854,7 @@
       gap: 0.5rem;
     }
     .hero-description {
-      font-size: 0.94rem;
+      font-size: 1rem;
     }
     .inquiry-illustration {
       width: 230px;

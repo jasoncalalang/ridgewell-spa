@@ -237,11 +237,15 @@ test("layouts reflow from 320px through desktop with usable touch targets", asyn
   await page.evaluate(() => {
     document.documentElement.style.fontSize = "200%";
   });
-  expect(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= window.innerWidth,
-    ),
-  ).toBe(true);
+  for (const width of [320, 390, 640]) {
+    await page.setViewportSize({ width, height: 900 });
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= window.innerWidth,
+      ),
+      `200% text at ${width}px`,
+    ).toBe(true);
+  }
 });
 
 test("all inquiry choices and email handoff are usable without submitting data", async ({
