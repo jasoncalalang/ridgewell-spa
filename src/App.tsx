@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSectionMotion } from "./hooks/useMotion";
 import Header from "./components/Header";
 import Arrow from "./components/Arrow";
 import Services from "./components/Services";
@@ -11,6 +12,7 @@ import {
 } from "./components/VectorArt";
 
 export default function App() {
+  const motion = useSectionMotion();
   const [interest, setInterest] = useState("General operations support");
   return (
     <>
@@ -18,7 +20,7 @@ export default function App() {
         Skip to content
       </a>
       <Header />
-      <main id="main">
+      <main id="main" ref={motion}>
         <section id="home" className="hero">
           <div className="wrap hero-layout">
             <div className="hero-copy">

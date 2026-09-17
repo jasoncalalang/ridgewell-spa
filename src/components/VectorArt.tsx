@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { useVectorMotion } from "../hooks/useMotion";
 
 const ink = "#26313a";
 const red = "#b51226";
@@ -116,18 +117,20 @@ function Inbox() {
 
 export function OperationsIllustration() {
   const title = useId();
+  const motion = useVectorMotion();
   return (
     <svg
       className="operations-illustration"
       viewBox="0 0 720 540"
       role="img"
+      ref={motion}
       aria-labelledby={title}
     >
       <title id={title}>
         An open accounting ledger, organized records, and a workflow on a
         monitor connected by a red route.
       </title>
-      <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <g data-routes fill="none" strokeLinecap="round" strokeLinejoin="round">
         <path
           d="m104 352 105 61 171-99 116 67 137-79"
           stroke={red}
@@ -179,6 +182,7 @@ export function OperationsIllustration() {
 
 export function ServiceIllustration({ kind }: { kind: string }) {
   const title = useId();
+  const motion = useVectorMotion(kind);
   const label =
     kind === "accounting"
       ? "An open accounting ledger"
@@ -189,6 +193,7 @@ export function ServiceIllustration({ kind }: { kind: string }) {
           : "A connected workflow on a monitor";
   return (
     <svg
+      ref={motion}
       className="service-illustration"
       viewBox="0 0 320 250"
       role="img"
@@ -218,8 +223,10 @@ export function ServiceIllustration({ kind }: { kind: string }) {
 
 export function FoundationIllustration() {
   const title = useId();
+  const motion = useVectorMotion();
   return (
     <svg
+      ref={motion}
       className="foundation-illustration"
       viewBox="0 0 540 355"
       role="img"
@@ -229,6 +236,7 @@ export function FoundationIllustration() {
         Accounting records connected to a clear, documented process.
       </title>
       <path
+        data-route
         d="m93 229 136 79 207-120"
         stroke={red}
         strokeWidth="3"
@@ -252,8 +260,10 @@ export function FoundationIllustration() {
 
 export function InquiryIllustration() {
   const title = useId();
+  const motion = useVectorMotion();
   return (
     <svg
+      ref={motion}
       className="inquiry-illustration"
       viewBox="0 0 360 275"
       role="img"
@@ -261,6 +271,7 @@ export function InquiryIllustration() {
     >
       <title id={title}>An envelope in an inquiry tray.</title>
       <path
+        data-route
         d="m22 208 108 63 165-96"
         fill="none"
         stroke={red}
