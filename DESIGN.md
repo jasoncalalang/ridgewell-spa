@@ -10,7 +10,7 @@ Ridgewell Management Services, Inc. supports Philippine SMEs with accounting, op
 
 ## Visual direction
 
-Reading this as: a white business-services website for Philippine SME owners, using precise vector drawings and direct typography. ENERGY 2 / RHYTHM 3 / MOTION 1.
+Reading this as: a white business-services website for Philippine SME owners, using precise vector drawings and direct typography. ENERGY 2 / RHYTHM 3 / MOTION 2, following the owner's request for GSAP animation.
 
 - Canvas `#ffffff`; charcoal `#171c22`; secondary ink `#565f68`; Ridgewell red `#b51226`; construction gray `#dfe5e9`; rules `#d8dde2`.
 - Red is grounded in the original Ridgewell mark. It identifies the primary action and connects objects in the illustrations. Gray appears only as object depth, borders, and functional disabled states.
@@ -24,7 +24,7 @@ Reading this as: a white business-services website for Philippine SME owners, us
 - Page-level backgrounds remain white. Separation comes from typography, spacing, and structural rules. No shaded marketing slabs, gradients, blur, decorative grids, or floating mockups.
 - Primary actions are red, secondary actions use text or an outline. Control corners are slightly softened; SVG edges follow the illustrated object, not UI-card conventions.
 - Main service descriptions, lists, process explanations, FAQ answers, and input values use at least 16px. Small captions supplement rather than carry essential information. All controls retain 44px minimum touch areas.
-- Motion is limited to selection and control feedback. Reduced motion disables transitions. SVGs do not animate merely to decorate the page.
+- GSAP introduces vector objects in sequence and draws the routes between them to explain connected work. Headings settle by 12px as their section enters view. Animations play once per illustration mount, with a fresh service illustration on selection. No perpetual motion, parallax, or scroll hijacking. Reduced motion renders the finished artwork immediately, including when the preference changes while the page is open.
 
 ## Behavioral contract
 
@@ -49,3 +49,7 @@ Reading this as: a white business-services website for Philippine SME owners, us
 ## UI UX Pro Max review
 
 Applied during the white/vector revision, after the owner's explicit question about the skill. Its focused typography, reflow, accessibility, and React form guidance supports this existing direction. Main body copy and input values are at least 16px; form guidance was enlarged; illustrations have meaningful titles. Existing keyboard, focus, reduced-motion, validation, and mobile navigation contracts remain verified. `docs/verification.md` records the executed checks.
+
+## Motion implementation
+
+`src/hooks/useMotion.ts` owns GSAP timelines, ScrollTrigger viewport activation, and preference handling. React's `useGSAP` scopes each effect and reverts it on unmount or service change. Opacity animates only illustration objects; SVG positioning transforms remain intact. Route drawing uses native stroke dash properties. Text and controls remain readable and operable throughout. UI UX Pro Max's subtle scroll-reveal guidance informed the 12px heading distance. Sources: [GSAP React lifecycle guidance](https://gsap.com/resources/React/) and [ScrollTrigger documentation](https://gsap.com/docs/v3/Plugins/ScrollTrigger/).

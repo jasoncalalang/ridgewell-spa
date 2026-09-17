@@ -6,7 +6,7 @@ Verified 17 September 2026 for the white/vector revision. The owner requested pu
 
 - PASS: `npm run test:unit`, all 5 inquiry validation and encoding tests.
 - PASS: `npm run build`, TypeScript and Vite production build.
-- PASS: `npm test`, 25 browser tests passed; 1 intentional skip for the desktop project's mobile-only navigation case.
+- PASS: `npm test`, 29 browser tests passed; 1 intentional skip for the desktop project's mobile-only navigation case.
 - PASS: axe WCAG A/AA scans in initial, invalid-form, and prepared-draft states on desktop and mobile, with zero reported violations.
 - PASS: widths 320, 390, 600, 768, 960, 1024, 1440, and 1920; no horizontal overflow and controls at least 44px tall, allowing subpixel rounding.
 - PASS: additional production-render inspection at 375px; no horizontal overflow.
@@ -70,21 +70,21 @@ The concrete refinement was increasing main service copy, service lists, process
 
 ## Visual and craftsmanship review
 
-| Rules                  | Implementation evidence                                                                                                                        |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| R-01, R-29             | White, charcoal, Ridgewell red, and cool gray; no cream or warm tinted surfaces.                                                               |
-| R-04, R-08, R-09       | Arrows indicate navigation or conceptual routing; check marks identify checklist items; no invented badges.                                    |
-| R-06                   | Barlow Condensed display headings and Manrope body copy; Newsreader removed.                                                                   |
-| R-07, R-10, R-12, R-13 | No background grid, gradients, glass, shadows, or glow. Thin rules separate real content groups.                                               |
-| R-14                   | Services use one indexed selector and contextual illustration, without a repeated promotional card grid.                                       |
-| R-19                   | Motion is limited to control feedback, with reduced-motion support.                                                                            |
-| R-22                   | Editable SVG ledgers, records, routing, monitor, and inbox drawings depict the actual service categories.                                      |
-| R-05, R-11             | Split introduction, service index, illustrated accounting section, sequential process, FAQ, and inquiry vary composition. Small control radii. |
-| R-15, R-16             | Direct action labels and plain service copy; no prohibited marketing buzzwords.                                                                |
-| R-20, R-21, R-30, R-31 | Original logo and accounting/operations concepts anchor the authored white presentation. Rationale is recorded in `DESIGN.md`.                 |
-| C-1 through C-5        | Written visual rationale, meaningful content, behavior coverage, responsive/accessibility checks, and source provenance.                       |
+| Rules                  | Implementation evidence                                                                                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| R-01, R-29             | White, charcoal, Ridgewell red, and cool gray; no cream or warm tinted surfaces.                                                                            |
+| R-04, R-08, R-09       | Arrows indicate navigation or conceptual routing; check marks identify checklist items; no invented badges.                                                 |
+| R-06                   | Barlow Condensed display headings and Manrope body copy; Newsreader removed.                                                                                |
+| R-07, R-10, R-12, R-13 | No background grid, gradients, glass, shadows, or glow. Thin rules separate real content groups.                                                            |
+| R-14                   | Services use one indexed selector and contextual illustration, without a repeated promotional card grid.                                                    |
+| R-19                   | GSAP draws vector connections, introduces illustration objects, and moves headings by 12px. Motion follows the owner's request and respects reduced motion. |
+| R-22                   | Editable SVG ledgers, records, routing, monitor, and inbox drawings depict the actual service categories.                                                   |
+| R-05, R-11             | Split introduction, service index, illustrated accounting section, sequential process, FAQ, and inquiry vary composition. Small control radii.              |
+| R-15, R-16             | Direct action labels and plain service copy; no prohibited marketing buzzwords.                                                                             |
+| R-20, R-21, R-30, R-31 | Original logo and accounting/operations concepts anchor the authored white presentation. Rationale is recorded in `DESIGN.md`.                              |
+| C-1 through C-5        | Written visual rationale, meaningful content, behavior coverage, responsive/accessibility checks, and source provenance.                                    |
 
-ENERGY 2 / RHYTHM 3 / MOTION 1 remains the recorded intent. Each section has a content focal point, with whitespace separating topics. Red accents connect the drawn objects and identify primary actions. Screenshots record the actual result for owner review; this is not a declaration that an anti-slop checklist can certify visual taste.
+ENERGY 2 / RHYTHM 3 / MOTION 2 is the recorded intent following the owner's GSAP request. Each section has a content focal point, with whitespace separating topics. Red accents connect the drawn objects and identify primary actions. Screenshots record the static result for owner review; this is not a declaration that an anti-slop checklist can certify visual taste.
 
 ## Measured color pairs
 
@@ -103,3 +103,13 @@ The repository contains a deployable React SPA. The production domain, original 
 ## Independent review follow-up
 
 The review found enlarged-text overflow at narrow phone widths caused by intrinsic text widths in grid children. Allowing emergency word wrapping and constraining inline action widths fixed the reproduced case. Regression coverage now checks 200% root text at 320, 390, and 640px. The original normal-size breakpoint and accessibility checks also pass. SVG viewboxes contain their artwork, and each meaningful illustration has an accessible title.
+
+## GSAP animation verification
+
+- PASS: vector route offsets progress and clear after completion on desktop and mobile.
+- PASS: repeated service changes settle on the selected illustration without runtime errors.
+- PASS: reduced-motion users get static artwork; changing the preference mid-animation reverts motion immediately.
+- PASS: section headings remain readable during their 12px entrance; forms and navigation are not animation targets.
+- PASS: `useGSAP` scopes and cleans up effects; service changes revert the previous timeline. ScrollTriggers remain registered until cleanup to avoid removing them during GSAP's refresh traversal.
+
+The four new browser cases cover normal motion and live preference switching across both viewport projects. GSAP and ScrollTrigger add roughly 45KB gzip to the production JavaScript bundle. No perpetual animation, scroll pinning, or external animation service is used.

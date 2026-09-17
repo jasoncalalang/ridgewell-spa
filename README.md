@@ -50,3 +50,7 @@ The form validates locally and prepares an email addressed to the address publis
 - `docs/verification.md`: final test and anti-slop delivery report.
 
 Original logo rights belong to Ridgewell. Font licenses are supplied by the Fontsource packages in `node_modules`. This repository makes no claim to ownership of the original brand assets.
+
+## Animation
+
+GSAP draws the SVG connections and introduces illustration objects as they enter the viewport. Headings settle by 12px; selecting a service introduces its illustration. Animations respect `prefers-reduced-motion`, including preference changes while the page is open. Motion lives in `src/hooks/useMotion.ts`, with React-scoped cleanup and browser regression coverage in `tests/motion.spec.ts`.
