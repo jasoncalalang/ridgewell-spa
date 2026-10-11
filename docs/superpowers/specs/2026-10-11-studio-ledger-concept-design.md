@@ -97,3 +97,7 @@ Router or detail pages, CMS, server-backed inquiry form, new logo, dark mode, te
 ## Testing
 
 Unit: inquiry tests unchanged. Browser: existing desktop/mobile Playwright + axe; add a Work-section spec (six rows render, anchors resolve, images have alt text, reduced motion shows final state). Visual review on the superdesign canvas before implementation.
+
+## Addendum 2026-10-11 (after canvas review)
+
+Owner feedback on variants A and B: both inherited the current page's structure; a completely new layout is wanted, light themed. Decisions: page canvas becomes warm off-white #f6f4ef with white panels and 1px #e3dfd6 borders (no shadows, no gradients); two from-scratch layouts are explored on the canvas: a bento grid and a sticky split. Fonts, red accent, case studies, behavioral contract and motion rules are unchanged. The "white everywhere" rule in the Visual direction above is superseded by this addendum.
