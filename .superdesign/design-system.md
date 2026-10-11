@@ -3,7 +3,7 @@
 ## Product context
 Ridgewell Management Services, Inc. (ridgewell.com.ph) is a Philippine business-support firm: accounting, everyday operations, documentation, and focused custom software for SMEs. One marketing page. Visitors are SME owners and school or clinic administrators. Jobs: understand the four services in one screen, see proof that Ridgewell ships real systems (Work section), start an inquiry (email draft).
 
-Page order: Header, Hero, Services (two offers: Website design, Bespoke system development), Work (5 editorial case-study rows, outcome-level only, no technology words), Approach (3 numbered steps), About (copy + 3 facts), Questions (FAQ), Contact (split: details + inquiry form), Footer.
+Page order: Header, Hero, Services (two offers: Website design, Bespoke system development), Work (7 case-study rows in two groups: five client systems, two Ridgewell products; outcome-level only, no technology words, no client names), Approach (3 numbered steps), About (copy + 3 facts), Questions (FAQ), Contact (split: details + inquiry form), Footer.
 
 ## Visual direction
 White, editorial, precise. Think a well-set ledger or technical drawing title block, not a SaaS landing page. Hierarchy comes from type size, rules and whitespace. One accent colour. Real product screenshots in plain frames are the main imagery; the isometric vector drawings from the current site may remain only in the hero, if at all.
@@ -36,7 +36,7 @@ White, editorial, precise. Think a well-set ledger or technical drawing title bl
 ## Components
 - Section label: red 6px square + label text.
 - Services list: 2 items, each a button with title + one-line short; selected item shows a red left rule and ink title; detail panel on the right with heading, paragraph, 3 bullet items, and a screenshot or illustration.
-- Work row: index numeral, product heading, paragraph, 3-item fact list (For / What changed / In use since), 1 to 2 screenshot frames. Anchor id per row.
+- Work row: index numeral, product heading, paragraph, 3-item fact list (For / What changed / In use since or Status), 1 to 2 screenshot frames. Anchor id per row.
 - Numbered steps: 01, 02, 03 in red, heading, paragraph, rules between.
 - FAQ: native details/summary, single column, rules between.
 - Inquiry form: labels above inputs, 1px #d8dde2 inputs, 44px tall, red primary action "Prepare your inquiry", helper text 16px.
@@ -53,3 +53,4 @@ No cards with shadows, no gradient slabs, no icon grids with pastel circles, no 
 
 ## Content rule (hard)
 Never name a framework, language, database, cloud, cluster, identity provider, or module/form code in any visible text. Case-study copy describes who uses the system and what got easier, nothing about how it is built.
+Never name a client; describe them (a K-12 and college school, a condominium property manager).

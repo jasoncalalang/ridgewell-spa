@@ -12,7 +12,7 @@ Success: a Philippine SME owner lands, understands in one screen that Ridgewell 
 
 - Direction: "Studio ledger" (option 1 of 3). Not the dark newsprint direction, not the append-only option.
 - Positioning: services-first, Work prominent. Nav: Services, Work, Approach, Contact. Ridgewell stays an accounting-and-operations firm that also builds software; the portfolio is evidence, not the identity.
-- Clients are named: CSPB and APEX+ by Limchoc Laser Institute. Repos stay private; case studies are prose + screenshots, no code links.
+- Clients are NOT named (superseded 2026-10-11): the school and the property manager are described generically. Repos stay private; case studies are prose + screenshots, no code links.
 - Single page, no router. Each case study is one editorial row with an anchor (`#work-mycspb`). Detail pages are out of scope.
 - Visual language is retained: tokens, fonts, red-only accent, no shaded slabs, no gradients. Isometric vector art is reduced to the hero only (or removed if the screenshot composition carries the hero); service and about illustrations are replaced by real screens.
 - Motion: existing GSAP contract stays (entrances, 12px heading settle, reduced-motion renders final state). Work rows get the same entrance; screenshots do not parallax.
@@ -23,7 +23,7 @@ Success: a Philippine SME owner lands, understands in one screen that Ridgewell 
 1. Header: logo, Services / Work / Approach / Contact, red "Let's talk".
 2. Hero: label, headline (keep "Business, in working order." unless the owner supplies a new line), one-sentence description, primary CTA, and a single composition of 2 to 3 real product screens in plain 1px frames (MyCSPB mobile + SIS desktop). Reference: Oyster hero (headline + one strong image).
 3. Services index: label left, two services (Website design, Bespoke system development) as stacked rows with rules, selected service shows a short description + 3 items + a real screenshot where one exists (software and operations rows). Reference: YLLW services rows, Koto index. Keeps the keyboard-accessible selector contract.
-4. Work: section label "Work", one-line intro ("Systems in daily use at a school."), then 5 editorial rows. Each row: index number (01 to 05), product name as a Barlow Condensed heading, two sentences, three facts as a small definition list (For / What changed / In use since), one tightly cropped screenshot in a plain frame. Rows alternate screenshot side on desktop; stack on mobile.
+4. Work: section label "Work", one-line intro ("Systems in daily use at a school."), then 7 editorial rows in two groups (Built for a client: 01 to 05; Our products: 06 and 07). Each row: index number (01 to 07), product name as a Barlow Condensed heading, two sentences, three facts as a small definition list (For / What changed / In use since), one tightly cropped screenshot in a plain frame. Rows alternate screenshot side on desktop; stack on mobile.
 5. Approach: three numbered steps with rules (existing content). Reference: Apollo numbered steps.
 6. About: "An accounting point of view" copy plus three facts (accounting experience since 2004, Philippine SMEs, one team from ledger to software). Reference: Complex Law.
 7. Questions: existing FAQ, single column, native disclosures.
@@ -44,40 +44,55 @@ Internal systems built around how your organisation already works: enrollment, r
 
 ## Case studies (content for the Work section)
 
-Owner constraints (2026-10-11): no stack names, no infrastructure, no module inventories, nothing a competitor could use as a build recipe. Each row is two sentences about who uses it and what got easier, plus three facts: For / What changed / In use since. Screenshots are tightly cropped regions, never full screens, and never show real student or employee data. APEX+ / Limchoc Laser Institute is not shown for now. Client named: Colegio de San Pascual Baylon (CSPB).
+Owner constraints (2026-10-11): no stack names, no infrastructure, no module inventories, nothing a competitor could use as a build recipe, and NO client names anywhere (the school and the property manager are described, not named). Each row is two sentences about who uses it and what got easier, plus three facts. Screenshots are tightly cropped regions, never full screens, never real personal data. APEX+ / LLI is not shown for now.
 
-### 01 MyCSPB, parent and student portal
+Work is split into two groups. Intro line: "Systems in daily use at a school, a property manager, and our own office."
+
+### Group A, "Built for a client": five systems for a K-12 and college school
+
+#### 01 Parent and student portal
 Parents and students see grades, attendance and report cards in one place, on the web and on their phones. One sign-in for the whole family.
-- For: parents and students
+- For: parents and students of a K-12 and college school
 - What changed: report cards and attendance without a trip to the registrar
 - In use since: 2026
 
-### 02 CSPB teacher and staff portal
+#### 02 Teacher and staff portal
 Teachers record attendance and grades once, and the official school forms come out ready to print. Staff keep medical and guidance records in the same place.
 - For: teachers and school staff
 - What changed: school forms produced from daily records, not re-encoded
 - In use since: 2026
 
-### 03 CSPB enrollment and registrar system
+#### 03 Enrollment and registrar system
 Families enroll online; the registrar assesses, admits and sections from a single queue. Finance sees the same record, so nobody chases paper between offices.
 - For: the registrar and finance offices, enrolling families
 - What changed: one enrollment record from application to admission
 - In use since: 2026
 
-### 04 CSPB HR and campus gate
+#### 04 HR and campus gate
 Employee records, requests and approvals in one system, with gate scans at the campus entrance that mark who is in.
 - For: HR and every employee
 - What changed: approvals and attendance without paper forms
 - In use since: 2026
 
-### 05 CSPB College registrar
+#### 05 College registrar
 Enrollment for the college department that follows each programme's curriculum, so students only enlist in subjects they can take.
 - For: the college registrar and its students
 - What changed: curriculum checks at enrollment instead of after
 - In use since: 2026
 
-### Optional 06 LeaseTrack, Ridgewell's own tenant and lease demo
-Tenant and lease management demo for Condocenter Inc., live at leasetrack.ridgewell.com.ph. Include only if the owner wants a Ridgewell-branded example.
+### Group B, "Our products": Ridgewell-owned systems
+
+#### 06 LeaseTrack, tenant and lease management
+Leases expiring in 30, 60 and 90 days, this week's post-dated cheques, and every contract a click away. Built for a condominium property manager with about 200 units; every change is logged.
+- For: property managers and their admin teams
+- What changed: renewals and post-dated cheques tracked in one place
+- Status: live demo at leasetrack.ridgewell.com.ph
+
+#### 07 Ridgewell Ledger, receipts to books
+Photograph a receipt or service invoice and it becomes a line in a bookkeeper-ready ledger, categorised by vendor and exportable to Excel. Used for Ridgewell's own books first.
+- For: small business owners and their bookkeepers
+- What changed: receipts become ledger entries without manual encoding
+- Status: in use at Ridgewell
 
 ## Behavioral contract (unchanged unless noted)
 
@@ -108,3 +123,7 @@ Owner feedback on variants A and B: both inherited the current page's structure;
 ## Addendum 2026-10-11, later (content trimmed)
 
 Owner feedback: the case studies gave away too much; competitors could read the stack and architecture. Decisions: the page offers two services only (Website design, Bespoke system development); APEX+ / LLI is not shown for now; the five CSPB case studies are rewritten at outcome level with For / What changed / In use since facts and no technology or infrastructure words; the platform note is removed. The Services and Case studies sections above are the current content.
+
+## Addendum 2026-10-11, latest (products added, clients anonymised)
+
+Owner: add LeaseTrack and the receipt-to-ledger system (named "Ridgewell Ledger" on the page) as Ridgewell products; remove customer names. Decisions: Work has two groups, five school systems (client unnamed, described as "a K-12 and college school") and two Ridgewell products (LeaseTrack's client described as "a condominium property manager"); headings drop the school's acronym; the Work intro becomes "Systems in daily use at a school, a property manager, and our own office."
