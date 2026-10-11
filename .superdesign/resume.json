@@ -37,8 +37,8 @@
         "src/styles.css"
       ],
       "fingerprints": {
-        ".superdesign/design-system.md": "b034673657861a04493ae0cd23cbe4d7ca3489fa906959383d01b62914e796a9",
-        "docs/superpowers/specs/2026-10-11-studio-ledger-concept-design.md": "8b711d1f8d27b80a40e167eac012c6a8ac126603c98837e8708379c7d2475013",
+        ".superdesign/design-system.md": "494ebefad641857edc173a2d633baae415901b0b6430345f13684a339a8df5eb",
+        "docs/superpowers/specs/2026-10-11-studio-ledger-concept-design.md": "1cacc69b4992c886d4bb945f357b82eee36ad8acddede6d40c4af86ca8513314",
         "index.html": "cadc67b757df2cce24e1e8b3553d2201ad4379267de016f630fe96c0589eb3a9",
         "src/App.tsx": "824c243013de4072c37941b3ca3aa14f4753a58a0ff007642e74e83db19f66f2",
         "src/components/Header.tsx": "2cb9682c10204a11d35e5ddce769732a7b04e238e7b86efc519fd76042cd2705",
@@ -67,9 +67,19 @@
           "visualDirection": "Koto-style case-study index in hero, Koto service index, full-width Work bands",
           "parentDraftId": "59a6baf8-448b-4078-8942-31ac6cad5836",
           "currentVersion": 1
+        },
+        "8a54b3e3-a6af-44bb-974a-c19c817db694": {
+          "title": "Ridgewell - Bento Grid (light)",
+          "visualDirection": "from-scratch bento grid, warm off-white page, white tiles",
+          "currentVersion": 2
+        },
+        "d9383dde-a800-4412-915d-07727053ff5f": {
+          "title": "Ridgewell Sticky Split Layout (light)",
+          "visualDirection": "from-scratch sticky split, fixed left column, white panels on off-white",
+          "currentVersion": 2
         }
       },
-      "updatedAt": "2026-10-11T08:45:01+00:00"
+      "updatedAt": "2026-10-11T09:26:03+00:00"
     }
   }
 }
