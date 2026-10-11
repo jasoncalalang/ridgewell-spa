@@ -5,7 +5,7 @@
       "targetKind": "existing-ui",
       "projectId": "2df81989-7a77-49b8-b933-d121def079a3",
       "baselineDraftId": "59a6baf8-448b-4078-8942-31ac6cad5836",
-      "activeDraftId": "59a6baf8-448b-4078-8942-31ac6cad5836",
+      "activeDraftId": "ac56c1e0-54cb-4962-8a08-667d1cc3db20",
       "designSystemPath": ".superdesign/design-system.md",
       "referenceIds": [
         "public-brand-ridgewell-logo.jpg",
@@ -14,7 +14,17 @@
         "db453feb-a423-40c0-9d11-f9fc07b61004",
         "413ea4e8-8215-4db3-a0a6-49b58e3217ea",
         "5ba6fa4e-0ca4-44b8-bee4-4ed40ec0bc3f",
-        "585a7a08-45dd-48e2-9464-efb694e1aafd"
+        "585a7a08-45dd-48e2-9464-efb694e1aafd",
+        "92c59050-0bd9-43bb-8095-076a6aa0b78e",
+        "81895cfb-1417-4fe5-8f92-079929e679d1",
+        "ba8a5318-4147-47e6-8dba-38188f1de943",
+        "81c4544b-de82-4673-9485-56a50c68f576",
+        "52e623dd-9a28-437f-9b69-f9e820505b20",
+        "5e1f8397-6053-4831-b835-0163b3c47018",
+        "30ffd11a-a1db-44ad-91fa-56268bddf7fa",
+        "1d4ae0cd-cc9e-4916-a5df-8504ed3f797d",
+        "e0b8b811-d455-451a-879c-bd3f87380731",
+        "3f98604d-1d02-4bcb-b282-90a5168e3c8c"
       ],
       "brandAssets": {
         "logo": {
@@ -77,6 +87,12 @@
           "title": "Ridgewell Sticky Split Layout (light)",
           "visualDirection": "from-scratch sticky split, fixed left column, white panels on off-white; v3 = two services, five outcome-level CSPB case studies, no LLI; v4 = seven rows (five anonymised school systems + LeaseTrack + Ridgewell Ledger)",
           "currentVersion": 4
+        },
+        "ac56c1e0-54cb-4962-8a08-667d1cc3db20": {
+          "title": "Ridgewell - Showroom (product-forward, light)",
+          "visualDirection": "from-scratch product-forward page: centred headline over a browser-frame screenshot, screenshot cards for 7 case studies, drawn mini UI in service cards, Savor-style contact; references twenty/sketch/incident.io/bird/webflow/intercom/amplemarket/miro/savor",
+          "currentVersion": 1,
+          "model": "claude-opus-4-8"
         }
       },
       "updatedAt": "2026-10-11T09:55:30+00:00"
