@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "/": {
+      "targetKind": "existing-ui",
+      "projectId": "2df81989-7a77-49b8-b933-d121def079a3",
+      "baselineDraftId": "59a6baf8-448b-4078-8942-31ac6cad5836",
+      "activeDraftId": "59a6baf8-448b-4078-8942-31ac6cad5836",
+      "designSystemPath": ".superdesign/design-system.md",
+      "referenceIds": [
+        "public-brand-ridgewell-logo.jpg",
+        "07606eb3-a6b9-4bd6-a32f-9a6cb78791aa",
+        "d9e8c1f4-e0c1-47b1-b694-b9199fb24dda",
+        "db453feb-a423-40c0-9d11-f9fc07b61004",
+        "413ea4e8-8215-4db3-a0a6-49b58e3217ea",
+        "5ba6fa4e-0ca4-44b8-bee4-4ed40ec0bc3f",
+        "585a7a08-45dd-48e2-9464-efb694e1aafd"
+      ],
+      "brandAssets": {
+        "logo": {
+          "assetKey": "public-brand-ridgewell-logo.jpg",
+          "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/2df81989-7a77-49b8-b933-d121def079a3/brand-assets/public-brand-ridgewell-logo.jpg/ridgewell-logo.jpg",
+          "sourcePath": "public/brand/ridgewell-logo.jpg"
+        }
+      },
+      "contextFiles": [
+        ".superdesign/design-system.md",
+        "docs/superpowers/specs/2026-10-11-studio-ledger-concept-design.md",
+        "index.html",
+        "src/App.tsx",
+        "src/components/Header.tsx",
+        "src/components/Arrow.tsx",
+        "src/components/Services.tsx",
+        "src/components/InquiryForm.tsx",
+        "src/components/inquiry.css",
+        "src/content.ts",
+        "src/styles.css"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "b034673657861a04493ae0cd23cbe4d7ca3489fa906959383d01b62914e796a9",
+        "docs/superpowers/specs/2026-10-11-studio-ledger-concept-design.md": "8b711d1f8d27b80a40e167eac012c6a8ac126603c98837e8708379c7d2475013",
+        "index.html": "cadc67b757df2cce24e1e8b3553d2201ad4379267de016f630fe96c0589eb3a9",
+        "src/App.tsx": "824c243013de4072c37941b3ca3aa14f4753a58a0ff007642e74e83db19f66f2",
+        "src/components/Header.tsx": "2cb9682c10204a11d35e5ddce769732a7b04e238e7b86efc519fd76042cd2705",
+        "src/components/Arrow.tsx": "230a347577d18c06a89ecce89371c7895a3a6d7c59aa7e00e7e769e6d50d6b43",
+        "src/components/Services.tsx": "caa98f7917ce6d42e813ed1ce22fa9eece20a01a9521a061e5bce707aaedfca2",
+        "src/components/InquiryForm.tsx": "0beab56ecea3878ed62eb2f725986068e2dc182143f673e659b848f0fbe60a6f",
+        "src/components/inquiry.css": "5486ba74018e164e1ddaf15f7bc1d40e80ab633c763d09c72e57e31ef1982120",
+        "src/content.ts": "546a7113cee6bf65d74e3ab895b969031ee00a788513b28328c589be34748b4d",
+        "src/styles.css": "5cae89ccd307b19c8042d67ba9105032a669212c49cf4131fe07003af0cd3ea6"
+      },
+      "components": [],
+      "drafts": {
+        "59a6baf8-448b-4078-8942-31ac6cad5836": {
+          "title": "Current Ridgewell (baseline)",
+          "visualDirection": "pixel-perfect reproduction of the live white/vector site",
+          "currentVersion": 1
+        },
+        "db70d720-1883-49b9-b2d2-b7c6a50d68a8": {
+          "title": "Ridgewell - Studio Ledger Concept (variant A, Proof up front)",
+          "visualDirection": "screenshot composition hero (Oyster), YLLW service rows, six alternating Work rows",
+          "parentDraftId": "59a6baf8-448b-4078-8942-31ac6cad5836",
+          "currentVersion": 1
+        },
+        "fa7835d8-e865-47a0-ace1-4b5c36e8dcc1": {
+          "title": "Ridgewell - Studio Ledger Concept B (variant B, Ledger index)",
+          "visualDirection": "Koto-style case-study index in hero, Koto service index, full-width Work bands",
+          "parentDraftId": "59a6baf8-448b-4078-8942-31ac6cad5836",
+          "currentVersion": 1
+        }
+      },
+      "updatedAt": "2026-10-11T08:45:01+00:00"
+    }
+  }
+}
