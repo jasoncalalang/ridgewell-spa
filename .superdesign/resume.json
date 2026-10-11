@@ -37,8 +37,8 @@
         "src/styles.css"
       ],
       "fingerprints": {
-        ".superdesign/design-system.md": "494ebefad641857edc173a2d633baae415901b0b6430345f13684a339a8df5eb",
-        "docs/superpowers/specs/2026-10-11-studio-ledger-concept-design.md": "1cacc69b4992c886d4bb945f357b82eee36ad8acddede6d40c4af86ca8513314",
+        ".superdesign/design-system.md": "f9045e537aa1e1d4d318850910f35ead2ef6ec08563d86306fb09eb8a6e0e154",
+        "docs/superpowers/specs/2026-10-11-studio-ledger-concept-design.md": "5c0cb44ec9740ff2cd3142afbfc37b2143eb7fb471caedd25cd82b6dc0a8a1c9",
         "index.html": "cadc67b757df2cce24e1e8b3553d2201ad4379267de016f630fe96c0589eb3a9",
         "src/App.tsx": "824c243013de4072c37941b3ca3aa14f4753a58a0ff007642e74e83db19f66f2",
         "src/components/Header.tsx": "2cb9682c10204a11d35e5ddce769732a7b04e238e7b86efc519fd76042cd2705",
@@ -70,16 +70,16 @@
         },
         "8a54b3e3-a6af-44bb-974a-c19c817db694": {
           "title": "Ridgewell - Bento Grid (light)",
-          "visualDirection": "from-scratch bento grid, warm off-white page, white tiles",
-          "currentVersion": 2
+          "visualDirection": "from-scratch bento grid, warm off-white page, white tiles; v3 = two services, five outcome-level CSPB case studies, no LLI",
+          "currentVersion": 3
         },
         "d9383dde-a800-4412-915d-07727053ff5f": {
           "title": "Ridgewell Sticky Split Layout (light)",
-          "visualDirection": "from-scratch sticky split, fixed left column, white panels on off-white",
-          "currentVersion": 2
+          "visualDirection": "from-scratch sticky split, fixed left column, white panels on off-white; v3 = two services, five outcome-level CSPB case studies, no LLI",
+          "currentVersion": 3
         }
       },
-      "updatedAt": "2026-10-11T09:26:03+00:00"
+      "updatedAt": "2026-10-11T09:42:35+00:00"
     }
   }
 }
