@@ -22,59 +22,62 @@ Success: a Philippine SME owner lands, understands in one screen that Ridgewell 
 
 1. Header: logo, Services / Work / Approach / Contact, red "Let's talk".
 2. Hero: label, headline (keep "Business, in working order." unless the owner supplies a new line), one-sentence description, primary CTA, and a single composition of 2 to 3 real product screens in plain 1px frames (MyCSPB mobile + SIS desktop). Reference: Oyster hero (headline + one strong image).
-3. Services index: label left, four services as stacked rows with rules, selected service shows a short description + 3 items + a real screenshot where one exists (software and operations rows). Reference: YLLW services rows, Koto index. Keeps the keyboard-accessible selector contract.
-4. Work: section label "Work", one-line intro ("Systems in daily use at a school, a clinic, and our own office."), then 6 editorial rows. Each row: index number (01 to 06), client + product name as a Barlow Condensed heading, one paragraph, three facts as a small definition list (Scope / Built with / Runs on), one or two screenshots in a plain frame. Rows alternate screenshot side on desktop; stack on mobile.
+3. Services index: label left, two services (Website design, Bespoke system development) as stacked rows with rules, selected service shows a short description + 3 items + a real screenshot where one exists (software and operations rows). Reference: YLLW services rows, Koto index. Keeps the keyboard-accessible selector contract.
+4. Work: section label "Work", one-line intro ("Systems in daily use at a school."), then 5 editorial rows. Each row: index number (01 to 05), product name as a Barlow Condensed heading, two sentences, three facts as a small definition list (For / What changed / In use since), one tightly cropped screenshot in a plain frame. Rows alternate screenshot side on desktop; stack on mobile.
 5. Approach: three numbered steps with rules (existing content). Reference: Apollo numbered steps.
 6. About: "An accounting point of view" copy plus three facts (accounting experience since 2004, Philippine SMEs, one team from ledger to software). Reference: Complex Law.
 7. Questions: existing FAQ, single column, native disclosures.
 8. Contact: split, left = what to send and the published email, right = the existing draft-an-email inquiry form. Reference: Fiasco.
 9. Footer.
 
+## Services (content for the Services section)
+
+Two offers only (owner decision 2026-10-11). Accounting, operations and documentation are no longer sold on the page; the accounting background stays as a credibility line in About.
+
+### Website design
+A fast, accessible website that explains what you do and gets people to contact you. Design, copy structure, build, hosting and upkeep, with your own domain and email.
+- Items: brand-faithful design and copy structure; accessible, mobile-first build; hosting, domain, analytics and upkeep
+
+### Bespoke system development
+Internal systems built around how your organisation already works: enrollment, records, portals, approvals, reporting, mobile companions. Scoped small, shipped in weeks, supported after launch.
+- Items: portals and records systems for staff and the people they serve; forms, approvals, reporting and integrations; web and mobile, with ongoing support
+
 ## Case studies (content for the Work section)
 
-Facts below are taken from the repos and the architecture doc on 2026-10-11. Screenshots are to be captured from staging or demo builds; none may show real student, employee, or patient data.
+Owner constraints (2026-10-11): no stack names, no infrastructure, no module inventories, nothing a competitor could use as a build recipe. Each row is two sentences about who uses it and what got easier, plus three facts: For / What changed / In use since. Screenshots are tightly cropped regions, never full screens, and never show real student or employee data. APEX+ / Limchoc Laser Institute is not shown for now. Client named: Colegio de San Pascual Baylon (CSPB).
 
-### 01 MyCSPB — parent and student portal, web + mobile
-Client: Colegio de San Pascual Baylon. Parents and students sign in once (Keycloak SSO, Google sign-in) and see grades laid out exactly as the DepEd SF9 report card, attendance, per-term grade release, and account linking codes. A Flutter companion app (Android and iOS) wraps the same backend.
-- Scope: grades, attendance, report cards, parent-student linking, mobile app
-- Built with: React, Express BFF, Quarkus, PostgreSQL, Flutter, Keycloak
-- Runs on: CSPB's on-prem Kubernetes cluster behind Cloudflare Tunnel
+### 01 MyCSPB, parent and student portal
+Parents and students see grades, attendance and report cards in one place, on the web and on their phones. One sign-in for the whole family.
+- For: parents and students
+- What changed: report cards and attendance without a trip to the registrar
+- In use since: 2026
 
-### 02 CSPB SIS — teacher and staff portal
-Teachers take attendance that feeds DepEd School Form 2, encode grades on the three-term calendar, and print School Forms 9 and 10 to the official layout. Staff modules cover medical and discipline records. Registrar and admin roles reach every section.
-- Scope: attendance, grades, DepEd school forms, medical, discipline
-- Built with: React, Express BFF, Quarkus, PostgreSQL
-- Runs on: same cluster; proxies attendance and grades to the registrar API
+### 02 CSPB teacher and staff portal
+Teachers record attendance and grades once, and the official school forms come out ready to print. Staff keep medical and guidance records in the same place.
+- For: teachers and school staff
+- What changed: school forms produced from daily records, not re-encoded
+- In use since: 2026
 
-### 03 CSPB Registrar and online enrollment
-The enrollment system of record: online registration, assessment, finance admit rules, discounts, section assignment, and the student master. Replaced spreadsheets and a vendor SMS. In production on campus since August 2026.
-- Scope: enrollment lifecycle, assessment and finance, student master, reports
-- Built with: Quarkus API, React UI, Express BFF, PostgreSQL, Flyway
-- Runs on: on-prem kubeadm cluster (Cilium), GitOps via Helm + GitHub Actions
+### 03 CSPB enrollment and registrar system
+Families enroll online; the registrar assesses, admits and sections from a single queue. Finance sees the same record, so nobody chases paper between offices.
+- For: the registrar and finance offices, enrolling families
+- What changed: one enrollment record from application to admission
+- In use since: 2026
 
-### 04 CSPB HRIS and campus QR gate
-HR 201 files, payroll officer workflows, service requests with four-eyes approval, employee photos on MinIO, and an AskHR assistant. Gate scans from the campus QR scanner clock employees in and out and feed student attendance suggestions to SIS.
-- Scope: HR 201, payroll support, service requests, gate attendance
-- Built with: React, Express BFF, Quarkus, PostgreSQL, MinIO, Redis
-- Runs on: same cluster; kiosk + admin apps for the gate
+### 04 CSPB HR and campus gate
+Employee records, requests and approvals in one system, with gate scans at the campus entrance that mark who is in.
+- For: HR and every employee
+- What changed: approvals and attendance without paper forms
+- In use since: 2026
 
 ### 05 CSPB College registrar
-Unit-aware, curriculum-driven enrollment for the college department, replacing the 1DPH SMS. Per-term fee rates, curriculum checks, Keycloak realm per audience, and a college staging cluster on a developer-hosted minikube.
-- Scope: curriculum, enrollment, assessment for the college department
-- Built with: Quarkus, React, Keycloak, PostgreSQL
-- Runs on: on-prem cluster (prod), minikube staging via self-hosted runner
+Enrollment for the college department that follows each programme's curriculum, so students only enlist in subjects they can take.
+- For: the college registrar and its students
+- What changed: curriculum checks at enrollment instead of after
+- In use since: 2026
 
-### 06 APEX+ by Limchoc Laser Institute — site and patient app
-A physician-guided performance and longevity programme. Ridgewell built the static marketing site (hero, four pillars, consultation steps, clinic details, FAQ) with a security-gated delivery pipeline, and a Flutter patient companion: dose schedules and logging, care messages, side-effect reports, body measurements, sign-in via Keycloak PKCE.
-- Scope: marketing site, patient companion app, clinic API
-- Built with: Next.js static export, Flutter, Quarkus, Firestore, Keycloak
-- Runs on: Google Cloud Run (site), Android and iOS (app)
-
-### Optional 07 LeaseTrack — Ridgewell's own tenant and lease demo
-Tenant and lease management pitch demo for Condocenter Inc., live at leasetrack.ridgewell.com.ph. Include only if the owner wants a Ridgewell-branded example; it is the one case the firm can link to.
-
-### Platform note (one line under the CSPB rows)
-All CSPB apps share one Keycloak SSO, one PostgreSQL, n8n automations and a two-node on-prem Kubernetes cluster that Ridgewell designed, bootstrapped (Ansible, kubeadm, Cilium) and operates, fronted by Cloudflare Tunnel with Let's Encrypt certificates.
+### Optional 06 LeaseTrack, Ridgewell's own tenant and lease demo
+Tenant and lease management demo for Condocenter Inc., live at leasetrack.ridgewell.com.ph. Include only if the owner wants a Ridgewell-branded example.
 
 ## Behavioral contract (unchanged unless noted)
 
@@ -101,3 +104,7 @@ Unit: inquiry tests unchanged. Browser: existing desktop/mobile Playwright + axe
 ## Addendum 2026-10-11 (after canvas review)
 
 Owner feedback on variants A and B: both inherited the current page's structure; a completely new layout is wanted, light themed. Decisions: page canvas becomes warm off-white #f6f4ef with white panels and 1px #e3dfd6 borders (no shadows, no gradients); two from-scratch layouts are explored on the canvas: a bento grid and a sticky split. Fonts, red accent, case studies, behavioral contract and motion rules are unchanged. The "white everywhere" rule in the Visual direction above is superseded by this addendum.
+
+## Addendum 2026-10-11, later (content trimmed)
+
+Owner feedback: the case studies gave away too much; competitors could read the stack and architecture. Decisions: the page offers two services only (Website design, Bespoke system development); APEX+ / LLI is not shown for now; the five CSPB case studies are rewritten at outcome level with For / What changed / In use since facts and no technology or infrastructure words; the platform note is removed. The Services and Case studies sections above are the current content.
