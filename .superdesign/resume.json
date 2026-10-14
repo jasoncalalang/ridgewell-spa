@@ -91,8 +91,9 @@
         "ac56c1e0-54cb-4962-8a08-667d1cc3db20": {
           "title": "Ridgewell - Showroom (product-forward, light)",
           "visualDirection": "from-scratch product-forward page: centred headline over a browser-frame screenshot, screenshot cards for 7 case studies, drawn mini UI in service cards, Savor-style contact; references twenty/sketch/incident.io/bird/webflow/intercom/amplemarket/miro/savor",
-          "currentVersion": 1,
-          "model": "claude-opus-4-8"
+          "currentVersion": 2,
+          "model": "claude-opus-4-8",
+          "status": "approved 2026-10-14 (v2: hero title \"Units, Condominium\")"
         }
       },
       "updatedAt": "2026-10-11T09:55:30+00:00"
