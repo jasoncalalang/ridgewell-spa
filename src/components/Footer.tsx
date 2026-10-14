@@ -8,7 +8,11 @@ export default function Footer() {
       <div className="wrap">
         <div className="footer-main">
           <div>
-            <a className="brand footer-brand" href="#home" aria-label="Ridgewell home">
+            <a
+              className="brand footer-brand"
+              href="#home"
+              aria-label="Ridgewell home"
+            >
               <img
                 src="./brand/ridgewell-logo.jpg"
                 width="1186"
