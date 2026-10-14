@@ -6,7 +6,7 @@ const valid = {
   name: "Test Visitor",
   email: "visitor@example.com",
   organization: "Example & Co",
-  interest: "Accounting support",
+  interest: "Website",
   message: "We need a clearer accounting routine.",
 };
 
@@ -46,10 +46,7 @@ test("draft is addressed to the published company email with safely encoded cont
   assert.equal(draft.recipient, "ridgewell-management-services-inc@polsia.app");
   const url = new URL(draft.href);
   assert.equal(url.protocol, "mailto:");
-  assert.equal(
-    url.searchParams.get("subject"),
-    "Ridgewell inquiry: Accounting support",
-  );
+  assert.equal(url.searchParams.get("subject"), "Ridgewell inquiry: Website");
   assert.match(
     url.searchParams.get("body")!,
     /Records & reports\?\nPlease include José\./,

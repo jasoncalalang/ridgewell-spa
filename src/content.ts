@@ -1,99 +1,253 @@
+import type { ScreenImage, ScreenKey } from "./components/Screen";
+export type { ScreenKey } from "./components/Screen";
+
 export const companyEmail = "ridgewell-management-services-inc@polsia.app";
+
 export const serviceOptions = [
-  "Accounting support",
-  "Workflow and administrative improvement",
-  "Documentation",
-  "Scheduling and coordination",
-  "Practical AI consulting",
-  "General operations support",
-  "Customized software development",
+  "Website",
+  "Bespoke system",
+  "Not sure yet",
 ] as const;
-export const services = [
+export type ServiceOption = (typeof serviceOptions)[number];
+
+export const hero = {
+  label: "Business, in working order.",
+  heading: "Websites and bespoke systems, built to be used every day.",
+  lead: "Ridgewell designs websites and builds internal systems for Philippine schools, property managers and small businesses. We started in accounting, so the books and the workflow come first.",
+  primary: { label: "Start a project", href: "#contact" },
+  secondary: { label: "See our work", href: "#work" },
+  screen: "units-grid" as ScreenKey,
+  screenAlt:
+    "Lease management screen: a grid of condominium units coloured by status, with a list of leases expiring in the next 30 days.",
+  phone: "parent-portal" as ScreenKey,
+  phoneAlt:
+    "Parent portal on a phone: a report card summary with four subjects and an attendance line.",
+};
+
+export const proof = {
+  line: "Systems in daily use at a school, a property manager, and our own office.",
+  chips: [
+    "7 systems in daily use",
+    "2 products of our own",
+    "Started in accounting, 2004",
+  ],
+};
+
+export interface Service {
+  id: string;
+  label: string;
+  heading: string;
+  description: string;
+  items: string[];
+  interest: ServiceOption;
+  screen: ScreenKey;
+  screenAlt: string;
+}
+
+export const services: Service[] = [
   {
-    id: "accounting",
-    title: "Accounting & financial clarity",
-    short: "Know where your business stands.",
-    heading: "A clearer picture of the numbers.",
+    id: "website",
+    label: "Website design",
+    heading: "A fast, accessible website.",
     description:
-      "Dependable accounting support connects your day-to-day financial work to the decisions you need to make. Start with the numbers, then look at the work behind them.",
+      "A fast, accessible website that explains what you do and gets people to contact you. Design, copy structure, build, hosting and upkeep, with your own domain and email.",
     items: [
-      "Day-to-day accounting support",
-      "Clearer financial records and routines",
-      "An accounting perspective on operations",
+      "Brand-faithful design and copy structure",
+      "Accessible, mobile-first build",
+      "Hosting, domain, analytics and upkeep",
     ],
-    fit: "For owners who need a firmer handle on the financial side of the business.",
-    interest: serviceOptions[0],
-    example: {
-      label: "Financial work",
-      before: "Records in different places",
-      after: "A clearer accounting routine",
-      note: "Bring the numbers into focus.",
-    },
+    interest: "Website",
+    screen: "website-wireframe",
+    screenAlt:
+      "Wireframe of a small business website: a hero block, three columns and a footer line.",
   },
   {
-    id: "operations",
-    title: "Workflows & daily operations",
-    short: "Give the work a clear way forward.",
-    heading: "Less chasing. Clearer handoffs.",
+    id: "systems",
+    label: "Bespoke system development",
+    heading: "Systems built around your work.",
     description:
-      "Look closely at recurring tasks, administrative work, and the places a handoff breaks down. Give people a process they can follow and a clear view of what comes next.",
+      "Internal systems built around how your organisation already works: enrollment, records, portals, approvals, reporting, mobile companions. Scoped small, shipped in weeks, supported after launch.",
     items: [
-      "Workflow and administrative review",
-      "Scheduling and coordination",
-      "Clear task ownership and follow-ups",
+      "Portals and records systems for staff and the people they serve",
+      "Forms, approvals, reporting and integrations",
+      "Web and mobile, with ongoing support",
     ],
-    fit: "For growing teams where too much still depends on one person remembering.",
-    interest: serviceOptions[1],
-    example: {
-      label: "A recurring request",
-      before: "Who is following this up?",
-      after: "An owner and a clear next step",
-      note: "Keep the handoff moving.",
-    },
-  },
-  {
-    id: "documentation",
-    title: "Documentation & team support",
-    short: "Make good work easier to repeat.",
-    heading: "Get the know-how out of someone’s head.",
-    description:
-      "Turn the way your team actually works into useful process notes, checklists, and SOPs. Keep essential information close to the people who need it.",
-    items: [
-      "Standard operating procedures",
-      "Practical checklists and reference notes",
-      "Documentation upkeep and team handoffs",
-    ],
-    fit: "For businesses that need more consistency as responsibilities change.",
-    interest: serviceOptions[2],
-    example: {
-      label: "A familiar process",
-      before: "Ask the person who knows",
-      after: "A checklist the team can use",
-      note: "Make the next handoff easier.",
-    },
-  },
-  {
-    id: "software",
-    title: "Tools & custom software",
-    short: "Choose technology that fits the work.",
-    heading: "The right tool for a specific problem.",
-    description:
-      "Get practical guidance on existing tools and AI, or build a focused internal tool when the work calls for it. Start with an operational need and keep the scope useful.",
-    items: [
-      "Practical tool selection and AI guidance",
-      "Intake forms, trackers, and small portals",
-      "Focused dashboards and integrations",
-    ],
-    fit: "For teams with a specific operational gap that a tailored digital tool could address.",
-    interest: serviceOptions[6],
-    example: {
-      label: "An operational gap",
-      before: "The same information entered twice",
-      after: "A focused tool or integration",
-      note: "Fit the tool to the task.",
-    },
+    interest: "Bespoke system",
+    screen: "records-table",
+    screenAlt:
+      "A records table with names, status labels, dates and an Approve button on each row.",
   },
 ];
+
+export interface CaseStudy {
+  id: string;
+  index: string;
+  group: "client" | "product";
+  title: string;
+  tagline?: string;
+  summary: string;
+  changed: string;
+  audience: string;
+  status: string;
+  screen: ScreenKey;
+  screenAlt: string;
+  /** A real cropped screenshot; replaces the drawn screen when present. */
+  image?: ScreenImage;
+  /** Rendered as a text link when present. LeaseTrack's demo link is added only once the demo is confirmed reachable. */
+  link?: { label: string; href: string };
+}
+
+export const clientWork = {
+  label: "Work",
+  heading: "Built for a client",
+  intro: "Five systems for a K-12 and college school, in use since 2026.",
+};
+
+export const productWork = {
+  label: "Our products",
+  heading: "Two products we run ourselves.",
+};
+
+export const caseStudies: CaseStudy[] = [
+  {
+    id: "portal",
+    index: "01",
+    group: "client",
+    title: "Parent and student portal",
+    summary:
+      "Parents and students see grades, attendance and report cards in one place, on the web and on their phones. One sign-in for the whole family.",
+    changed: "report cards and attendance without a trip to the registrar",
+    audience: "parents and students of a K-12 and college school",
+    status: "In use since 2026",
+    screen: "grades-table",
+    screenAlt:
+      "Report card screen: six subjects with marks for four quarters and a Download report card button.",
+  },
+  {
+    id: "staff",
+    index: "02",
+    group: "client",
+    title: "Teacher and staff portal",
+    summary:
+      "Teachers record attendance and grades once, and the official school forms come out ready to print. Staff keep medical and guidance records in the same place.",
+    changed: "school forms produced from daily records, not re-encoded",
+    audience: "teachers and school staff",
+    status: "In use since 2026",
+    screen: "attendance-register",
+    screenAlt:
+      "Attendance register for one section: a list of students marked present, absent or late, and a Print school form button.",
+  },
+  {
+    id: "registrar",
+    index: "03",
+    group: "client",
+    title: "Enrollment and registrar system",
+    summary:
+      "Families enroll online; the registrar assesses, admits and sections from a single queue. Finance sees the same record, so nobody chases paper between offices.",
+    changed: "one enrollment record from application to admission",
+    audience: "the registrar and finance offices, enrolling families",
+    status: "In use since 2026",
+    screen: "enrollment-queue",
+    screenAlt:
+      "Enrollment queue: numbered applications with the status Registered, Assessed, Admitted or Sectioned.",
+  },
+  {
+    id: "hr",
+    index: "04",
+    group: "client",
+    title: "HR and campus gate",
+    summary:
+      "Employee records, requests and approvals in one system, with gate scans at the campus entrance that mark who is in.",
+    changed: "approvals and attendance without paper forms",
+    audience: "HR and every employee",
+    status: "In use since 2026",
+    screen: "approvals",
+    screenAlt:
+      "Approvals list of leave, overtime and travel requests beside a gate-scan panel showing how many people are on campus.",
+  },
+  {
+    id: "college",
+    index: "05",
+    group: "client",
+    title: "College registrar",
+    summary:
+      "Enrollment for the college department that follows each programme's curriculum, so students only enlist in subjects they can take.",
+    changed: "curriculum checks at enrollment instead of after",
+    audience: "the college registrar and its students",
+    status: "In use since 2026",
+    screen: "enlistment",
+    screenAlt:
+      "Subject enlistment: a list of subjects with a prerequisite check beside each one.",
+  },
+  {
+    id: "leasetrack",
+    index: "06",
+    group: "product",
+    title: "LeaseTrack",
+    tagline: "Tenant and lease management",
+    summary:
+      "Leases expiring in 30, 60 and 90 days, this week's post-dated cheques, and every contract a click away. Built for a condominium property manager with about 200 units; every change is logged.",
+    changed: "renewals and post-dated cheques tracked in one place",
+    audience: "property managers and their admin teams",
+    status: "Live demo available on request",
+    screen: "cheques-worklist",
+    screenAlt:
+      "Cheques worklist: post-dated cheques with tenant, amount, due date and the status Deposited, Due or Replaced.",
+  },
+  {
+    id: "ledger",
+    index: "07",
+    group: "product",
+    title: "Ridgewell Ledger",
+    tagline: "Receipts to books",
+    summary:
+      "Photograph a receipt or service invoice and it becomes a line in a bookkeeper-ready ledger, categorised by vendor and exportable to Excel. Used for Ridgewell's own books first.",
+    changed: "receipts become ledger entries without manual encoding",
+    audience: "small business owners and their bookkeepers",
+    status: "In use at Ridgewell",
+    screen: "receipt-ledger",
+    screenAlt:
+      "A receipt thumbnail beside the ledger line read from it: vendor, date, category and amount, with an Export to Excel button.",
+    link: { label: "How it works", href: "#contact" },
+  },
+];
+
+export const approach = {
+  label: "How we work",
+  heading: "Scoped small, shipped in weeks.",
+  steps: [
+    {
+      title: "Start with the problem.",
+      text: "Share what your business does and what feels repetitive, unclear, or harder than it should be. We look at the work and the numbers behind it, then agree on the smallest useful improvement.",
+    },
+    {
+      title: "Scope it small.",
+      text: "We begin with a focused review or a defined project, not a sprawling brief. A website, an intake form, a tracker, or a small portal, scoped to ship in weeks rather than months.",
+    },
+    {
+      title: "Ship, then support.",
+      text: "We put the tool in daily use and stay with it: refinement, adoption, documentation upkeep, and periodic operational or accounting support as your needs change.",
+    },
+  ],
+};
+
+export const about = {
+  label: "About",
+  heading: "An accounting point of view.",
+  paragraphs: [
+    "Ridgewell started in accounting in 2004, so we look at a business the way its books do: where the work repeats, where a handoff breaks, and where the same information gets entered twice. That perspective shapes every website and system we build.",
+    "Today we design websites and build bespoke internal systems for Philippine schools, property managers and small businesses. One team takes a project from the ledger to the software, so nothing gets lost between the people who understand the numbers and the people who write the code.",
+  ],
+  facts: [
+    { label: "Practice since", value: "2004" },
+    {
+      label: "Clients",
+      value: "Philippine schools, property managers and SMEs",
+    },
+    { label: "Team", value: "One team from ledger to software" },
+  ],
+};
+
 export const questions = [
   {
     question: "Do we need to know exactly what support we need?",
@@ -116,3 +270,14 @@ export const questions = [
       "Support can continue through workflow refinement, tool adoption, documentation upkeep, and periodic operational or accounting support. Discuss the scope and cadence with Ridgewell as your needs change.",
   },
 ];
+
+export const contact = {
+  label: "Contact",
+  heading: "Tell us about the project.",
+  include: [
+    "What your business does",
+    "What feels repetitive or harder than it should be",
+    "Any reports or process notes you already have",
+  ],
+  hours: "Mon to Fri, 9am to 6pm Manila",
+};
