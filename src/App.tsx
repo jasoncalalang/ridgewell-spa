@@ -5,6 +5,9 @@ import Hero from "./components/Hero";
 import InquiryForm from "./components/InquiryForm";
 import Services from "./components/Services";
 import Work from "./components/Work";
+import Approach from "./components/Approach";
+import About from "./components/About";
+import Questions from "./components/Questions";
 
 export default function App() {
   const motion = useSectionMotion();
@@ -19,6 +22,9 @@ export default function App() {
         <Hero />
         <Services onInterest={setInterest} />
         <Work />
+        <Approach />
+        <About />
+        <Questions />
         <section id="contact" className="contact-section section-space">
           <div className="wrap">
             <InquiryForm interest={interest} onInterest={setInterest} />
