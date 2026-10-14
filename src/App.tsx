@@ -21,7 +21,11 @@ export default function App() {
     } catch {
       /* malformed escape: fall back to the raw fragment */
     }
-    document.getElementById(id)?.scrollIntoView();
+    // Jump, don't glide: the page-wide smooth scrolling is for in-page
+    // links, not for landing on a deep link.
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "instant", block: "start" });
   }, []);
   return (
     <>

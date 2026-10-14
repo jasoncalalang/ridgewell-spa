@@ -78,3 +78,24 @@ test("deep link under reduced motion shows every card fully", async ({
   expect(hidden).toEqual([]);
   await expect(page.locator("#contact .contact-panel")).toBeInViewport();
 });
+
+test("a deep link jumps straight to its section instead of animating from the top", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.addInitScript(() => {
+    const log: number[] = [];
+    (window as Window & { scrollLog?: number[] }).scrollLog = log;
+    addEventListener("scroll", () => log.push(scrollY), { passive: true });
+  });
+  await page.goto("/#approach");
+  await expect(page.locator("#approach")).toBeInViewport();
+  const log = await page.evaluate(
+    () => (window as Window & { scrollLog?: number[] }).scrollLog ?? [],
+  );
+  const landed = await page.evaluate(() => scrollY);
+  expect(landed).toBeGreaterThan(1000);
+  // A smooth scroll reports many small steps up from the top; an instant
+  // jump reports the destination in its first scroll event.
+  expect(log[0], JSON.stringify(log)).toBeGreaterThan(landed - 100);
+});
