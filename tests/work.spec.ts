@@ -36,7 +36,14 @@ test("the rendered page contains no technology, client, building or form-code na
   page,
 }) => {
   const text = await page.evaluate(
-    () => document.documentElement.innerText + " " + document.title,
+    () =>
+      document.documentElement.innerText +
+      " " +
+      document.title +
+      " " +
+      (document
+        .querySelector('meta[name="description"]')
+        ?.getAttribute("content") ?? ""),
   );
   expect(findForbidden(text)).toEqual([]);
   const attributes = await page.evaluate(() =>
