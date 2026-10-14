@@ -29,7 +29,7 @@ test("every visible in-page link reaches its destination without runtime errors"
   });
   await page.reload();
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Business,",
+    "Websites and bespoke systems",
   );
   const links = page.locator('a[href^="#"]:visible');
   for (let i = 0; i < (await links.count()); i++) {
@@ -47,35 +47,20 @@ test("every visible in-page link reaches its destination without runtime errors"
   expect(errors).toEqual([]);
 });
 
-test("each service changes its panel and preselects the corresponding inquiry", async ({
+test("each service card preselects its inquiry interest, by click and by keyboard", async ({
   page,
 }) => {
-  const tabs = page.getByRole("tab");
-  const expected = [
-    "Accounting support",
-    "Workflow and administrative improvement",
-    "Documentation",
-    "Customized software development",
-  ];
-  for (let i = 0; i < 4; i++) {
-    await tabs.nth(i).click();
-    await expect(tabs.nth(i)).toHaveAttribute("aria-selected", "true");
-    await expect(page.getByRole("tabpanel")).toHaveAttribute(
-      "aria-labelledby",
-      `service-tab-${i}`,
-    );
-    await page.getByRole("link", { name: "Talk about this service" }).click();
-    await expect(page.getByLabel("Where could we help?")).toHaveValue(
-      expected[i],
-    );
-  }
-  await tabs.nth(3).focus();
-  await page.keyboard.press("Home");
-  await expect(tabs.nth(0)).toBeFocused();
-  await page.keyboard.press("ArrowDown");
-  await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true");
-  await page.keyboard.press("End");
-  await expect(tabs.nth(3)).toBeFocused();
+  const links = page.getByRole("link", { name: "Talk about this service" });
+  await expect(links).toHaveCount(2);
+  await links.nth(0).click();
+  await expect(page).toHaveURL(/#contact$/);
+  await expect(page.getByLabel("Where could we help?")).toHaveValue("Website");
+  await links.nth(1).focus();
+  await page.keyboard.press("Enter");
+  await expect(page.getByLabel("Where could we help?")).toHaveValue(
+    "Bespoke system",
+  );
+  await expect(page.locator("#contact")).toBeInViewport();
 });
 
 test("all question disclosures open and close with keyboard", async ({
@@ -147,20 +132,22 @@ test("changing services after preparing a draft preserves inputs and updates the
   page,
 }) => {
   await prepareInquiry(page);
-  await page.getByRole("tab", { name: /Tools & custom software/ }).click();
-  await page.getByRole("link", { name: "Talk about this service" }).click();
+  await page
+    .getByRole("link", { name: "Talk about this service" })
+    .nth(1)
+    .click();
   await expect(page.getByLabel("Your name", { exact: true })).toHaveValue(
     "Test Visitor",
   );
   await expect(page.getByLabel("Where could we help?")).toHaveValue(
-    "Customized software development",
+    "Bespoke system",
   );
   await page.getByRole("button", { name: "Prepare your inquiry" }).click();
   expect(
     await page
       .getByRole("link", { name: "Open email app" })
       .getAttribute("href"),
-  ).toContain("Customized%20software%20development");
+  ).toContain("Bespoke%20system");
 });
 
 test("mobile navigation opens, follows every link, and closes with Escape", async ({
@@ -176,10 +163,11 @@ test("mobile navigation opens, follows every link, and closes with Escape", asyn
   await expect(page.getByRole("button", { name: "Menu" })).toBeFocused();
   for (const label of [
     "Services",
-    "Our approach",
-    "About Ridgewell",
+    "Work",
+    "Approach",
+    "Contact",
     "Common questions",
-    "Let’s talk",
+    "Start a project",
   ]) {
     await page.getByRole("button", { name: "Menu" }).click();
     await page
@@ -269,7 +257,7 @@ test("all inquiry choices and email handoff are usable without submitting data",
   await expect(email).toHaveAttribute("data-handoff-tested", "true");
   expect(
     new URL((await email.getAttribute("href"))!).searchParams.get("subject"),
-  ).toContain("Customized software development");
+  ).toContain("Not sure yet");
   const direct = page.getByRole("link", { name: "Email Ridgewell directly" });
   await direct.evaluate((element) =>
     element.addEventListener("click", (event) => event.preventDefault()),
@@ -321,7 +309,9 @@ test("landscape mobile navigation fits the screen and scrolls to its final actio
   await menu.evaluate((element) => {
     element.scrollTop = element.scrollHeight;
   });
-  await menu.getByRole("link", { name: "Let’s talk", exact: true }).click();
+  await menu
+    .getByRole("link", { name: "Start a project", exact: true })
+    .click();
   await expect(page).toHaveURL(/#contact$/);
 });
 

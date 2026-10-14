@@ -1,88 +1,80 @@
 import { expect, test } from "@playwright/test";
 
-test("vector routes draw, settle, and survive rapid service changes", async ({
+test("hero stage and cards settle once, with no runtime errors", async ({
   page,
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
+  await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
-  await page.emulateMedia({ reducedMotion: "no-preference" });
-  const route = page
-    .locator(".operations-illustration [data-routes] > path")
-    .first();
+  const stage = page.locator(".hero-stage");
   await expect
-    .poll(() =>
-      route.evaluate((el) =>
-        parseFloat((el as SVGElement).style.strokeDashoffset),
-      ),
-    )
-    .toBeGreaterThan(0);
+    .poll(() => stage.evaluate((el) => (el as HTMLElement).style.transform))
+    .not.toBe("");
   await expect
-    .poll(() =>
-      route.evaluate((el) => (el as SVGElement).style.strokeDashoffset),
-    )
+    .poll(() => stage.evaluate((el) => (el as HTMLElement).style.transform))
     .toBe("");
-  await page.locator(".foundation-illustration").scrollIntoViewIfNeeded();
+  const card = page.locator("#work-registrar");
+  await card.scrollIntoViewIfNeeded();
   await expect
-    .poll(() =>
-      page
-        .locator(".foundation-illustration [data-route]")
-        .evaluate((el) => (el as SVGElement).style.strokeDashoffset),
-    )
-    .toBe("");
-  const tabs = page.getByRole("tab");
-  for (const index of [1, 3, 2, 0, 3]) await tabs.nth(index).click();
-  await page.locator(".service-illustration").scrollIntoViewIfNeeded();
-  await expect(page.getByRole("tabpanel")).toHaveAttribute(
-    "aria-labelledby",
-    "service-tab-3",
-  );
-  await expect
-    .poll(() =>
-      page
-        .locator(".service-illustration > g")
-        .evaluate((el) => getComputedStyle(el).opacity),
-    )
+    .poll(() => card.evaluate((el) => getComputedStyle(el).opacity))
     .toBe("1");
+  await expect
+    .poll(() => card.evaluate((el) => (el as HTMLElement).style.transform))
+    .toBe("");
   expect(errors).toEqual([]);
 });
 
-test("reduced motion restores static artwork, including a live preference change", async ({
+test("reduced motion renders the final state, including a live preference change", async ({
   page,
 }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  const route = page
-    .locator(".operations-illustration [data-routes] > path")
-    .first();
-  await expect
-    .poll(() =>
-      route.evaluate((el) => (el as SVGElement).style.strokeDashoffset),
-    )
-    .toBe("");
+  const states = await page
+    .locator("[data-reveal], h1, h2")
+    .evaluateAll((elements) =>
+      elements.map((el) => [
+        (el as HTMLElement).style.transform,
+        (el as HTMLElement).style.opacity,
+        getComputedStyle(el).opacity,
+      ]),
+    );
+  expect(states.length).toBeGreaterThan(10);
+  for (const [transform, inlineOpacity, opacity] of states) {
+    expect(transform).toBe("");
+    expect(inlineOpacity).toBe("");
+    expect(opacity).toBe("1");
+  }
   await page.emulateMedia({ reducedMotion: "no-preference" });
+  const stage = page.locator(".hero-stage");
   await expect
-    .poll(() =>
-      route.evaluate((el) =>
-        parseFloat((el as SVGElement).style.strokeDashoffset),
-      ),
-    )
-    .toBeGreaterThan(0);
+    .poll(() => stage.evaluate((el) => (el as HTMLElement).style.transform))
+    .not.toBe("");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect
-    .poll(() =>
-      route.evaluate((el) => (el as SVGElement).style.strokeDashoffset),
-    )
+    .poll(() => stage.evaluate((el) => (el as HTMLElement).style.transform))
     .toBe("");
   await expect
-    .poll(() => page.locator("h1").evaluate((el) => el.style.transform))
-    .toBe("");
-  await page.getByRole("tab").nth(2).click();
-  await expect
     .poll(() =>
-      page
-        .locator(".service-illustration > g")
-        .evaluate((el) => getComputedStyle(el).opacity),
+      page.locator("h1").evaluate((el) => (el as HTMLElement).style.transform),
     )
-    .toBe("1");
+    .toBe("");
+});
+
+test("deep link under reduced motion shows every card fully", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/#contact");
+  await page.evaluate(() => document.fonts.ready);
+  const hidden = await page
+    .locator("[data-reveal]")
+    .evaluateAll((elements) =>
+      elements
+        .filter((el) => getComputedStyle(el).opacity !== "1")
+        .map((el) => el.id || el.className),
+    );
+  expect(hidden).toEqual([]);
+  await expect(page.locator("#contact .contact-panel")).toBeInViewport();
 });

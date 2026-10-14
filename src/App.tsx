@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSectionMotion } from "./hooks/useMotion";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -13,6 +13,12 @@ import Footer from "./components/Footer";
 export default function App() {
   const motion = useSectionMotion();
   const [interest, setInterest] = useState<string>("Not sure yet");
+  useEffect(() => {
+    if (location.hash.length > 1)
+      document
+        .getElementById(decodeURIComponent(location.hash.slice(1)))
+        ?.scrollIntoView();
+  }, []);
   return (
     <>
       <a className="skip-link" href="#main">
