@@ -3848,3 +3848,17 @@ A pre-flight scan (five scanners, five skeptics) ran before Task 1. The confirme
 - Task 9: `.hero-stage` animates on load without a scroll trigger and is excluded from the `[data-reveal]` loop; `App.tsx` scrolls to the URL hash on mount.
 - Task 10: the 200%-text test also checks that card copy sits below its frame; card images must have an accessible name of at least 20 characters; DESIGN.md is written from implemented values with the two-service Context.
 - Task 11 is skipped for now: the demo host has no DNS record and the stack is down.
+
+## Execution rulings (during execution, 2026-10-14)
+
+Tasks 1 to 10 ran subagent-driven in four workflow runs, each task through an implementer, a spec and quality review, and fix rounds with scoped re-reviews. These decisions were taken on the owner's behalf; each lists what it costs if wrong.
+
+- `.wrap` stays 1200px for header and sections, not the narrower content the draft's padded header implies (one CSS value).
+- Below 960px the header keeps the Menu toggle with "Start a project" inside the menu, not the draft's red header button (the mobile-nav test changes).
+- Task 1's design tokens were deliberately undefined until Task 3; verified at Task 3 (none).
+- Four phone-visible polish items were carried into Task 10: legend words breaking mid-word, the records table cut at 390px, the footer logo's white box, and an empty band in the first service frame (a few CSS rules).
+- The units grid's eighth column stays cropped at 390px, like a screenshot crop (one grid rule).
+- Task 9: a malformed URL hash such as `#%` no longer blanks the page; the hash is decoded inside try/catch (none).
+- The final review's technical minors went out as one code fix wave: the Ledger receipt width, screen names that describe only the visible crop, contact fields that pair up by column width, an instant deep-link jump, meta description in the browser scan, doc corrections, superseded notes on the retired docs, and Footer formatting.
+- Parked for the owner: the GitHub repository is public while unpushed docs and `src/lib/forbidden.ts` name clients and the real stack (decide before any push); four copy calls (the Ledger "How it works" link lands on the contact form; "periodic operational or accounting support" in Approach step 3 and FAQ 4; "started in accounting in 2004"; the LeaseTrack status line).
+- Parked as cosmetic: DESIGN.md overstates what the browser scan reads; the Ledger receipt is a sliver in a 320px frame; the proof band's region label is hard-coded.
