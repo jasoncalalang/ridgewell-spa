@@ -47,6 +47,19 @@ test("every visible in-page link reaches its destination without runtime errors"
   expect(errors).toEqual([]);
 });
 
+test("a malformed URL hash still renders the page", async ({ page }) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  for (const hash of ["#%", "#%E0%A4%A"]) {
+    await page.goto(`/${hash}`);
+    await page.reload();
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(
+      "Websites and bespoke systems",
+    );
+  }
+  expect(errors).toEqual([]);
+});
+
 test("each service card preselects its inquiry interest, by click and by keyboard", async ({
   page,
 }) => {

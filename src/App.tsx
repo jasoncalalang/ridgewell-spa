@@ -14,10 +14,14 @@ export default function App() {
   const motion = useSectionMotion();
   const [interest, setInterest] = useState<string>("Not sure yet");
   useEffect(() => {
-    if (location.hash.length > 1)
-      document
-        .getElementById(decodeURIComponent(location.hash.slice(1)))
-        ?.scrollIntoView();
+    let id = location.hash.slice(1);
+    if (!id) return;
+    try {
+      id = decodeURIComponent(id);
+    } catch {
+      /* malformed escape: fall back to the raw fragment */
+    }
+    document.getElementById(id)?.scrollIntoView();
   }, []);
   return (
     <>
