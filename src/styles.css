@@ -471,6 +471,7 @@
     align-self: flex-start;
   }
   .service-screen {
+    flex-grow: 1;
     margin: 1.5rem -0.5rem -3rem;
   }
   .service-screen .frame-body {
