@@ -18,10 +18,10 @@ export const hero = {
   secondary: { label: "See our work", href: "#work" },
   screen: "units-grid" as ScreenKey,
   screenAlt:
-    "Lease management screen: a grid of condominium units coloured by status, with a list of leases expiring in the next 30 days.",
+    "Lease management screen: a grid of condominium units coloured by status, with a legend for occupied, vacant and expiring.",
   phone: "parent-portal" as ScreenKey,
   phoneAlt:
-    "Parent portal on a phone: a report card summary with four subjects and an attendance line.",
+    "Parent portal on a phone: a morning greeting and a report card with grades by subject.",
 };
 
 export const proof = {
@@ -75,7 +75,7 @@ export const services: Service[] = [
     interest: "Bespoke system",
     screen: "records-table",
     screenAlt:
-      "A records table with names, status labels, dates and an Approve button on each row.",
+      "A records table with names, status labels and an Approve button on each row.",
   },
 ];
 
@@ -135,7 +135,7 @@ export const caseStudies: CaseStudy[] = [
     status: "In use since 2026",
     screen: "attendance-register",
     screenAlt:
-      "Attendance register for one section: a list of students marked present, absent or late, and a Print school form button.",
+      "Attendance register for one section: a list of students, each with an attendance mark.",
   },
   {
     id: "registrar",
@@ -207,7 +207,7 @@ export const caseStudies: CaseStudy[] = [
     status: "In use at Ridgewell",
     screen: "receipt-ledger",
     screenAlt:
-      "A receipt thumbnail beside the ledger line read from it: vendor, date, category and amount, with an Export to Excel button.",
+      "A receipt thumbnail beside the ledger line read from it: vendor, date, category and amount.",
     link: { label: "How it works", href: "#contact" },
   },
 ];
