@@ -2,34 +2,36 @@
 
 ## Owner direction
 
-The owner rejected the first cream-and-serif design as generic and requested a white website built around vector graphics. This revision follows that explicit direction. White means `#ffffff` across the page, including forms, navigation, service details, and footer. Cream, warm neutrals, tilted paper compositions, italic serif display type, and large burgundy panels are retired.
+The owner rejected the earlier white page with isometric vector drawings, and then two text-only layouts (a bento grid and a sticky split), because none of them showed the software Ridgewell actually ships. The approved direction is "Showroom": a product-forward page in which drawn product screens inside browser and phone frames carry the argument. It keeps the warm off-white page, white panels, Barlow Condensed and Manrope, and Ridgewell red as the only accent. The owner also asked that clients stay unnamed, that copy stay at outcome level so competitors cannot read the build recipe, and that the LeaseTrack building be labelled "Condominium". The approved concept spec is in `docs/superpowers/specs/`.
 
 ## Context
 
-Ridgewell Management Services, Inc. supports Philippine SMEs with accounting, operations, documentation, coordination, and focused software. The page helps a visitor identify the support they need and start an inquiry. Published company facts and the original logo remain the evidence base. The owner previously authorized a public repository, frequent commits, and pushes; that workflow continues for this revision.
+Ridgewell Management Services, Inc. offers two services: Website design and Bespoke system development. It started in accounting in 2004, so the books and the workflow come first. Visitors are Philippine SME owners and school or property administrators. The page has three jobs: make the two services clear in one screen, show seven systems in daily use (five built for a K-12 and college school, two products Ridgewell runs itself), and start an inquiry. Published company facts, the original logo and the published contact address are the evidence base. No outcomes, metrics or client identities are invented.
 
 ## Visual direction
 
-Reading this as: a white business-services website for Philippine SME owners, using precise vector drawings and direct typography. ENERGY 2 / RHYTHM 3 / MOTION 2, following the owner's request for GSAP animation.
+This reads as a software company's page, not a brochure and not a ledger. Hierarchy comes from screen size, type size and whitespace. The mood is light, warm and confident.
 
-- Canvas `#ffffff`; charcoal `#171c22`; secondary ink `#565f68`; Ridgewell red `#b51226`; construction gray `#dfe5e9`; rules `#d8dde2`.
-- Red is grounded in the original Ridgewell mark. It identifies the primary action and connects objects in the illustrations. Gray appears only as object depth, borders, and functional disabled states.
-- Barlow Condensed, weight 600, gives the headlines the compact character of a technical drawing title. Manrope remains the readable body face. No serif or italic headings.
-- Original, editable SVG artwork is the main visual material: an open ledger, organized files, handoff routes, a monitor showing a small process diagram, and an inquiry inbox. These are conceptual illustrations of published services, not product screenshots or results.
-- One large connected-work illustration anchors the opening. Smaller related drawings explain the selected service, accounting foundation, and inquiry. Physical objects use a shared isometric perspective; routing is a flat process diagram. Dark outlines and red accents connect the visual family.
-- The original full logo is retained as supplied, including its raster source. New supporting graphics are vectors; the logo is not redrawn or substituted.
-- The hero illustration sits directly on white. A shaped connection route echoes the direction of the ridge mark and physically connects accounting, operations, and software objects.
-- Sections use different useful compositions: split introduction with generous artwork, service index plus contextual drawing, accounting drawing beside the business foundation, process rows, question disclosures, and an inquiry form.
-- Service selection remains one comparison surface rather than a grid of promotional cards. Its illustration changes with the selected area.
-- Page-level backgrounds remain white. Separation comes from typography, spacing, and structural rules. No shaded marketing slabs, gradients, blur, decorative grids, or floating mockups.
-- Primary actions are red, secondary actions use text or an outline. Control corners are slightly softened; SVG edges follow the illustrated object, not UI-card conventions.
-- Main service descriptions, lists, process explanations, FAQ answers, and input values use at least 16px. Small captions supplement rather than carry essential information. All controls retain 44px minimum touch areas.
-- GSAP introduces vector objects in sequence and draws the routes between them to explain connected work. Headings settle by 12px as their section enters view. Animations play once per illustration mount, with a fresh service illustration on selection. No perpetual motion, parallax, or scroll hijacking. Reduced motion renders the finished artwork immediately, including when the preference changes while the page is open.
+**Colour.** The page canvas is a warm off-white, `#f6f4ef`. Cards, panels, the header and form fields are white, `#fff`. The "Our products" section sits on the page's one deeper band, `#efece5`. Ink is `#171c22`, secondary ink `#565f68` and meta text `#636b73`; the design system's lighter meta grey fails 4.5:1 for 13px text, while `#636b73` passes on white, the page tint, the band and the frame chrome. Ridgewell red `#b51226` (hover `#9c0f20`) is the only accent. It marks primary buttons, the 6px square before section labels, list bullets, index numerals, "What changed:" lead-ins, the focus ring and link hover, and is never a background except on the primary button. Rules are `#e3dfd6` on the page and `#e8e5df` inside white panels. Browser chrome is `#f1efe9`. Inside drawn screens only, status text may also use green `#3f7a2f` and amber `#9a6210`, both at least 4.5:1 on white. Four functional neutrals are used for non-text UI only: control borders `#7c858d`, the secondary button border `#cfd4d9`, the scrollbar thumb `#a39d92` and the browser-chrome dots `#d5d0c6`. There are no other colours, no dark bands, no gradients, no blur and no glass.
+
+**Typography.** Barlow Condensed 600, letter-spacing -0.01em, sets h1 (48 to 88px, line-height 0.95), h2 (36 to 60px), h3 (26 to 32px), the red index numerals (24px) and the About fact values (28 to 36px). Manrope Variable sets everything else: body copy at 17px with 1.55 line-height, card copy and list items at 16px, section labels at 13px 600 uppercase with 0.08em tracking, and meta lines at 13px. Body copy never drops below 16px and captions never below 13px. There are no serif, italic display or decorative faces.
+
+**Layout.** Content sits in a 1200px wrap with a 24 to 48px gutter, and sections are spaced 72 to 112px apart. The sticky white header carries the logo, centred nav (Services, Work, Approach, Contact) and a red "Start a project" button; below 960px a Menu toggle replaces the nav. The centred hero has a label, h1, lead and two buttons above a 1120px browser frame holding the units grid, with the frame's bottom clipped by the proof line. From 1024px a 200x420 phone frame showing the parent portal overlaps the frame's bottom-right corner. The proof line has one sentence and three white chips. Services are two equal cards, each ending in a drawn mini UI clipped at the card's bottom edge. Work features card 01 across the row (screen 7/12, copy 5/12 from 768px) above a 2x2 grid of cards with 16:10 screens. The two product cards sit on the band, each with a screen bleeding off its bottom edge. Approach has three numbered columns, About sits copy left and facts right, Questions are a single 720px column, Contact is one white panel split into details and form, and the footer sits on the page tint above a top rule.
+
+**Components.** Section labels pair a 6px red square with the 13px uppercase label. Buttons are at least 48px tall with a 6px radius: primary is red on white text, secondary is white with a `#cfd4d9` border. Text links carry an arrow and turn red on hover. Cards are white, flat, 1px `#e3dfd6`, with a 10px radius and 24 to 32px padding. The browser frame has a 36px chrome strip with three 8px dots and an address bar, a 1px border, a 12px radius and the soft shadow `0 24px 60px -24px rgba(23, 28, 34, 0.18)`; the flat variant used inside cards has no shadow. The phone frame is 200x420 with a 32px radius and an 8px ink bezel. Chips are white pills with 13px 600 type. Every interactive element is at least 44px tall, and the focus ring is a 3px red outline.
+
+**Imagery.** Screens look like real product UI: a units grid, a parent portal, a grades table, an attendance register, an enrollment queue, an approval form, a subject enlistment, a cheques worklist, a receipt-to-ledger line, a website wireframe and a records table. They are drawn in HTML and CSS with obviously fictional names, cropped to a region and clipped by their frame, and exposed to assistive technology as one image with a descriptive accessible name. A real, tightly cropped screenshot with no personal data can replace any drawn screen through the same slot.
+
+**Deliberate deviations from the approved draft.** Inputs keep a visible `#7c858d` border for contrast. Meta text is `#636b73` and screen status colours are darkened so that every visible text passes 4.5:1. Browser-chrome dots are neutral rather than coloured. The phone frame is 200x420 rather than 280x580. The "Expiring in 30 days" panel sits left of the unit grid so that the phone cannot cover it. Form field labels keep their more descriptive wording, and the contact address is the published one, not the draft's placeholder.
+
+**Do not.** No shadows except on the hero browser frame and the phone, no gradient slabs, no icon grids, no testimonial carousels, no invented metrics, no logos of other companies and no stock photography.
+
+**Content rule.** No visible text, drawn screen, alt text or accessible name names a framework, language, database, cloud, cluster, identity provider, automation tool, module code or school-form code. Clients are described, never named: "a K-12 and college school" and "a condominium property manager". Case-study copy says who uses each system and what got easier, never how it is built. `src/lib/forbidden.ts` holds the enforced word list.
 
 ## Behavioral contract
 
 - Existing services, approach, about, questions, and contact anchors remain functional.
-- Service tabs support arrows, Home, End, and standard focus navigation. Each service can preselect the inquiry interest.
+- Each of the two service cards has a 'Talk about this service' link that preselects the inquiry interest.
 - FAQ uses native disclosures.
 - Inquiry validates locally and creates a draft for the visitor's email app. It never claims that a message has already been sent.
 - Copy supports pending, success, and permission-denied states; stale completions cannot affect revised drafts.
@@ -39,17 +41,12 @@ Reading this as: a white business-services website for Philippine SME owners, us
 
 ## Runtime mapping
 
-- `src/styles.css`: palette, type, layout, spacing, controls, scrollbars, responsive behavior.
-- `src/components/VectorArt.tsx`: original reusable SVG objects and conceptual compositions.
-- `src/components/inquiry.css`: the inquiry form and draft states, using shared tokens.
-- `src/content.ts`: verified service areas and questions.
-- `docs/source-audit.md`: public source provenance.
-- `docs/verification.md`: current behavior, accessibility, and anti-slop checks. Passing those checks is a technical result, not a substitute for the owner's visual judgment.
-
-## UI UX Pro Max review
-
-Applied during the white/vector revision, after the owner's explicit question about the skill. Its focused typography, reflow, accessibility, and React form guidance supports this existing direction. Main body copy and input values are at least 16px; form guidance was enlarged; illustrations have meaningful titles. Existing keyboard, focus, reduced-motion, validation, and mobile navigation contracts remain verified. `docs/verification.md` records the executed checks.
+- `src/styles.css`: tokens, type, layout, sections, responsive behaviour.
+- `src/components/screens.css`: browser and phone frames, drawn product screens.
+- `src/components/inquiry.css`: the inquiry form and draft states.
+- `src/content.ts`: every line of copy; `src/lib/forbidden.ts`: what copy may never say.
+- `src/components/Screen.tsx` and `src/components/screens/`: the drawn screens and the slot a real screenshot replaces.
 
 ## Motion implementation
 
-`src/hooks/useMotion.ts` owns GSAP timelines, ScrollTrigger viewport activation, and preference handling. React's `useGSAP` scopes each effect and reverts it on unmount or service change. Opacity animates only illustration objects; SVG positioning transforms remain intact. Route drawing uses native stroke dash properties. Text and controls remain readable and operable throughout. UI UX Pro Max's subtle scroll-reveal guidance informed the 12px heading distance. Sources: [GSAP React lifecycle guidance](https://gsap.com/resources/React/) and [ScrollTrigger documentation](https://gsap.com/docs/v3/Plugins/ScrollTrigger/).
+`src/hooks/useMotion.ts` owns all motion through one GSAP `matchMedia` context scoped by React's `useGSAP` and reverted on unmount. Motion runs only under `prefers-reduced-motion: no-preference`. h1 and h2 headings settle 12px when they enter the viewport. The hero stage rises 24px on load, as a transform only and with no scroll trigger, so it also settles on short phone viewports where its top starts below the trigger line. Every other `[data-reveal]` card fades in and settles 12px once as it enters the viewport. Each tween clears its inline transform and opacity when it finishes. There is no parallax, no pinning and no scroll hijacking, and drawn screens never move on their own. Under reduced motion, or when the preference changes while the page is open, the context reverts and the page shows its final state with no inline transform or opacity. Sources: [GSAP React lifecycle guidance](https://gsap.com/resources/React/) and [ScrollTrigger documentation](https://gsap.com/docs/v3/Plugins/ScrollTrigger/).

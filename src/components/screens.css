@@ -236,6 +236,7 @@
   }
   .scr-titlebar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
@@ -251,6 +252,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    white-space: nowrap;
   }
   .scr-legend i,
   .scr-unit {
@@ -378,6 +380,18 @@
 
   @media (max-width: 1023px) {
     .units-expiring {
+      display: none;
+    }
+  }
+  /* Narrow frames: tighter cells, and below 390px drop the date column */
+  @media (max-width: 599px) {
+    .scr-table-flush th,
+    .scr-table-flush td {
+      padding-inline: 8px;
+    }
+  }
+  @media (max-width: 389px) {
+    .scr-table-flush :is(th, td):nth-child(3) {
       display: none;
     }
   }

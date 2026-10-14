@@ -472,10 +472,24 @@
   }
   .service-screen {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     margin: 1.5rem -0.5rem -3rem;
   }
   .service-screen .frame-body {
+    flex: 1;
+    display: flex;
     min-height: 180px;
+  }
+  .service-screen .screen {
+    flex: 1;
+  }
+  .service-screen .wire-columns {
+    flex: 1;
+  }
+  .service-screen .wire-columns i {
+    height: auto;
+    min-height: 64px;
   }
 
   /* Work */
@@ -703,6 +717,10 @@
   }
   .footer-brand {
     width: 180px;
+  }
+  /* The logo is an opaque JPG; multiply drops its white box on the page tint */
+  .footer-brand img {
+    mix-blend-mode: multiply;
   }
   .footer-main > div > p {
     font-size: 0.9375rem;
