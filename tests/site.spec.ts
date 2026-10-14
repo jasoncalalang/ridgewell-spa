@@ -106,7 +106,7 @@ test("inquiry validates, builds a truthful email draft, and preserves values on 
     .getByRole("link", { name: "Open email app" })
     .getAttribute("href");
   expect(href).toMatch(
-    /^mailto:ridgewell-management-services-inc@polsia.app\?/,
+    /^mailto:info@ridgewell\.com\.ph\?/,
   );
   expect(new URL(href!).searchParams.get("body")).toContain("Example & Co");
   await page.getByRole("button", { name: "Edit your inquiry" }).click();
@@ -285,7 +285,7 @@ test("all inquiry choices and email handoff are usable without submitting data",
   await direct.click();
   await expect(direct).toHaveAttribute(
     "href",
-    "mailto:ridgewell-management-services-inc@polsia.app",
+    "mailto:info@ridgewell.com.ph",
   );
 });
 

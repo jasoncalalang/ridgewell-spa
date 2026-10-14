@@ -76,7 +76,7 @@ test("the LeaseTrack live-demo link stays off until verified", () => {
   assert.equal(leasetrack.link, undefined);
 });
 
-test("the published contact address is unchanged", () => {
-  assert.equal(companyEmail, "ridgewell-management-services-inc@polsia.app");
+test("the contact address is info@ridgewell.com.ph", () => {
+  assert.equal(companyEmail, "info@ridgewell.com.ph");
   assert.equal(hero.lead.length <= 220, true);
 });

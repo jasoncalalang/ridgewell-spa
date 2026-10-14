@@ -43,7 +43,7 @@ test("draft is addressed to the published company email with safely encoded cont
     message: "Records & reports?\nPlease include José.",
   };
   const draft = createEmailDraft(data);
-  assert.equal(draft.recipient, "ridgewell-management-services-inc@polsia.app");
+  assert.equal(draft.recipient, "info@ridgewell.com.ph");
   const url = new URL(draft.href);
   assert.equal(url.protocol, "mailto:");
   assert.equal(url.searchParams.get("subject"), "Ridgewell inquiry: Website");

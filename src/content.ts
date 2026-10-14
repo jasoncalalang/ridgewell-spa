@@ -1,7 +1,7 @@
 import type { ScreenImage, ScreenKey } from "./components/Screen";
 export type { ScreenKey } from "./components/Screen";
 
-export const companyEmail = "ridgewell-management-services-inc@polsia.app";
+export const companyEmail = "info@ridgewell.com.ph";
 
 export const serviceOptions = [
   "Website",
