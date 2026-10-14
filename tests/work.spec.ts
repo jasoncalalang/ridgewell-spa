@@ -106,6 +106,17 @@ test("desktop composition: 2x2 grid, filled frames, phone clear of the expiring 
   expect(overlaps).toBe(false);
 });
 
+test("the ledger screen keeps its receipt a narrow thumbnail beside the fields", async ({
+  page,
+}) => {
+  const receipt = await page.locator("#work-ledger .scr-receipt").boundingBox();
+  const fields = await page
+    .locator("#work-ledger .scr-receipt + div")
+    .boundingBox();
+  expect(receipt!.width).toBeLessThanOrEqual(96);
+  expect(fields!.width).toBeGreaterThan(receipt!.width);
+});
+
 test("mobile composition hides the phone and keeps the hero screen inside the viewport", async ({
   page,
   isMobile,

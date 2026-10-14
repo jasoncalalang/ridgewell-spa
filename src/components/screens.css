@@ -352,6 +352,17 @@
     height: 18px;
     background: none;
   }
+  /* The receipt is its split's first child, so this outranks the
+     first-child grow rule above: the receipt stays a 96px thumbnail
+     (giving way first in the narrowest frames) and the ledger fields
+     take the rest of the row. */
+  .scr-split > .scr-receipt:first-child {
+    flex: 0 1 96px;
+    min-width: 0;
+  }
+  .scr-split > .scr-receipt + div {
+    flex: 1 0 auto;
+  }
 
   /* Website wireframe */
   .scr-wire {
