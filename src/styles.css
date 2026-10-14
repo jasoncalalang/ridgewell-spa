@@ -1,5 +1,6 @@
 @layer reset, base, components, responsive;
 @import "./components/inquiry.css";
+@import "./components/screens.css";
 
 @layer reset {
   *,
