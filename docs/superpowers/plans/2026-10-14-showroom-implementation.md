@@ -16,11 +16,11 @@
 - Clients are never named. The school is "a K-12 and college school"; the property manager is "a condominium property manager"; the LeaseTrack building is labelled "Condominium".
 - Two services only: Website design and Bespoke system development. The clinic system is not shown.
 - Seven case studies, exactly the copy in the spec's Case studies section. No invented metrics; the only numbers on the page outside drawn screens are those already in the approved copy and the three proof chips.
-- Colours: page `#f6f4ef`, panels `#fff`, products band `#efece5`, ink `#171c22`, secondary `#565f68`, meta `#6b737b` (the design system's `#8a929a` fails 4.5:1 on white for 13px text, so it is darkened), red `#b51226` (hover `#9c0f20`), rules `#e3dfd6` (outside) and `#e8e5df` (inside panels), chrome `#f1efe9`. Shadows only on `.frame` (not `.frame-flat`) and `.phone`. No gradients, blur or glass. Status colours inside drawn screens may additionally use green `#3f7a2f` and amber `#9a6210` (both at least 4.5:1 on white); nowhere else.
+- Colours: page `#f6f4ef`, panels `#fff`, products band `#efece5`, ink `#171c22`, secondary `#565f68`, meta `#636b73` (the design system's `#8a929a` fails 4.5:1 for 13px text; `#636b73` passes 4.5:1 on white, the page tint, the band and the chrome), red `#b51226` (hover `#9c0f20`), rules `#e3dfd6` (outside) and `#e8e5df` (inside panels), chrome `#f1efe9`. Shadows only on `.frame` (not `.frame-flat`) and `.phone`. No gradients, blur or glass. Status colours inside drawn screens may additionally use green `#3f7a2f` and amber `#9a6210` (both at least 4.5:1 on white); nowhere else. Functional neutrals for non-text UI only are also allowed: control border `#7c858d`, secondary button border `#cfd4d9`, scrollbar thumb `#a39d92`, browser-chrome dots `#d5d0c6`.
 - Type: Barlow Condensed 600 for h1, h2, h3, index numerals and fact values; Manrope Variable for everything else. Body copy 16px minimum; captions and meta 13px minimum.
 - Every interactive element is at least 44px tall. Focus ring 3px red. `prefers-reduced-motion: reduce` renders the final state with no inline transform or opacity.
 - The published contact address `ridgewell-management-services-inc@polsia.app` stays. Do not introduce any other address.
-- The LeaseTrack live-demo link is not rendered until the demo is confirmed reachable (Task 11); until then no `href` on the page may contain `leasetrack`.
+- The LeaseTrack live-demo link is not rendered until the demo is confirmed reachable (Task 11); until then no `href` on the page may point at the demo host (`leasetrack.ridgewell.com.ph`). The in-page anchor `#work-leasetrack` is allowed.
 - Node 24, `npm ci` (never `npm install`), run `npm run check` before every commit from Task 9 onward. Commit messages are plain: no `Co-Authored-By` or session trailers.
 - Work on branch `feat/showroom` off `main`. Do not push.
 
@@ -1769,7 +1769,7 @@ git commit -m "Rewrite content for the Showroom page and guard it against forbid
     --chrome: #f1efe9;
     --ink: #171c22;
     --muted: #565f68;
-    --meta: #6b737b;
+    --meta: #636b73;
     --red: #b51226;
     --red-hover: #9c0f20;
     --line: #e3dfd6;
@@ -3506,7 +3506,7 @@ test("each service card preselects its inquiry interest, by click and by keyboar
 - [ ] **Step 6: Run the whole check**
 
 Run: `npm run check`
-Expected: unit tests PASS, build clean, every Playwright test PASS on desktop and mobile, axe reports no violations. Every text colour in the tokens is at least 4.5:1 on white and on the page tint; if axe still reports `color-contrast`, darken the offending token rather than relaxing the axe tags.
+Expected: unit tests PASS, build clean, every Playwright test PASS on desktop and mobile, axe reports no violations. Every text colour in the tokens is at least 4.5:1 on white and on the page tint; if axe still reports `color-contrast`, move the offending selector to a darker text token (`--muted`) rather than changing a pinned token value or relaxing the axe tags.
 
 - [ ] **Step 7: Commit**
 
@@ -3832,4 +3832,19 @@ git commit -m "Real product screenshots and the LeaseTrack demo link"
 
 - Spec coverage: header, hero (with the "phone must not cover the panel" fix), proof chips, two service cards with preselect, five client cards with featured 01, two product cards on the band with bleed, approach, about facts, FAQ, contact panel with published email and hours, footer with work anchors, drawn screens with real-screenshot slot, forbidden-word rule, anonymised clients, "Condominium" label, no demo link until verified, motion contract, reduced motion, 44px targets, axe, Work spec: all mapped to Tasks 1 to 11.
 - Names are consistent: `Screen`, `ScreenKey`, `ScreenImage`, `BrowserFrame({ flat, aspect })`, `PhoneFrame`, `data-reveal`, `.hero-stage`, `.hero-phone`, `.units-expiring`, `.work-card`, `.frame-body-aspect`, `#work-<id>` with ids `portal, staff, registrar, hr, college, leasetrack, ledger`, `findForbidden`, `serviceOptions = ["Website", "Bespoke system", "Not sure yet"]`, select label "Where could we help?".
-- Known deviations from the draft, all deliberate: inputs keep a visible `#7c858d` border (contrast); meta text is `#6b737b` and screen status colours are darkened so every visible text passes 4.5:1; browser-chrome dots are neutral; the "Expiring in 30 days" panel sits left of the unit grid so the phone cannot cover it; form field labels keep their current, more descriptive wording; the contact email is the published address, not the draft's placeholder.
+- Known deviations from the draft, all deliberate: inputs keep a visible `#7c858d` border (contrast); meta text is `#636b73` and screen status colours are darkened so every visible text passes 4.5:1; browser-chrome dots are neutral (`#d5d0c6`), the secondary button border is `#cfd4d9` and the scrollbar thumb is `#a39d92`; the "Expiring in 30 days" panel sits left of the unit grid so the phone cannot cover it; form field labels keep their current, more descriptive wording; the contact email is the published address, not the draft's placeholder.
+
+## Execution rulings (pre-flight scan, 2026-10-14)
+
+A pre-flight scan (five scanners, five skeptics) ran before Task 1. The confirmed defects were ruled on as follows; the per-task briefs carry these rulings to implementers.
+
+- Meta text token is `#636b73` (Global Constraints amended): `#6b737b` fails 4.5:1 on the page tint, band and chrome.
+- Functional neutrals for non-text UI (`#7c858d`, `#cfd4d9`, `#a39d92`, `#d5d0c6`) are allowed (Global Constraints amended).
+- The LeaseTrack href rule forbids only the demo host; the footer anchor `#work-leasetrack` stays, and Task 10 asserts on `a[href*="leasetrack.ridgewell" i]`.
+- Task 1: the UnitsGrid "Expiring in 30 days" list names tiles the grid colours as expiring (12C, 9A, 7B, 3D).
+- Task 2: every `Accounting support` substring in `inquiry.test.ts` changes (including the subject at line 51); the forbidden-word test covers `clientWork` and `productWork`; the forbidden list adds Redis, nginx, GKE, Terraform, Helm, Cilium, Jenkins, Node.js, Capacitor and Gradle, and `findForbidden` escapes regex metacharacters; `CaseStudy` gains an optional `image`.
+- Task 3: `.red-list` and `.changed` are 16px; inquiry captions are 13px; the service-card paragraph rule skips `.section-label`.
+- Task 6: `Work.tsx` passes `image={study.image}` to every `Screen`.
+- Task 9: `.hero-stage` animates on load without a scroll trigger and is excluded from the `[data-reveal]` loop; `App.tsx` scrolls to the URL hash on mount.
+- Task 10: the 200%-text test also checks that card copy sits below its frame; card images must have an accessible name of at least 20 characters; DESIGN.md is written from implemented values with the two-service Context.
+- Task 11 is skipped for now: the demo host has no DNS record and the stack is down.
