@@ -1,5 +1,7 @@
 # Verification and design review
 
+> **Superseded.** This report describes the retired page and is kept for history; the Showroom rebuild replaces it, see [docs/superpowers/plans/2026-10-14-showroom-implementation.md](superpowers/plans/2026-10-14-showroom-implementation.md).
+
 Verified 17 September 2026 for the white/vector revision. The owner requested pure white surfaces and vector graphics after rejecting the earlier cream/serif direction. This report replaces the previous design review. Technical checks establish behavior and accessibility coverage; they do not establish the owner's aesthetic approval.
 
 ## Executed checks

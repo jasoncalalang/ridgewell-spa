@@ -1,5 +1,7 @@
 # Ridgewell SPA implementation plan
 
+> **Superseded.** This plan describes the retired page and is kept for history; the Showroom rebuild replaces it, see [docs/superpowers/plans/2026-10-14-showroom-implementation.md](superpowers/plans/2026-10-14-showroom-implementation.md).
+
 Goal: ship a distinctive, accessible React SPA grounded in the existing Ridgewell website, with a public repository and verified interaction flows.
 
 Architecture: Vite, React, TypeScript, bundled static content, CSS tokens, self-hosted fonts. In-page navigation avoids server rewrite requirements. The inquiry creates an email draft and never submits test or visitor data to the original site's backend.
