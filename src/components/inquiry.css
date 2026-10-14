@@ -2,6 +2,7 @@
   .inquiry-card {
     background: var(--white);
     min-width: 0;
+    container: inquiry-form / inline-size;
   }
   .form-heading {
     margin-bottom: 1.6rem;
@@ -159,7 +160,10 @@
     white-space: nowrap;
     border: 0;
   }
-  @media (min-width: 600px) {
+  /* Name and email sit side by side only when the form column itself is
+     wide enough for two usable fields (about 200px each), not when the
+     viewport is: the contact panel goes two-up at 768px and squeezes it. */
+  @container inquiry-form (min-width: 420px) {
     .form-row {
       grid-template-columns: 1fr 1fr;
     }

@@ -233,6 +233,13 @@ test("layouts reflow from 320px through desktop with usable touch targets", asyn
           .map((element) => element.textContent),
       );
     expect(undersized).toEqual([]);
+    // Name and email go side by side only when the form column has room.
+    const nameField = await page
+      .getByLabel("Your name", { exact: true })
+      .boundingBox();
+    expect(nameField!.width, `name field width at ${width}px`).toBeGreaterThan(
+      200,
+    );
   }
   await page.setViewportSize({ width: 640, height: 900 });
   await page.evaluate(() => {
