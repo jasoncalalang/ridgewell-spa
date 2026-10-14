@@ -719,10 +719,6 @@
   .footer-brand {
     width: 180px;
   }
-  /* The logo is an opaque JPG; multiply drops its white box on the page tint */
-  .footer-brand img {
-    mix-blend-mode: multiply;
-  }
   .footer-main > div > p {
     font-size: 0.9375rem;
     color: var(--muted);

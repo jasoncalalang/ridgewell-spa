@@ -307,7 +307,7 @@ test("clipboard work has a busy state and missing images leave accessible identi
   await expect(
     page.getByRole("button", { name: "Draft copied" }),
   ).toBeEnabled();
-  await page.route("**/brand/ridgewell-logo.jpg", (route) => route.abort());
+  await page.route("**/brand/ridgewell-logo.svg", (route) => route.abort());
   await page.reload();
   await expect(
     page.getByRole("link", { name: "Ridgewell home" }).first(),

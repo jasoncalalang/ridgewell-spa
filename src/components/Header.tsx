@@ -37,7 +37,7 @@ export default function Header() {
           onClick={() => setOpen(false)}
         >
           <img
-            src="./brand/ridgewell-logo.jpg"
+            src="./brand/ridgewell-logo.svg"
             alt="Ridgewell Management Services, Inc."
             width="1186"
             height="280"

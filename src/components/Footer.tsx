@@ -14,7 +14,7 @@ export default function Footer() {
               aria-label="Ridgewell home"
             >
               <img
-                src="./brand/ridgewell-logo.jpg"
+                src="./brand/ridgewell-logo.svg"
                 width="1186"
                 height="280"
                 alt="Ridgewell Management Services, Inc."
