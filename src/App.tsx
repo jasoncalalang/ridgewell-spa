@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useSectionMotion } from "./hooks/useMotion";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import InquiryForm from "./components/InquiryForm";
 import Services from "./components/Services";
 import Work from "./components/Work";
 import Approach from "./components/Approach";
 import About from "./components/About";
 import Questions from "./components/Questions";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function App() {
   const motion = useSectionMotion();
@@ -25,12 +26,9 @@ export default function App() {
         <Approach />
         <About />
         <Questions />
-        <section id="contact" className="contact-section section-space">
-          <div className="wrap">
-            <InquiryForm interest={interest} onInterest={setInterest} />
-          </div>
-        </section>
+        <Contact interest={interest} onInterest={setInterest} />
       </main>
+      <Footer />
     </>
   );
 }

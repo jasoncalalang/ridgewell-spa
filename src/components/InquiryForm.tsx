@@ -156,7 +156,7 @@ export default function InquiryForm({
       ) : (
         <form ref={form} noValidate onSubmit={submit}>
           <div className="form-heading">
-            <h3>A little context helps.</h3>
+            <h3>Prepare your inquiry.</h3>
             <span>All fields required unless marked.</span>
           </div>
           <div className="form-row">
