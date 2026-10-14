@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+
 const navigation = [
   ["Services", "#services"],
-  ["Our approach", "#approach"],
-  ["About Ridgewell", "#about"],
+  ["Work", "#work"],
+  ["Approach", "#approach"],
+  ["Contact", "#contact"],
 ];
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
@@ -48,7 +51,7 @@ export default function Header() {
           ))}
         </nav>
         <a className="button button-small header-contact" href="#contact">
-          Let’s talk
+          Start a project
         </a>
         <button
           ref={toggle}
@@ -82,7 +85,7 @@ export default function Header() {
           Common questions
         </a>
         <a href="#contact" onClick={() => setOpen(false)}>
-          Let’s talk
+          Start a project
         </a>
       </nav>
     </header>

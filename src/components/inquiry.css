@@ -1,8 +1,6 @@
 @layer components {
   .inquiry-card {
     background: var(--white);
-    border-top: 2px solid var(--ink);
-    padding-top: 1.5rem;
     min-width: 0;
   }
   .form-heading {
@@ -14,7 +12,7 @@
   }
   .form-heading > span {
     color: var(--muted);
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
   }
   .form-row {
     display: grid;
@@ -43,7 +41,7 @@
     width: 100%;
     min-width: 0;
     border: 1px solid var(--control-border);
-    border-radius: 3px;
+    border-radius: var(--radius);
     min-height: 48px;
     background: var(--white);
     color: var(--ink);
@@ -81,7 +79,7 @@
   }
   .field-hint {
     color: var(--muted);
-    font-size: 0.8rem;
+    font-size: 0.8125rem;
   }
   .form-submit {
     margin-top: 0.4rem;
