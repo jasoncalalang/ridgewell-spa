@@ -834,9 +834,6 @@
 }
 
 @layer components {
-  .skip-link:not(:focus) {
-    transform: translateY(-100%);
-  }
   .offer-steps {
     display: grid;
     gap: 2.5rem;
