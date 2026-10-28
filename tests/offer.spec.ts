@@ -24,7 +24,7 @@ test("the offer follows Services with five ordered steps and three assessment ti
   await expect(section).toContainText(
     "Every engagement starts with a conversation and is scoped before anything is built. Each step is scoped on its own, so you decide after each one whether to continue.",
   );
-  await expect(page.locator("#services + #offer + #work")).toHaveCount(1);
+  await expect(page.locator("#services + #accounting + #offer + #work")).toHaveCount(1);
 
   const ladder = section.locator("ol");
   await expect(ladder).toHaveCount(1);
@@ -189,6 +189,7 @@ test("desktop navigation fits at 960px without overlapping the brand or contact 
   await expect(navigation).toBeVisible();
   await expect(navigation.getByRole("link")).toHaveText([
     "Services",
+    "Accounting",
     "Ways to work",
     "Work",
     "Approach",
