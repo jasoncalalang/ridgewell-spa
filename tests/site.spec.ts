@@ -176,6 +176,7 @@ test("mobile navigation opens, follows every link, and closes with Escape", asyn
   await expect(page.getByRole("button", { name: "Menu" })).toBeFocused();
   for (const label of [
     "Services",
+    "Ways to work",
     "Work",
     "Approach",
     "Contact",
