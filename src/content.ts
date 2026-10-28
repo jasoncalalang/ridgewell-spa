@@ -79,6 +79,132 @@ export const services: Service[] = [
   },
 ];
 
+interface OfferCta {
+  label: string;
+  href: string;
+  interest: ServiceOption;
+}
+
+interface OfferStep {
+  index: string;
+  title: string;
+  tag: string;
+  text: string;
+  items?: string[];
+  tiers?: { title: string; text: string; items: string[] }[];
+  note?: string;
+  cta?: OfferCta;
+}
+
+const discoveryCta: OfferCta = {
+  label: "Request a discovery call",
+  href: "#contact",
+  interest: "Not sure yet",
+};
+
+const offerSteps: OfferStep[] = [
+  {
+    index: "01",
+    title: "Discovery call",
+    tag: "Free, about 20 minutes",
+    text: "A short call to understand what you run, where work gets repeated or stuck, and what you have already tried. You leave knowing whether we can help and what the next step would be.",
+    cta: discoveryCta,
+  },
+  {
+    index: "02",
+    title: "Assessment",
+    tag: "Written report, short turnaround",
+    text: "A paid review of how work actually moves through your office: enrollment, billing, records, reporting, and where AI agents can take on routine tasks and where they should not. You get a written report with findings ranked by effort and benefit, a recommended order of work, and a review call to go through it. We agree the delivery date before we start.",
+    tiers: [
+      {
+        title: "Small school or office",
+        text: "One campus and a small admin team.",
+        items: [
+          "One working session with the people who run the office",
+          "Written report with a recommended first project",
+          "Review call",
+        ],
+      },
+      {
+        title: "Mid-size school or business",
+        text: "Several departments or a larger admin team.",
+        items: [
+          "Sessions with each department, such as registrar, finance and HR",
+          "Written report that maps how work passes between offices",
+          "Review call with the leadership team",
+        ],
+      },
+      {
+        title: "Multi-campus school or multi-branch group",
+        text: "Several campuses, or a business with more than one branch.",
+        items: [
+          "Sessions at each site",
+          "Written report that compares sites and flags what to standardise",
+          "Rollout plan that covers every site, and a review call",
+        ],
+      },
+    ],
+    note: "The fee for each tier is set after the discovery call.",
+  },
+  {
+    index: "03",
+    title: "Adoption program",
+    tag: "About 90 days",
+    text: "A system only helps if people use it. We run workshops for your staff, help you choose internal champions in each office, hold weekly check-ins, and track usage on an adoption dashboard you can open at any time.",
+    items: [
+      "Staff workshops",
+      "Internal champions in each office",
+      "Weekly check-ins",
+      "Adoption dashboard",
+      "Closing report and a written playbook for your team",
+    ],
+  },
+  {
+    index: "04",
+    title: "Fixed-scope build and deployment",
+    tag: "Support window after launch",
+    text: "Portals, records systems, forms and approvals, integrations, websites, or an AI agent set up for one defined task with a person reviewing its output. Scope, deliverables and timeline are written down before we start.",
+    items: [
+      "Written scope and deliverables",
+      "Documentation and a handover walkthrough for your team",
+      "A support window after go-live",
+      "Anything outside the scope is quoted separately",
+    ],
+  },
+  {
+    index: "05",
+    title: "Parallel Run",
+    tag: "Pilot before you switch",
+    text: "The new system or agent works alongside your current process, on the same real work. We compare time taken, errors, cost and what your staff think. You switch over only when the results justify it, and the old process stays in place until then.",
+    items: [
+      "The same work done both ways",
+      "Measured against a baseline agreed up front",
+      "A clear go or no-go decision before full switch-over",
+    ],
+  },
+];
+
+export const offer = {
+  label: "Ways to work",
+  heading: "From a first call to a working system.",
+  intro:
+    "Every engagement starts with a conversation and is scoped before anything is built. Each step is scoped on its own, so you decide after each one whether to continue.",
+  steps: offerSteps,
+  privacy: {
+    label: "Across every step",
+    heading: "Privacy and security are built in.",
+    text: "Schools and businesses hold personal data about students, parents, staff and customers. We treat the Data Privacy Act of 2012 (Republic Act No. 10173) as a design requirement from the first assessment, not a review at the end.",
+    items: [
+      "Collect only the data a task needs",
+      "Access by role, with a record of who changed what",
+      "Retention, consent and data-subject requests worked out in the scope",
+      "Privacy notes handed to your Data Protection Officer",
+    ],
+    note: "We support your compliance work. We do not replace your Data Protection Officer or legal counsel.",
+  },
+  cta: discoveryCta,
+};
+
 export interface CaseStudy {
   id: string;
   index: string;

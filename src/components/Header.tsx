@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const navigation = [
   ["Services", "#services"],
+  ["Ways to work", "#offer"],
   ["Work", "#work"],
   ["Approach", "#approach"],
   ["Contact", "#contact"],

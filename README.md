@@ -41,9 +41,9 @@ The form validates locally and prepares an email addressed to the address publis
 
 ## Project guide
 
-- `src/content.ts`: the page copy (hero, proof chips, two services, seven case studies, approach, about, questions, contact details) and the inquiry interest options. A few section labels and headings (Services, Questions), the Contact terms, the header, the footer and the form's labels and messages live in their components and `src/lib/inquiry.ts`.
+- `src/content.ts`: the page copy (hero, proof chips, two services, Ways to work offer ladder, seven case studies, approach, about, questions, contact details) and the inquiry interest options. A few section labels and headings (Services, Questions), the Contact terms, the header, the footer and the form's labels and messages live in their components and `src/lib/inquiry.ts`.
 - `src/lib/forbidden.ts`: words that must never appear on the page; enforced by `src/content.test.ts` and `tests/work.spec.ts`.
-- `src/components/`: one component per section (`Hero`, `Services`, `Work`, `Approach`, `About`, `Questions`, `Contact`, `Footer`), the inquiry flow, `Frames.tsx` (browser and phone frames) and `Screen.tsx` with the drawn screens in `screens/`.
+- `src/components/`: one component per section (`Hero`, `Services`, `Offer`, `Work`, `Approach`, `About`, `Questions`, `Contact`, `Footer`), the inquiry flow, `Frames.tsx` (browser and phone frames) and `Screen.tsx` with the drawn screens in `screens/`.
 - `src/lib/inquiry.ts`: validation and email draft construction.
 - `src/styles.css`, `src/components/screens.css`, `src/components/inquiry.css`: tokens and page, screen and form styles.
 - `DESIGN.md`: design decisions and interaction contract.
