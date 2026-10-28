@@ -886,6 +886,25 @@
   .offer-actions {
     margin-top: 1.5rem;
   }
+  .accounting-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1.5rem;
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+  }
+  .accounting-item h3 {
+    margin: 0;
+  }
+  .accounting-item p {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-top: 0.75rem;
+  }
+  .accounting-cta {
+    margin-top: 2rem;
+  }
 }
 
 @layer responsive {
@@ -900,14 +919,14 @@
       height: auto;
       min-height: 64px;
       padding-block: 0.25rem;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr) auto;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) auto;
     }
     .brand {
       max-width: 100%;
     }
     .desktop-nav {
       flex-wrap: wrap;
-      gap: 0 clamp(0.75rem, 2vw, 2rem);
+      gap: 0 clamp(0.75rem, 1.5vw, 2rem);
     }
   }
 }

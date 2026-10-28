@@ -25,7 +25,6 @@ const everything = JSON.stringify({
   proof,
   services,
   accounting,
-  accounting,
   offer,
   clientWork,
   productWork,

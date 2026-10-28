@@ -6,6 +6,7 @@ export const companyEmail = "info@ridgewell.com.ph";
 export const serviceOptions = [
   "Website",
   "Bespoke system",
+  "Accounting services",
   "Not sure yet",
 ] as const;
 export type ServiceOption = (typeof serviceOptions)[number];
@@ -78,6 +79,49 @@ export const services: Service[] = [
       "A records table with names, status labels and an Approve button on each row.",
   },
 ];
+
+export const accounting = {
+  id: "accounting",
+  label: "Accounting services",
+  heading: "Accounting is where Ridgewell started, and it is still core to our work.",
+  intro:
+    "Ridgewell started in accounting in 2004. Alongside websites and systems, we handle the day-to-day accounting and compliance work for Philippine businesses, from registration to year-end.",
+  items: [
+    {
+      title: "Business registration and permits",
+      text: "SEC or DTI registration; BIR registration, including Form 2303 and registration of your books of accounts; LGU business permits and renewals.",
+    },
+    {
+      title: "Bookkeeping and books of accounts",
+      text: "Your books kept up to date, whether they are manual or computerized/loose-leaf.",
+    },
+    {
+      title: "BIR tax compliance",
+      text: "Monthly and quarterly returns, whether VAT or percentage tax and withholding tax, plus the annual income tax return.",
+    },
+    {
+      title: "Payroll and government contributions",
+      text: "SSS, PhilHealth and Pag-IBIG registration and remittances.",
+    },
+    {
+      title: "Financial statements",
+      text: "Preparation of your financial statements, plus coordination with your external auditor when audited financial statements are required.",
+    },
+    {
+      title: "Year-end inventory list",
+      text: "Prepared and submitted to the BIR for businesses that carry inventory.",
+    },
+    {
+      title: "Retainer packages",
+      text: "Ongoing monthly accounting, with the scope agreed for each client.",
+    },
+  ],
+  cta: {
+    label: "Ask about accounting services",
+    href: "#contact",
+    interest: "Accounting services" as ServiceOption,
+  },
+};
 
 interface OfferCta {
   label: string;
