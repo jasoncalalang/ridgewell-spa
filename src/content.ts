@@ -2,6 +2,7 @@ import type { ScreenImage, ScreenKey } from "./components/Screen";
 export type { ScreenKey } from "./components/Screen";
 
 export const companyEmail = "info@ridgewell.com.ph";
+export const footerLocation = "Based in Obando, Bulacan, Philippines";
 
 export const serviceOptions = [
   "Website",
@@ -14,7 +15,7 @@ export type ServiceOption = (typeof serviceOptions)[number];
 export const hero = {
   label: "Business, in working order.",
   heading: "Websites and bespoke systems, built to be used every day.",
-  lead: "Ridgewell designs websites and builds internal systems for Philippine schools, property managers and small businesses. We started in accounting, so the books and the workflow come first.",
+  lead: "Based in Obando, Bulacan, Ridgewell designs websites and builds internal systems for Philippine schools, property managers and small businesses. We started in accounting, so the books and the workflow come first.",
   primary: { label: "Start a project", href: "#contact" },
   secondary: { label: "See our work", href: "#work" },
   screen: "units-grid" as ScreenKey,
@@ -85,7 +86,7 @@ export const accounting = {
   label: "Accounting services",
   heading: "Accounting is where Ridgewell started, and it is still core to our work.",
   intro:
-    "Ridgewell started in accounting in 2004. Alongside websites and systems, we handle the day-to-day accounting and compliance work for Philippine businesses, from registration to year-end.",
+    "Ridgewell started in accounting in 2004 and is based in Obando, Bulacan. Alongside websites and systems, we handle the day-to-day accounting and compliance work for Philippine businesses, from registration to year-end.",
   items: [
     {
       title: "Business registration and permits",
