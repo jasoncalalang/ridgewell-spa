@@ -1,4 +1,4 @@
-import { caseStudies } from "../content";
+import { caseStudies, footerLocation } from "../content";
 
 const footerWork = ["portal", "leasetrack", "ledger"];
 
@@ -21,6 +21,7 @@ export default function Footer() {
               />
             </a>
             <p>Website design · Bespoke system development</p>
+            <p>{footerLocation}</p>
           </div>
           <nav className="footer-links" aria-label="Footer">
             {caseStudies
