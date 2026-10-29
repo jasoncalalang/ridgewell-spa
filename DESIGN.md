@@ -32,6 +32,7 @@ This reads as a software company's page, not a brochure and not a ledger. Hierar
 
 - Existing services, approach, about, questions, and contact anchors remain functional.
 - Each of the two service cards has a 'Talk about this service' link that preselects the inquiry interest.
+- Ways to work presents five ordered steps and a separate privacy panel; discovery-call links reach Contact with "Not sure yet" selected.
 - FAQ uses native disclosures.
 - Inquiry validates locally and creates a draft for the visitor's email app. It never claims that a message has already been sent.
 - Copy supports pending, success, and permission-denied states; stale completions cannot affect revised drafts.

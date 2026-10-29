@@ -832,3 +832,101 @@
     }
   }
 }
+
+@layer components {
+  .offer-steps {
+    display: grid;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+  }
+  .offer-step {
+    display: grid;
+    gap: 0.75rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+  }
+  .offer-step-content {
+    min-width: 0;
+  }
+  .offer-tag {
+    margin-top: 0.5rem;
+  }
+  .offer-description {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 72ch;
+    margin-top: 0.75rem;
+  }
+  .offer-section .red-list,
+  .offer-note {
+    margin-top: 1.25rem;
+  }
+  .offer-step .text-link {
+    margin-top: 0.75rem;
+  }
+  .offer-tiers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .offer-tier h4 {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  .offer-privacy {
+    margin-top: 3rem;
+  }
+  .offer-actions {
+    margin-top: 1.5rem;
+  }
+  .accounting-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1.5rem;
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+  }
+  .accounting-item h3 {
+    margin: 0;
+  }
+  .accounting-item p {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-top: 0.75rem;
+  }
+  .accounting-cta {
+    margin-top: 2rem;
+  }
+}
+
+@layer responsive {
+  @media (min-width: 600px) {
+    .offer-step {
+      grid-template-columns: 2.5rem minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+  }
+  @media (min-width: 960px) {
+    .header-inner {
+      height: auto;
+      min-height: 64px;
+      padding-block: 0.25rem;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) auto;
+    }
+    .brand {
+      max-width: 100%;
+    }
+    .desktop-nav {
+      flex-wrap: wrap;
+      gap: 0 clamp(0.75rem, 1.5vw, 2rem);
+    }
+  }
+}

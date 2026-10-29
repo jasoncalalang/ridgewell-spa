@@ -3,6 +3,8 @@ import { useSectionMotion } from "./hooks/useMotion";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
+import Accounting from "./components/Accounting";
+import Offer from "./components/Offer";
 import Work from "./components/Work";
 import Approach from "./components/Approach";
 import About from "./components/About";
@@ -36,6 +38,8 @@ export default function App() {
       <main id="main" ref={motion}>
         <Hero />
         <Services onInterest={setInterest} />
+        <Accounting onInterest={setInterest} />
+        <Offer onInterest={setInterest} />
         <Work />
         <Approach />
         <About />
