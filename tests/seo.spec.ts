@@ -1,9 +1,11 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-const title = "Ridgewell RMSI | IT Consulting, AI and Accounting in Obando";
+const title = "Ridgewell RMSI | Accounting and IT Consulting in Obando";
+const siteUrl = "https://www.ridgewell.com.ph/";
+const imageUrl = "https://www.ridgewell.com.ph/brand/ridgewell-logo.jpg";
 const description =
-  "Ridgewell Management Services, Inc. (RMSI) in Obando, Bulacan. IT consulting, AI agents, accounting, websites and bespoke systems for Philippine businesses.";
+  "Accounting services in Obando, Bulacan from Ridgewell Management Services, Inc. (RMSI), plus IT consulting, AI agents, websites and bespoke systems.";
 
 const meta = (page: import("@playwright/test").Page, selector: string) =>
   page.locator(`head meta[${selector}]`).getAttribute("content");
@@ -36,17 +38,13 @@ test("Open Graph, Twitter and geo tags are present", async ({ page }) => {
   expect(await meta(page, 'name="twitter:description"')).toBe(description);
   expect(await meta(page, 'name="geo.region"')).toBe("PH-BUL");
   expect(await meta(page, 'name="geo.placename"')).toBe("Obando, Bulacan");
-  // No production domain is configured, so no relative canonical, url or image.
-  const urls = await page
-    .locator(
-      'head link[rel="canonical"], head meta[property="og:url"], head meta[property="og:image"]',
-    )
-    .evaluateAll((elements) =>
-      elements.map(
-        (el) => el.getAttribute("href") ?? el.getAttribute("content") ?? "",
-      ),
-    );
-  for (const url of urls) expect(url).toMatch(/^https:\/\//);
+  expect(await meta(page, 'property="og:url"')).toBe(siteUrl);
+  expect(await meta(page, 'property="og:image"')).toBe(imageUrl);
+  expect(await meta(page, 'name="twitter:image"')).toBe(imageUrl);
+  await expect(page.locator('head link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    siteUrl,
+  );
 });
 
 test("JSON-LD parses and describes the business", async ({ page }) => {
@@ -55,14 +53,17 @@ test("JSON-LD parses and describes the business", async ({ page }) => {
     .textContent();
   const data = JSON.parse(raw!);
   expect([data["@type"]].flat()).toEqual(
-    expect.arrayContaining(["ProfessionalService", "AccountingService"]),
+    ["AccountingService", "ProfessionalService"],
   );
+  expect(data.url).toBe(siteUrl);
   expect(data.name).toBe("Ridgewell Management Services, Inc.");
   expect(data.alternateName).toEqual(["RMSI", "Ridgewell"]);
   expect(data.areaServed[0].name).toBe("Obando, Bulacan, Philippines");
   expect(data.address.addressLocality).toBe("Obando");
-  expect(data.serviceType).toContain("IT consulting");
-  expect(data.serviceType).toContain("Accounting services");
+  expect(data.serviceType.slice(0, 2)).toEqual([
+    "Accounting services",
+    "IT consulting",
+  ]);
   expect(data.telephone).toBeUndefined();
 });
 
@@ -72,7 +73,22 @@ test("robots.txt is served and allows crawling", async ({ request }) => {
   const body = await response.text();
   expect(body).toMatch(/User-agent: \*/);
   expect(body).toMatch(/Allow: \//);
+  expect(body).toMatch(
+    /^Sitemap: https:\/\/www\.ridgewell\.com\.ph\/sitemap\.xml$/m,
+  );
   expect(body).not.toMatch(/Disallow: \/\s*$/m);
+});
+
+test("sitemap.xml is a real XML urlset with the www URL", async ({
+  request,
+}) => {
+  const response = await request.get("/sitemap.xml");
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toMatch(/xml/);
+  const body = await response.text();
+  expect(body).toMatch(/^<\?xml version="1.0" encoding="UTF-8"\?>/);
+  expect(body).toContain(`<loc>${siteUrl}</loc>`);
+  expect(body).not.toMatch(/<!doctype html/i);
 });
 
 test("Obando, Bulacan is visible in the hero, accounting intro and footer", async ({

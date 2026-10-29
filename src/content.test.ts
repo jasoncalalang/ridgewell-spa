@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { findForbidden } from "./lib/forbidden.ts";
 import {
@@ -229,9 +229,11 @@ const indexHtml = readFileSync(
   fileURLToPath(new URL("../index.html", import.meta.url)),
   "utf8",
 );
-const expectedTitle = "Ridgewell RMSI | IT Consulting, AI and Accounting in Obando";
+const siteUrl = "https://www.ridgewell.com.ph/";
+const imageUrl = "https://www.ridgewell.com.ph/brand/ridgewell-logo.jpg";
+const expectedTitle = "Ridgewell RMSI | Accounting and IT Consulting in Obando";
 const expectedDescription =
-  "Ridgewell Management Services, Inc. (RMSI) in Obando, Bulacan. IT consulting, AI agents, accounting, websites and bespoke systems for Philippine businesses.";
+  "Accounting services in Obando, Bulacan from Ridgewell Management Services, Inc. (RMSI), plus IT consulting, AI agents, websites and bespoke systems.";
 
 function metaContent(attribute: "name" | "property", key: string) {
   const tag = indexHtml
@@ -258,8 +260,12 @@ test("the title and meta description carry the Obando keywords within search lim
   assert.equal(description, expectedDescription);
   assert.ok(description.length <= 160, `description is ${description.length}`);
   assert.deepEqual(findForbidden(`${title} ${description}`), []);
-  for (const word of ["Obando", "RMSI", "IT Consulting", "AI", "Accounting"])
+  for (const word of ["Obando", "RMSI", "IT Consulting", "Accounting"])
     assert.match(title, new RegExp(word, "i"));
+  assert.ok(title.indexOf("Accounting") < title.indexOf("IT Consulting"));
+  assert.match(description, /^Accounting services in Obando, Bulacan/);
+  assert.ok(description.indexOf("IT consulting") > description.indexOf("Accounting"));
+  assert.ok(description.indexOf("AI agents") > description.indexOf("IT consulting"));
 });
 
 test("Open Graph, Twitter and geo tags are present and consistent", () => {
@@ -279,22 +285,50 @@ test("Open Graph, Twitter and geo tags are present and consistent", () => {
   assert.equal(metaContent("name", "geo.placename"), "Obando, Bulacan");
 });
 
-test("canonical, og:url and og:image are never relative", () => {
-  // The repo configures no production domain for this redesign, so these tags
-  // are omitted. If they are ever added they must be absolute https URLs.
-  const urls = [
+test("canonical, og:url and og:image use the confirmed www domain", () => {
+  const canonicals = [
     ...indexHtml.matchAll(/<link[^>]*rel="canonical"[^>]*href="([^"]*)"/g),
-    ...indexHtml.matchAll(/property="og:(?:url|image)"[^>]*content="([^"]*)"/g),
   ].map((match) => match[1]);
-  for (const url of urls) assert.match(url, /^https:\/\//);
+  assert.deepEqual(canonicals, [siteUrl]);
+  assert.equal(metaContent("property", "og:url"), siteUrl);
+  assert.equal(metaContent("property", "og:image"), imageUrl);
+  assert.equal(metaContent("name", "twitter:image"), imageUrl);
+  assert.equal(metaContent("property", "og:image:width"), "1186");
+  assert.equal(metaContent("property", "og:image:height"), "280");
+  assert.equal(
+    metaContent("property", "og:image:alt"),
+    "Ridgewell Management Services, Inc. logo",
+  );
+  // The image is an existing repo asset, not a new file.
+  assert.ok(
+    existsSync(fileURLToPath(new URL("../public/brand/ridgewell-logo.jpg", import.meta.url))),
+  );
+});
+
+test("sitemap.xml lists only the www URL and robots.txt points to it", () => {
+  const sitemap = readFileSync(
+    fileURLToPath(new URL("../public/sitemap.xml", import.meta.url)),
+    "utf8",
+  );
+  assert.match(sitemap, /^<\?xml version="1.0" encoding="UTF-8"\?>/);
+  assert.match(sitemap, /<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
+  assert.deepEqual([...sitemap.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1]), [siteUrl]);
+  const robots = readFileSync(
+    fileURLToPath(new URL("../public/robots.txt", import.meta.url)),
+    "utf8",
+  );
+  assert.match(robots, /^Sitemap: https:\/\/www\.ridgewell\.com\.ph\/sitemap\.xml$/m);
+  assert.match(robots, /^User-agent: \*$/m);
+  assert.match(robots, /^Allow: \/$/m);
 });
 
 test("JSON-LD describes the business with sourced facts only", () => {
   const data = jsonLd();
   assert.equal(data["@context"], "https://schema.org");
   const types = [data["@type"]].flat();
-  assert.ok(types.includes("ProfessionalService"));
-  assert.ok(types.includes("AccountingService"));
+  assert.deepEqual(types, ["AccountingService", "ProfessionalService"]);
+  assert.equal(data.url, siteUrl);
+  assert.equal(data.description, expectedDescription);
   assert.equal(data.name, "Ridgewell Management Services, Inc.");
   assert.deepEqual(data.alternateName, ["RMSI", "Ridgewell"]);
   assert.deepEqual(data.address, {
@@ -307,9 +341,9 @@ test("JSON-LD describes the business with sourced facts only", () => {
   assert.equal(areas[0]["@type"], "AdministrativeArea");
   assert.equal(areas[0].name, "Obando, Bulacan, Philippines");
   assert.deepEqual(data.serviceType, [
+    "Accounting services",
     "IT consulting",
     "AI agent setup",
-    "Accounting services",
     "Website design",
     "Bespoke system development",
   ]);
@@ -329,7 +363,7 @@ test("JSON-LD describes the business with sourced facts only", () => {
   ]);
   assert.equal(contact.hours, "Mon to Fri, 9am to 6pm Manila");
   // Not in the repo, so never present.
-  for (const key of ["telephone", "faxNumber", "url", "image", "logo", "sameAs", "foundingDate", "priceRange", "aggregateRating", "review"])
+  for (const key of ["telephone", "faxNumber", "image", "logo", "sameAs", "foundingDate", "priceRange", "aggregateRating", "review"])
     assert.equal(key in data, false, `${key} must not be invented`);
   const text = JSON.stringify(data);
   assert.deepEqual(findForbidden(text), []);
