@@ -33,7 +33,7 @@ test("accounting sits between What we do and Ways to work with label, heading, i
     "Accounting is where Ridgewell started, and it is still core to our work.",
   );
   await expect(section).toContainText(
-    "Ridgewell started in accounting in 2004. Alongside websites and systems, we handle the day-to-day accounting and compliance work for Philippine businesses, from registration to year-end.",
+    "Ridgewell started in accounting in 2004 and is based in Obando, Bulacan. Alongside websites and systems, we handle the day-to-day accounting and compliance work for Philippine businesses, from registration to year-end.",
   );
   const items = section.locator("ul.accounting-items > li");
   await expect(items).toHaveCount(7);
