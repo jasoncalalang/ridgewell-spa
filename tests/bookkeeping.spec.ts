@@ -16,7 +16,7 @@ test("bookkeeping sits after accounting and tells the receipt story", async ({
 }) => {
   const section = page.locator("#bookkeeping");
   await expect(
-    page.locator("#services + #accounting + #bookkeeping + #offer"),
+    page.locator("#services + #pos + #accounting + #bookkeeping + #offer"),
   ).toHaveCount(1);
   await expect(section.getByText("AI bookkeeping", { exact: true })).toBeVisible();
   await expect(section.getByRole("heading", { level: 2 })).toHaveText(

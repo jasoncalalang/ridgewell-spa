@@ -15,6 +15,7 @@ export const serviceOptions = [
   "Website",
   "Bespoke system",
   "Accounting services",
+  "POS system",
   "Not sure yet",
 ] as const;
 export type ServiceOption = (typeof serviceOptions)[number];
@@ -92,6 +93,40 @@ export const services: Service[] = [
       "A records table with names, status labels and an Approve button on each row.",
   },
 ];
+
+export const pos = {
+  id: "pos",
+  label: "POS system",
+  heading: "Ring the sale, and the books move with it.",
+  intro:
+    "Ridgewell, in Obando, offers a point-of-sale system for a shop or food counter. The cashier rings items and discounts, takes payment, and can print the receipt. The receipt shows the VAT split, and the completed sale is written into the books.",
+  items: [
+    {
+      title: "The counter",
+      text: "Items, quantities and discounts sit on one ticket. The receipt can be printed at the counter, with the VAT split shown.",
+    },
+    {
+      title: "The books",
+      text: "A completed sale is posted into the books, so the counter and the ledger are not typed twice.",
+    },
+    {
+      title: "The shift",
+      text: "A shift opens and closes on a terminal, and the close produces a Z-reading. Locations and terminals stay separate, with cashier, manager and owner roles.",
+    },
+    {
+      title: "The tax figures",
+      text: "You can pull a sales summary, a sales journal, Z-readings, and the VAT and percentage tax figures for a period.",
+    },
+  ],
+  screenAlt:
+    "Sample point-of-sale ticket for bottled water and a meal, with a VAT split, total, cash tender and change. The amounts are fictional.",
+  caption: "Sample counter. The items and amounts are fictional.",
+  cta: {
+    label: "Ask about the POS system",
+    href: "#contact",
+    interest: "POS system" as ServiceOption,
+  },
+};
 
 export const accounting = {
   id: "accounting",
