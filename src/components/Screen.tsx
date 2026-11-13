@@ -10,6 +10,7 @@ import ChequesWorklist from "./screens/ChequesWorklist";
 import ReceiptLedger from "./screens/ReceiptLedger";
 import ReceiptChat from "./screens/ReceiptChat";
 import ExpenseSheets from "./screens/ExpenseSheets";
+import PosTicket from "./screens/PosTicket";
 import WebsiteWireframe from "./screens/WebsiteWireframe";
 import RecordsTable from "./screens/RecordsTable";
 
@@ -25,6 +26,7 @@ export type ScreenKey =
   | "receipt-ledger"
   | "receipt-chat"
   | "expense-sheets"
+  | "pos-ticket"
   | "website-wireframe"
   | "records-table";
 
@@ -46,6 +48,7 @@ const drawn: Record<ScreenKey, () => ReactElement> = {
   "receipt-ledger": ReceiptLedger,
   "receipt-chat": ReceiptChat,
   "expense-sheets": ExpenseSheets,
+  "pos-ticket": PosTicket,
   "website-wireframe": WebsiteWireframe,
   "records-table": RecordsTable,
 };

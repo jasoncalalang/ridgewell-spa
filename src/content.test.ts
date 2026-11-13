@@ -17,6 +17,7 @@ import {
   hero,
   offer,
   productWork,
+  pos,
   proof,
   questions,
   serviceOptions,
@@ -27,6 +28,7 @@ const everything = JSON.stringify({
   hero,
   proof,
   services,
+  pos,
   accounting,
   bookkeeping,
   offer,
@@ -84,8 +86,31 @@ test("every service preselects a real interest option", () => {
     assert.ok(serviceOptions.includes(service.interest), service.id);
   assert.deepEqual(
     [...serviceOptions],
-    ["Website", "Bespoke system", "Accounting services", "Not sure yet"],
+    ["Website", "Bespoke system", "Accounting services", "POS system", "Not sure yet"],
   );
+});
+
+test("the POS section describes the counter, the books, the shift and the tax figures", () => {
+  assert.equal(pos.id, "pos");
+  assert.equal(pos.label, "POS system");
+  assert.equal(pos.heading, "Ring the sale, and the books move with it.");
+  assert.match(pos.intro, /in Obando/);
+  assert.match(pos.intro, /VAT split/);
+  assert.match(pos.intro, /written into the books/);
+  assert.deepEqual(
+    pos.items.map((item) => item.title),
+    ["The counter", "The books", "The shift", "The tax figures"],
+  );
+  assert.match(pos.items[0].text, /printed/);
+  assert.match(pos.items[2].text, /Z-reading/);
+  assert.match(pos.items[3].text, /percentage tax/);
+  assert.equal(pos.cta.label, "Ask about the POS system");
+  assert.equal(pos.cta.href, "#contact");
+  assert.equal(pos.cta.interest, "POS system");
+  assert.ok(serviceOptions.includes(pos.cta.interest));
+  const copy = JSON.stringify(pos);
+  assert.deepEqual(findForbidden(copy), []);
+  assert.doesNotMatch(copy, /accredited|certified|testimonial|\d+\s*%/i);
 });
 
 test("the LeaseTrack live-demo link stays off until verified", () => {
@@ -282,7 +307,7 @@ const siteUrl = "https://www.ridgewell.com.ph/";
 const imageUrl = "https://www.ridgewell.com.ph/brand/ridgewell-logo.jpg";
 const expectedTitle = "Ridgewell RMSI | Accounting and IT Services in Obando";
 const expectedDescription =
-  "Accounting and IT services in Obando, Bulacan from Ridgewell Management Services, Inc. (RMSI): IT consulting, AI agents, websites and bespoke systems.";
+  "Accounting and IT services in Obando, Bulacan from Ridgewell (RMSI): POS system, IT consulting, AI agents, websites and bespoke systems.";
 
 function metaContent(attribute: "name" | "property", key: string) {
   const tag = indexHtml
@@ -398,6 +423,7 @@ test("the title and meta description carry the Obando keywords within search lim
   assert.match(description, /^Accounting and IT services in Obando, Bulacan/);
   assert.ok(description.indexOf("IT consulting") > description.indexOf("Accounting"));
   assert.ok(description.indexOf("AI agents") > description.indexOf("IT consulting"));
+  assert.ok(description.indexOf("POS system") > description.indexOf("Obando"));
 });
 
 test("Open Graph, Twitter and geo tags are present and consistent", () => {
@@ -501,6 +527,7 @@ test("JSON-LD lists accounting first and IT services second with a local Offer",
     "AI agent setup",
     "Website design",
     "Bespoke system development",
+    "POS system",
   ]);
   assert.deepEqual(
     data.makesOffer.map((offer: any) => offer.itemOffered.serviceType),

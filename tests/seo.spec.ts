@@ -5,7 +5,7 @@ const title = "Ridgewell RMSI | Accounting and IT Services in Obando";
 const siteUrl = "https://www.ridgewell.com.ph/";
 const imageUrl = "https://www.ridgewell.com.ph/brand/ridgewell-logo.jpg";
 const description =
-  "Accounting and IT services in Obando, Bulacan from Ridgewell Management Services, Inc. (RMSI): IT consulting, AI agents, websites and bespoke systems.";
+  "Accounting and IT services in Obando, Bulacan from Ridgewell (RMSI): POS system, IT consulting, AI agents, websites and bespoke systems.";
 
 const meta = (page: import("@playwright/test").Page, selector: string) =>
   page.locator(`head meta[${selector}]`).getAttribute("content");
