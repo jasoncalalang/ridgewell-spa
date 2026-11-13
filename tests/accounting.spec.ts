@@ -25,7 +25,9 @@ test("accounting sits between IT services and Ways to work with label, heading, 
   page,
 }) => {
   const section = page.locator("#accounting");
-  await expect(page.locator("#services + #accounting + #offer")).toHaveCount(1);
+  await expect(
+    page.locator("#services + #accounting + #bookkeeping + #offer"),
+  ).toHaveCount(1);
   await expect(
     section.getByText("Accounting services", { exact: true }).first(),
   ).toBeVisible();

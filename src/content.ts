@@ -129,6 +129,34 @@ export const accounting = {
   },
 };
 
+export const bookkeeping = {
+  id: "bookkeeping",
+  label: "AI bookkeeping",
+  heading: "A stack of receipts, sorted into sheets the accountant reviews.",
+  paragraphs: [
+    "Month-end often arrives as receipt photos, scans and PDFs. The client or the accountant sends them in a chat. An agent configured for that business reads each receipt and logs it.",
+    "It takes the supplier, the date, the amounts, whether the receipt is VAT or non-VAT, and the TIN where the receipt shows one. Each line is written to that business's expense workbook: one sheet for VAT, one sheet for non-VAT. The workbook stays in the firm's OneDrive.",
+    "The agent is set up per business, with its own workbook, folders and categories. If something is unclear, it asks instead of guessing. A human accountant reviews the sheets and stays in control of the books.",
+  ],
+  links: [
+    { label: "Accounting services", href: "#accounting" },
+    { label: "How an AI agent is set up", href: "#offer-step-04" },
+  ],
+  cta: {
+    label: "Ask about bookkeeping",
+    href: "#contact",
+    interest: "Accounting services" as ServiceOption,
+  },
+  chatAlt:
+    "Sample chat: a fictional Harborline Trading receipt is logged on the VAT sheet, then the agent asks because the next photo is cut off at the total.",
+  sheetsAlt:
+    "Sample expense workbook with a VAT sheet and a non-VAT sheet. Suppliers, peso amounts and the TIN 000-000-000-000 are fictional.",
+  captions: [
+    "Sample conversation. The supplier, amounts and TIN are fictional.",
+    "Sample workbook. VAT and non-VAT sheets for one fictional business.",
+  ],
+};
+
 interface OfferCta {
   label: string;
   href: string;

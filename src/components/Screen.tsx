@@ -8,6 +8,8 @@ import Approvals from "./screens/Approvals";
 import Enlistment from "./screens/Enlistment";
 import ChequesWorklist from "./screens/ChequesWorklist";
 import ReceiptLedger from "./screens/ReceiptLedger";
+import ReceiptChat from "./screens/ReceiptChat";
+import ExpenseSheets from "./screens/ExpenseSheets";
 import WebsiteWireframe from "./screens/WebsiteWireframe";
 import RecordsTable from "./screens/RecordsTable";
 
@@ -21,6 +23,8 @@ export type ScreenKey =
   | "enlistment"
   | "cheques-worklist"
   | "receipt-ledger"
+  | "receipt-chat"
+  | "expense-sheets"
   | "website-wireframe"
   | "records-table";
 
@@ -40,6 +44,8 @@ const drawn: Record<ScreenKey, () => ReactElement> = {
   enlistment: Enlistment,
   "cheques-worklist": ChequesWorklist,
   "receipt-ledger": ReceiptLedger,
+  "receipt-chat": ReceiptChat,
+  "expense-sheets": ExpenseSheets,
   "website-wireframe": WebsiteWireframe,
   "records-table": RecordsTable,
 };
