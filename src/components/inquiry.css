@@ -44,7 +44,8 @@
     border: 1px solid var(--control-border);
     border-radius: var(--radius);
     min-height: 48px;
-    background: var(--white);
+    color-scheme: light;
+    background-color: var(--white);
     color: var(--ink);
     padding: 0.7rem 0.8rem;
     font-size: 1rem;

@@ -364,6 +364,44 @@
     flex: 1 0 auto;
   }
 
+  /* Receipt chat and expense sheets */
+  .scr-chat,
+  .scr-sheets {
+    gap: 12px;
+  }
+  .scr-chat-in {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .scr-chat-in .scr-receipt {
+    width: 72px;
+    flex: 0 0 auto;
+  }
+  .scr-chat-out .scr-row strong,
+  .scr-line strong {
+    font-weight: 600;
+  }
+  .scr-ask {
+    margin: 10px 0 0;
+    color: #9a6210;
+    font-weight: 600;
+  }
+  .scr-sheet {
+    display: grid;
+    gap: 4px;
+  }
+  .scr-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line-inner);
+  }
+  .scr-line span {
+    min-width: 0;
+  }
+
   /* Website wireframe */
   .scr-wire {
     gap: 12px;

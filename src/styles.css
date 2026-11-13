@@ -2,6 +2,11 @@
 @import "./components/inquiry.css";
 @import "./components/screens.css";
 
+:root {
+  color-scheme: light;
+  background-color: #fff;
+}
+
 @layer reset {
   *,
   *::before,
@@ -28,6 +33,9 @@
   textarea,
   select {
     font: inherit;
+    color-scheme: light;
+    background-color: #fff;
+    color: #171c22;
   }
   button,
   a,
@@ -929,6 +937,34 @@
   .accounting-cta {
     margin-top: 2rem;
   }
+  .bookkeeping-layout {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .bookkeeping-text {
+    color: var(--muted);
+    font-size: 1.0625rem;
+    max-width: 62ch;
+    margin-top: 1rem;
+  }
+  .bookkeeping-links {
+    display: grid;
+    justify-items: start;
+    gap: 0.25rem;
+    margin-top: 1.5rem;
+  }
+  .bookkeeping-screens {
+    display: grid;
+    gap: 1.75rem;
+    min-width: 0;
+  }
+  .bookkeeping-screens figure {
+    min-width: 0;
+  }
+  .bookkeeping-screens figcaption {
+    margin-top: 0.75rem;
+  }
 }
 
 @layer responsive {
@@ -939,6 +975,10 @@
     }
   }
   @media (min-width: 960px) {
+    .bookkeeping-layout {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 3rem;
+    }
     .header-inner {
       height: auto;
       min-height: 64px;

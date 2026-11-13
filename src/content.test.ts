@@ -7,6 +7,7 @@ import {
   about,
   accounting,
   approach,
+  bookkeeping,
   caseStudies,
   clientWork,
   companyEmail,
@@ -26,6 +27,7 @@ const everything = JSON.stringify({
   proof,
   services,
   accounting,
+  bookkeeping,
   offer,
   clientWork,
   productWork,
@@ -214,6 +216,42 @@ test("the accounting year matches the 2004 already published in the about copy",
   assert.match(accounting.intro, /started in accounting in 2004/);
 });
 
+test("the bookkeeping section tells the receipt-to-sheets story without invented claims", () => {
+  assert.equal(bookkeeping.id, "bookkeeping");
+  assert.equal(bookkeeping.label, "AI bookkeeping");
+  assert.equal(
+    bookkeeping.heading,
+    "A stack of receipts, sorted into sheets the accountant reviews.",
+  );
+  assert.deepEqual(bookkeeping.paragraphs, [
+    "Month-end often arrives as receipt photos, scans and PDFs. The client or the accountant sends them in a chat. An agent configured for that business reads each receipt and logs it.",
+    "It takes the supplier, the date, the amounts, whether the receipt is VAT or non-VAT, and the TIN where the receipt shows one. Each line is written to that business's expense workbook: one sheet for VAT, one sheet for non-VAT. The workbook stays in the firm's OneDrive.",
+    "The agent is set up per business, with its own workbook, folders and categories. If something is unclear, it asks instead of guessing. A human accountant reviews the sheets and stays in control of the books.",
+  ]);
+  assert.deepEqual(
+    bookkeeping.links.map((link) => [link.label, link.href]),
+    [
+      ["Accounting services", "#accounting"],
+      ["How an AI agent is set up", "#offer-step-04"],
+    ],
+  );
+  assert.equal(bookkeeping.cta.label, "Ask about bookkeeping");
+  assert.equal(bookkeeping.cta.href, "#contact");
+  assert.equal(bookkeeping.cta.interest, "Accounting services");
+  assert.ok(serviceOptions.includes(bookkeeping.cta.interest));
+  assert.ok(bookkeeping.chatAlt.length > 19);
+  assert.ok(bookkeeping.sheetsAlt.length > 19);
+  assert.match(bookkeeping.chatAlt, /fictional/i);
+  assert.match(bookkeeping.sheetsAlt, /000-000-000-000/);
+  const copy = JSON.stringify(bookkeeping);
+  assert.deepEqual(findForbidden(copy), []);
+  assert.doesNotMatch(
+    copy,
+    /\d+\s*%|testimonial|certified|accredited|\bCPA\b|accuracy|hours saved|BIR accreditation|guarantee/i,
+  );
+  assert.deepEqual(copy.match(/\d+/g) ?? [], ["04", "000", "000", "000", "000"]);
+});
+
 test("the accounting CTA reaches contact with the Accounting services interest", () => {
   assert.equal(accounting.cta.label, "Ask about accounting services");
   assert.equal(accounting.cta.href, "#contact");
@@ -260,6 +298,88 @@ function jsonLd() {
   assert.ok(match, "index.html has a JSON-LD script");
   return JSON.parse(match[1]);
 }
+
+function pngSize(file: URL) {
+  const bytes = readFileSync(file);
+  assert.equal(bytes.toString("ascii", 1, 4), "PNG");
+  return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+}
+
+test("the favicon is the mountain emblem, with the raster set and manifest wired up", () => {
+  const svg = readFileSync(
+    fileURLToPath(new URL("../public/favicon.svg", import.meta.url)),
+    "utf8",
+  );
+  assert.match(svg, /#b51226/i);
+  assert.match(svg, /M16 262\.456/);
+  assert.doesNotMatch(svg, /<text[\s>]/i);
+  assert.doesNotMatch(svg, /RIDGEWELL|company-name|MANAGEMENT SERVICES/);
+  const viewBox = svg.match(
+    /viewBox="(-?[\d.]+) (-?[\d.]+) ([\d.]+) ([\d.]+)"/,
+  );
+  assert.ok(viewBox, "favicon.svg has a viewBox");
+  assert.equal(viewBox[3], viewBox[4]);
+  assert.equal(metaContent("name", "color-scheme"), "light");
+  assert.equal(metaContent("name", "theme-color"), "#ffffff");
+  for (const href of [
+    "./favicon.svg",
+    "./favicon.ico",
+    "./apple-touch-icon.png",
+    "./site.webmanifest",
+  ]) {
+    assert.match(indexHtml, new RegExp(`href="${href.replace(".", "\\.")}"`));
+  }
+  assert.deepEqual(
+    pngSize(new URL("../public/apple-touch-icon.png", import.meta.url)),
+    { width: 180, height: 180 },
+  );
+  assert.deepEqual(pngSize(new URL("../public/icon-192.png", import.meta.url)), {
+    width: 192,
+    height: 192,
+  });
+  assert.deepEqual(pngSize(new URL("../public/icon-512.png", import.meta.url)), {
+    width: 512,
+    height: 512,
+  });
+  const ico = readFileSync(
+    fileURLToPath(new URL("../public/favicon.ico", import.meta.url)),
+  );
+  assert.equal(ico.readUInt16LE(0), 0);
+  assert.equal(ico.readUInt16LE(2), 1);
+  assert.equal(ico.readUInt16LE(4), 3);
+  const sizes = [0, 1, 2].map((index) => {
+    const width = ico[6 + index * 16];
+    const height = ico[7 + index * 16];
+    return [width, height];
+  });
+  assert.deepEqual(
+    sizes.sort((a, b) => a[0] - b[0]),
+    [
+      [16, 16],
+      [32, 32],
+      [48, 48],
+    ],
+  );
+  const manifest = JSON.parse(
+    readFileSync(
+      fileURLToPath(new URL("../public/site.webmanifest", import.meta.url)),
+      "utf8",
+    ),
+  );
+  assert.equal(manifest.name, "Ridgewell RMSI");
+  assert.equal(manifest.background_color, "#ffffff");
+  assert.equal(manifest.theme_color, "#ffffff");
+  assert.deepEqual(
+    manifest.icons.map((icon: { src: string; sizes: string }) => [
+      icon.src,
+      icon.sizes,
+    ]),
+    [
+      ["./icon-192.png", "192x192"],
+      ["./icon-512.png", "512x512"],
+    ],
+  );
+});
 
 test("the title and meta description carry the Obando keywords within search limits", () => {
   const title = indexHtml.match(/<title>([^<]*)<\/title>/)?.[1];
