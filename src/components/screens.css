@@ -23,7 +23,7 @@
     width: 8px;
     height: 8px;
     border-radius: 999px;
-    background: #d5d0c6;
+    background: #cfcfcf;
   }
   .frame-address {
     flex: 1;
@@ -268,7 +268,7 @@
   }
   .is-vacant {
     background: var(--page);
-    border: 1px solid var(--line-inner);
+    border: 1px solid var(--control-border);
     color: var(--muted);
   }
   .is-expiring {
@@ -371,6 +371,7 @@
   .scr-wire i {
     display: block;
     background: var(--chrome);
+    border: 1px solid var(--line);
     border-radius: 4px;
   }
   .wire-hero {
@@ -386,7 +387,6 @@
   }
   .wire-footer {
     height: 20px;
-    background: var(--line-inner) !important;
   }
 
   @media (max-width: 1023px) {

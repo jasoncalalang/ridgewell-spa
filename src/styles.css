@@ -58,19 +58,19 @@
 
 @layer base {
   :root {
-    --page: #f6f4ef;
+    --page: #fff;
     --white: #fff;
-    --band: #efece5;
-    --chrome: #f1efe9;
+    --band: #fff;
+    --chrome: #fff;
     --ink: #171c22;
     --muted: #565f68;
     --meta: #636b73;
     --red: #b51226;
     --red-hover: #9c0f20;
-    --line: #e3dfd6;
-    --line-inner: #e8e5df;
+    --line: #dedede;
+    --line-inner: #e8e8e8;
     --control-border: #7c858d;
-    --button-border: #cfd4d9;
+    --button-border: var(--control-border);
     --focus: #b51226;
     --display: "Barlow Condensed", "Arial Narrow", sans-serif;
     --body: "Manrope Variable", sans-serif;
@@ -78,7 +78,7 @@
     --radius-card: 10px;
     --motion: 160ms;
     --gutter: clamp(1.5rem, 4vw, 3rem);
-    --scroll-thumb: #a39d92;
+    --scroll-thumb: var(--control-border);
     --scroll-track: var(--page);
     color-scheme: light;
     font-family: var(--body);
@@ -103,6 +103,9 @@
     line-height: 1.55;
     overflow-wrap: anywhere;
     background: var(--page);
+  }
+  main > section {
+    background: var(--white);
   }
   ::selection {
     background: var(--red);
@@ -431,17 +434,18 @@
   }
   .chips {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
   }
   .chips li {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 999px;
+    min-width: 0;
     font-size: 0.8125rem;
     font-weight: 600;
-    padding: 0.5rem 0.875rem;
+    padding: 0.5rem 1rem 0;
+  }
+  .chips li + li {
+    border-top: 1px solid var(--line);
   }
 
   /* Services */
@@ -537,6 +541,7 @@
   }
   .products-section {
     background: var(--band);
+    border-block: 1px solid var(--line);
   }
   .product-grid {
     display: grid;
@@ -707,6 +712,7 @@
 
   /* Footer */
   .site-footer {
+    background: var(--page);
     border-top: 1px solid var(--line);
     padding-block: 3rem 1.5rem;
   }
@@ -750,6 +756,19 @@
 
 @layer responsive {
   @media (min-width: 600px) {
+    .chips {
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0;
+    }
+    .chips li {
+      padding-top: 0;
+    }
+    .chips li + li {
+      border-top: 0;
+      border-inline-start: 1px solid var(--line);
+    }
     .work-grid,
     .approach-steps {
       grid-template-columns: 1fr 1fr;
@@ -826,8 +845,7 @@
     }
     .button,
     .card,
-    .frame,
-    .chips li {
+    .frame {
       border: 1px solid ButtonText;
     }
   }
@@ -887,12 +905,19 @@
     margin-top: 1.5rem;
   }
   .accounting-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-    gap: 1.5rem;
     list-style: none;
     margin: 3rem 0 0;
     padding: 0;
+  }
+  .accounting-item {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 0.75rem 2rem;
+    border-top: 1px solid var(--line);
+    padding-block: 1.5rem;
+  }
+  .accounting-item:last-child {
+    border-bottom: 1px solid var(--line);
   }
   .accounting-item h3 {
     margin: 0;
@@ -900,7 +925,6 @@
   .accounting-item p {
     color: var(--muted);
     font-size: 1rem;
-    margin-top: 0.75rem;
   }
   .accounting-cta {
     margin-top: 2rem;

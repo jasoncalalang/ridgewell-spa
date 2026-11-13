@@ -18,7 +18,7 @@ export default function Accounting({
         <p className="section-intro">{accounting.intro}</p>
         <ul className="accounting-items" role="list">
           {accounting.items.map((item) => (
-            <li key={item.title} className="card accounting-item" data-reveal>
+            <li key={item.title} className="accounting-item" data-reveal>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </li>
