@@ -66,6 +66,15 @@ test("there are two services and seven case studies with unique anchors", () => 
   assert.equal(caseStudies.filter((c) => c.group === "product").length, 2);
 });
 
+test("the services section targets IT services in Obando and keeps its heading", async () => {
+  const { servicesSection } = await import("./content.ts");
+  assert.deepEqual(servicesSection, {
+    label: "IT services in Obando, Bulacan",
+    heading: "Two things, done properly.",
+  });
+  assert.deepEqual(findForbidden(JSON.stringify(servicesSection)), []);
+});
+
 test("every service preselects a real interest option", () => {
   for (const service of services)
     assert.ok(serviceOptions.includes(service.interest), service.id);
@@ -231,9 +240,9 @@ const indexHtml = readFileSync(
 );
 const siteUrl = "https://www.ridgewell.com.ph/";
 const imageUrl = "https://www.ridgewell.com.ph/brand/ridgewell-logo.jpg";
-const expectedTitle = "Ridgewell RMSI | Accounting and IT Consulting in Obando";
+const expectedTitle = "Ridgewell RMSI | Accounting and IT Services in Obando";
 const expectedDescription =
-  "Accounting services in Obando, Bulacan from Ridgewell Management Services, Inc. (RMSI), plus IT consulting, AI agents, websites and bespoke systems.";
+  "Accounting and IT services in Obando, Bulacan from Ridgewell Management Services, Inc. (RMSI): IT consulting, AI agents, websites and bespoke systems.";
 
 function metaContent(attribute: "name" | "property", key: string) {
   const tag = indexHtml
@@ -260,10 +269,11 @@ test("the title and meta description carry the Obando keywords within search lim
   assert.equal(description, expectedDescription);
   assert.ok(description.length <= 160, `description is ${description.length}`);
   assert.deepEqual(findForbidden(`${title} ${description}`), []);
-  for (const word of ["Obando", "RMSI", "IT Consulting", "Accounting"])
+  for (const word of ["Obando", "RMSI", "IT Services", "Accounting"])
     assert.match(title, new RegExp(word, "i"));
-  assert.ok(title.indexOf("Accounting") < title.indexOf("IT Consulting"));
-  assert.match(description, /^Accounting services in Obando, Bulacan/);
+  assert.ok(title.indexOf("Accounting") < title.indexOf("IT Services"));
+  assert.match(description, /IT services in Obando, Bulacan/);
+  assert.match(description, /^Accounting and IT services in Obando, Bulacan/);
   assert.ok(description.indexOf("IT consulting") > description.indexOf("Accounting"));
   assert.ok(description.indexOf("AI agents") > description.indexOf("IT consulting"));
 });
@@ -340,17 +350,6 @@ test("JSON-LD describes the business with sourced facts only", () => {
   const areas = [data.areaServed].flat();
   assert.equal(areas[0]["@type"], "AdministrativeArea");
   assert.equal(areas[0].name, "Obando, Bulacan, Philippines");
-  assert.deepEqual(data.serviceType, [
-    "Accounting services",
-    "IT consulting",
-    "AI agent setup",
-    "Website design",
-    "Bespoke system development",
-  ]);
-  assert.deepEqual(
-    data.makesOffer.map((offer: any) => offer.itemOffered.serviceType),
-    data.serviceType,
-  );
   // Sourced from the repo: the published email and the Contact hours.
   assert.equal(data.email, companyEmail);
   assert.deepEqual(data.openingHoursSpecification, [
@@ -369,6 +368,34 @@ test("JSON-LD describes the business with sourced facts only", () => {
   assert.deepEqual(findForbidden(text), []);
   assert.doesNotMatch(text, /\p{Sc}|\bCPA\b|certified|accredited|licensed|\+63/iu);
   assert.equal(JSON.stringify(data).includes('"price"'), false);
+});
+
+test("JSON-LD lists accounting first and IT services second with a local Offer", () => {
+  const data = jsonLd();
+  assert.deepEqual(data.serviceType, [
+    "Accounting services",
+    "IT services",
+    "IT consulting",
+    "AI agent setup",
+    "Website design",
+    "Bespoke system development",
+  ]);
+  assert.deepEqual(
+    data.makesOffer.map((offer: any) => offer.itemOffered.serviceType),
+    data.serviceType,
+  );
+  assert.deepEqual(data.makesOffer[1], {
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name: "IT services",
+      serviceType: "IT services",
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: "Obando, Bulacan, Philippines",
+      },
+    },
+  });
 });
 
 test("visible copy mentions Obando, Bulacan in the hero lead and accounting intro", () => {

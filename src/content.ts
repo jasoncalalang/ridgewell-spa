@@ -46,6 +46,11 @@ export interface Service {
   screenAlt: string;
 }
 
+export const servicesSection = {
+  label: "IT services in Obando, Bulacan",
+  heading: "Two things, done properly.",
+};
+
 export const services: Service[] = [
   {
     id: "website",

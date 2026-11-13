@@ -1,4 +1,4 @@
-import { services } from "../content";
+import { services, servicesSection } from "../content";
 import Arrow from "./Arrow";
 import { BrowserFrame } from "./Frames";
 import Screen from "./Screen";
@@ -11,8 +11,8 @@ export default function Services({
   return (
     <section id="services" className="services-section section-space">
       <div className="wrap">
-        <p className="section-label">What we do</p>
-        <h2>Two things, done properly.</h2>
+        <p className="section-label">{servicesSection.label}</p>
+        <h2>{servicesSection.heading}</h2>
         <div className="service-grid">
           {services.map((service) => (
             <article

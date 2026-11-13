@@ -1,11 +1,11 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-const title = "Ridgewell RMSI | Accounting and IT Consulting in Obando";
+const title = "Ridgewell RMSI | Accounting and IT Services in Obando";
 const siteUrl = "https://www.ridgewell.com.ph/";
 const imageUrl = "https://www.ridgewell.com.ph/brand/ridgewell-logo.jpg";
 const description =
-  "Accounting services in Obando, Bulacan from Ridgewell Management Services, Inc. (RMSI), plus IT consulting, AI agents, websites and bespoke systems.";
+  "Accounting and IT services in Obando, Bulacan from Ridgewell Management Services, Inc. (RMSI): IT consulting, AI agents, websites and bespoke systems.";
 
 const meta = (page: import("@playwright/test").Page, selector: string) =>
   page.locator(`head meta[${selector}]`).getAttribute("content");
@@ -62,7 +62,7 @@ test("JSON-LD parses and describes the business", async ({ page }) => {
   expect(data.address.addressLocality).toBe("Obando");
   expect(data.serviceType.slice(0, 2)).toEqual([
     "Accounting services",
-    "IT consulting",
+    "IT services",
   ]);
   expect(data.telephone).toBeUndefined();
 });
@@ -91,10 +91,13 @@ test("sitemap.xml is a real XML urlset with the www URL", async ({
   expect(body).not.toMatch(/<!doctype html/i);
 });
 
-test("Obando, Bulacan is visible in the hero, accounting intro and footer", async ({
+test("Obando, Bulacan is visible in the hero, services label, accounting intro and footer", async ({
   page,
 }) => {
   await expect(page.locator("#home .lead")).toContainText("Obando, Bulacan");
+  await expect(page.locator("#services .section-label").first()).toHaveText(
+    "IT services in Obando, Bulacan",
+  );
   await expect(page.locator("#accounting .section-intro")).toContainText(
     "based in Obando, Bulacan",
   );
