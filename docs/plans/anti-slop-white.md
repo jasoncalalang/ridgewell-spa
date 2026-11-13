@@ -19,9 +19,9 @@ Reading this as: a product showroom for Philippine SME owners and school/propert
 - [x] Apply the scoped CSS and Accounting class changes; update `DESIGN.md` to describe the white palette, neutral rules and simplified labels/rows.
 - [x] Run `npm run test:unit` and `npm run build` after production edits.
 - [x] Review the diff, palette contrast and source-level delivery gates; record results here.
-- [ ] Browser green: `npx playwright test tests/design.spec.ts`, **to be run by coordinator**.
-- [ ] Existing browser suite: `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/google-chrome npx playwright test --reporter=line`, **to be run by coordinator**.
-- [ ] Review desktop/mobile rendering, axe, keyboard/click-through behavior, console errors and rendered delivery gates, **to be run by coordinator**.
+- [x] Browser green: `npx playwright test tests/design.spec.ts`, 6/6 passed (desktop + mobile), run by coordinator outside the sandbox.
+- [x] Full browser suite: `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/google-chrome npx playwright test --reporter=line`, 92 passed, 4 skipped (baseline on main: 86 passed, 4 skipped), including the existing axe, menu/Escape, inquiry, reflow and touch-target tests.
+- [x] Desktop (1440x900) and mobile (390x844) full-page screenshots reviewed by the coordinator: white canvas, sections separated by spacing and neutral rules, no layout breaks. Keyboard and click-through behavior is covered by the existing Playwright suite above; no separate manual pass.
 
 ## Applied changes
 
@@ -46,7 +46,7 @@ Reading this as: a product showroom for Philippine SME owners and school/propert
 - **Diff/source PASS:** `git diff --check`; no old warm palette values remain in source CSS. All `tests/*.spec.ts` files and `src/content.ts` retain their pre-edit SHA-256 hashes. No dependencies, assets or runtime logic were added.
 - **Contrast PASS for the changed edges:** the installed human skill's checker computes `#7c858d` on white at 3.75:1, above the 3:1 non-text boundary threshold. Its normal-text verdict is FAIL at 4.5:1; this token is used only for borders and the scrollbar, never text.
 - **Text/focus palette PASS:** the same checker reports ink 17.13:1, secondary ink 6.50:1, meta 5.41:1, red 6.82:1, hover red 8.39:1, green 5.20:1 and amber 5.09:1 on white. Rendered contrast and axe remain coordinator checks.
-- **Browser green: to be run by coordinator.** No post-change browser, axe, screenshot, console or click-through pass is claimed. The sandbox's known port-binding and Chrome-launch restrictions were not retried.
+- **Browser PASS (coordinator):** design spec 6/6; full suite 92 passed, 4 skipped, axe included; screenshots reviewed on desktop and mobile.
 
 ## Delivery gate status for the approved scope
 
