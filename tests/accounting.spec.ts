@@ -21,7 +21,7 @@ test.beforeEach(async ({ page }) => {
   ).toHaveCount(1);
 });
 
-test("accounting sits between What we do and Ways to work with label, heading, intro and seven items in order", async ({
+test("accounting sits between IT services and Ways to work with label, heading, intro and seven items in order", async ({
   page,
 }) => {
   const section = page.locator("#accounting");
