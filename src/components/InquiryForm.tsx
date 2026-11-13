@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import { companyEmail, serviceOptions } from "../content";
+import { track } from "../lib/analytics";
 import { createEmailDraft, validateInquiry } from "../lib/inquiry";
 import type { Inquiry, InquiryErrors } from "../lib/inquiry";
 import Arrow from "./Arrow";
@@ -53,6 +54,7 @@ export default function InquiryForm({
       form.current?.querySelector<HTMLElement>(`[name="${field}"]`)?.focus();
       return;
     }
+    track("generate_lead", { method: "inquiry" });
     copyVersion.current += 1;
     copying.current = false;
     setDraft(createEmailDraft(inquiry));

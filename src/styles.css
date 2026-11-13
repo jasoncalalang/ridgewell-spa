@@ -760,6 +760,23 @@
     font-size: 0.875rem;
     color: var(--meta);
   }
+  .footer-analytics {
+    max-width: 65ch;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--meta);
+  }
+  .footer-analytics a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .footer-analytics a:hover {
+    color: var(--red);
+  }
 }
 
 @layer responsive {

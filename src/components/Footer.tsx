@@ -1,4 +1,4 @@
-import { caseStudies, footerLocation } from "../content";
+import { analyticsNotice, caseStudies, footerLocation } from "../content";
 
 const footerWork = ["portal", "leasetrack", "ledger"];
 
@@ -38,6 +38,11 @@ export default function Footer() {
         </div>
         <p className="footer-bottom">
           © {new Date().getFullYear()} Ridgewell Management Services, Inc.
+        </p>
+        <p className="footer-analytics">
+          {analyticsNotice.before}
+          <a href={analyticsNotice.href}>{analyticsNotice.linkLabel}</a>
+          {analyticsNotice.after}
         </p>
       </div>
     </footer>

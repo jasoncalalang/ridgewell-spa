@@ -12,6 +12,7 @@ import {
   clientWork,
   companyEmail,
   contact,
+  analyticsNotice,
   footerLocation,
   hero,
   offer,
@@ -36,6 +37,7 @@ const everything = JSON.stringify({
   about,
   questions,
   contact,
+  analyticsNotice,
 });
 
 test("forbidden words with regex metacharacters match only literally", () => {
