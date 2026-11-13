@@ -4,6 +4,13 @@ export type { ScreenKey } from "./components/Screen";
 export const companyEmail = "info@ridgewell.com.ph";
 export const footerLocation = "Based in Obando, Bulacan, Philippines";
 
+export const analyticsNotice = {
+  before: "This site uses Google Analytics to understand visits, as described in ",
+  linkLabel: "Google's partner-sites policy",
+  href: "https://policies.google.com/technologies/partner-sites",
+  after: ".",
+};
+
 export const serviceOptions = [
   "Website",
   "Bespoke system",

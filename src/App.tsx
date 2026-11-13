@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { bindLeadClicks } from "./lib/analytics";
 import { useSectionMotion } from "./hooks/useMotion";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -16,6 +17,7 @@ import Footer from "./components/Footer";
 export default function App() {
   const motion = useSectionMotion();
   const [interest, setInterest] = useState<string>("Not sure yet");
+  useEffect(() => bindLeadClicks(document), []);
   useEffect(() => {
     let id = location.hash.slice(1);
     if (!id) return;
