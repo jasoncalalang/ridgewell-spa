@@ -15,6 +15,7 @@ import {
   analyticsNotice,
   footerLocation,
   hero,
+  heroMap,
   offer,
   productWork,
   pos,
@@ -26,6 +27,7 @@ import {
 
 const everything = JSON.stringify({
   hero,
+  heroMap,
   proof,
   services,
   pos,
@@ -559,4 +561,32 @@ test("visible copy mentions Obando, Bulacan in the hero lead and accounting intr
 test("LeaseTrack reflects confirmed use while retaining seven-system proof", () => {
   assert.equal(caseStudies.find((c) => c.id === "leasetrack")?.status, "In daily use");
   assert.ok(JSON.stringify(proof).includes("7 systems in daily use"));
+});
+
+test("hero map lists the three offerings in order with real names and statuses", () => {
+  assert.equal(heroMap.source, "Your organisation");
+  assert.equal(heroMap.sourceHead, "Built for");
+  assert.deepEqual(heroMap.audiences, ["A school", "A property manager", "Our own office"]);
+  assert.deepEqual(
+    heroMap.branches.map((b) => b.node),
+    ["Website", "Bespoke systems", "Our products"],
+  );
+  assert.deepEqual(heroMap.branches[0].cards, [
+    { id: "website", name: "Website design", label: "Design, build, upkeep" },
+  ]);
+  for (const [index, group] of [[1, "client"], [2, "product"]] as const) {
+    const studies = caseStudies.filter((c) => c.group === group);
+    assert.deepEqual(
+      heroMap.branches[index].cards,
+      studies.map((c) => ({ id: c.id, name: c.title, label: c.status })),
+    );
+  }
+});
+
+test("hero map prints no amounts or percentages", () => {
+  const labels = heroMap.branches.flatMap((b) => b.cards.map((c) => c.label));
+  for (const label of labels) {
+    assert.doesNotMatch(label, /[$%₱]/, label);
+    assert.doesNotMatch(label.replace(/\b20\d\d\b/, ""), /\d/, label);
+  }
 });
