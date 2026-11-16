@@ -435,7 +435,7 @@ export const caseStudies: CaseStudy[] = [
       "Leases expiring in 30, 60 and 90 days, this week's post-dated cheques, and every contract a click away. Built for a condominium property manager with about 200 units; every change is logged.",
     changed: "renewals and post-dated cheques tracked in one place",
     audience: "property managers and their admin teams",
-    status: "Live demo available on request",
+    status: "In daily use",
     screen: "cheques-worklist",
     screenAlt:
       "Cheques worklist: post-dated cheques with tenant, amount, due date and the status Deposited, Due or Replaced.",
