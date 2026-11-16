@@ -93,6 +93,7 @@ test.describe("desktop", () => {
   });
 
   test("the backdrop is decoration only", async ({ page }) => {
+    await page.goto("/");
     const map = page.locator(".hero-map");
     await expect(map).toHaveAttribute("aria-hidden", "true");
     await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName(
