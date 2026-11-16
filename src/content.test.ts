@@ -555,3 +555,8 @@ test("visible copy mentions Obando, Bulacan in the hero lead and accounting intr
   assert.match(accounting.intro, /based in Obando, Bulacan/);
   assert.equal(footerLocation, "Based in Obando, Bulacan, Philippines");
 });
+
+test("LeaseTrack reflects confirmed use while retaining seven-system proof", () => {
+  assert.equal(caseStudies.find((c) => c.id === "leasetrack")?.status, "In daily use");
+  assert.ok(JSON.stringify(proof).includes("7 systems in daily use"));
+});
