@@ -5,6 +5,10 @@ test("hero stage and cards settle once, with no runtime errors", async ({
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
+  // This test covers section motion; the hero map intro has its own spec.
+  await page.addInitScript(() =>
+    localStorage.setItem("ridgewell:map-intro", String(Date.now())),
+  );
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);

@@ -1,11 +1,13 @@
 import { hero, proof } from "../content";
 import { BrowserFrame, PhoneFrame } from "./Frames";
+import HeroMap from "./HeroMap";
 import Screen from "./Screen";
 
 export default function Hero() {
   return (
     <>
       <section id="home" className="hero">
+        <HeroMap />
         <div className="wrap hero-copy">
           <p className="section-label">{hero.label}</p>
           <h1>{hero.heading}</h1>

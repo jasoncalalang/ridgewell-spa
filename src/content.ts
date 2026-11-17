@@ -458,6 +458,44 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
+export interface HeroMapCard {
+  id: string;
+  name: string;
+  label: string;
+}
+
+export interface HeroMapBranch {
+  node: string;
+  cards: HeroMapCard[];
+}
+
+const mapCards = (group: CaseStudy["group"]): HeroMapCard[] =>
+  caseStudies
+    .filter((study) => study.group === group)
+    .map((study) => ({ id: study.id, name: study.title, label: study.status }));
+
+/** The decorative flowchart behind the hero, and the intro that draws it. */
+export const heroMap: {
+  source: string;
+  sourceHead: string;
+  audiences: string[];
+  branches: HeroMapBranch[];
+} = {
+  source: "Your organisation",
+  sourceHead: "Built for",
+  audiences: ["A school", "A property manager", "Our own office"],
+  branches: [
+    {
+      node: "Website",
+      cards: [
+        { id: "website", name: "Website design", label: "Design, build, upkeep" },
+      ],
+    },
+    { node: "Bespoke systems", cards: mapCards("client") },
+    { node: "Our products", cards: mapCards("product") },
+  ],
+};
+
 export const approach = {
   label: "How we work",
   heading: "Scoped small, shipped in weeks.",

@@ -394,6 +394,183 @@
   .hero {
     padding-top: clamp(4rem, 7vw, 7rem);
     position: relative;
+    isolation: isolate;
+  }
+
+  /* Hero map: a decorative flowchart that rests as a blurred backdrop (desktop). */
+  .hero-map {
+    display: none;
+    position: absolute;
+    inset: 0 0 auto;
+    height: 100svh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+    --map-fit: 0.83;
+  }
+  .hero-map-stage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1920px;
+    height: 1080px;
+    transform: translate(-50%, -50%) scale(var(--map-fit));
+    filter: blur(14px);
+  }
+  .hero-map-stage > * {
+    position: absolute;
+  }
+  .hero-map-pipes {
+    left: 0;
+    top: 0;
+    max-width: none;
+    overflow: visible;
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 4;
+    stroke-linecap: round;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .hero-map-node {
+    width: 128px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    background: var(--meta);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .hero-map-fan {
+    width: 272px;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--white);
+    box-shadow:
+      0 1px 2px rgb(0 0 0 / 4%),
+      0 8px 24px rgb(0 0 0 / 6%);
+    transform: scale(1.25);
+    opacity: 0.4;
+    overflow: hidden;
+  }
+  .hero-map-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 20px;
+    flex: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .hero-map-head span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .hero-map-icon {
+    width: 16px;
+    height: 16px;
+    flex: none;
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .hero-map-track {
+    position: relative;
+    height: 32px;
+    flex: none;
+    border-radius: 8px;
+    background: var(--line-inner);
+    overflow: hidden;
+  }
+  .hero-map-fill {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--ink) 12%, var(--white));
+    transform-origin: 0 50%;
+  }
+  .hero-map-label,
+  .hero-map-strip span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding-left: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .hero-map-strip {
+    display: flex;
+    transform: translateX(-200%);
+  }
+  .hero-map-strip span {
+    flex: 0 0 100%;
+  }
+  .hero-map-big {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .hero-map-big .hero-map-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .hero-map-check {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--red);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .hero-map-check svg {
+    fill: none;
+    stroke: var(--white);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .hero-map [data-text]::before {
+    content: attr(data-text);
+  }
+  .hero-map-mark {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 360px;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .hero-map-mark img {
+    width: 100%;
+    height: auto;
   }
   .hero-copy {
     text-align: center;
@@ -837,6 +1014,11 @@
     }
     .approach-steps {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (min-width: 992px) {
+    .hero-map {
+      display: block;
     }
   }
   @media (min-width: 1024px) {
